@@ -12,6 +12,7 @@ import {colorsDark, colorsLight} from './colors';
 
 type ThemeContextType = {
   theme: Theme;
+  themeName: string | undefined;
   toggleTheme: () => void;
 };
 
@@ -19,8 +20,6 @@ const themes = {
   light: colorsLight,
   dark: colorsDark,
 };
-
-const currentTheme = getData(MMKV_KEYS.THEME);
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
@@ -34,18 +33,23 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({children}: PropsWithChildren) => {
   const [theme, setTheme] = useState<Theme>(
-    currentTheme === 'dark' ? themes.dark : themes.light,
+    getData(MMKV_KEYS.THEME) === 'dark' ? themes.dark : themes.light,
   );
 
   const toggleTheme = useCallback(() => {
     setTheme(prevTheme =>
-      prevTheme === themes.light ? themes.dark : themes.light,
+      prevTheme.backgroundColor === themes.light.backgroundColor
+        ? themes.dark
+        : themes.light,
     );
-    storeData(MMKV_KEYS.THEME, theme === themes.dark ? 'light' : 'dark');
+    storeData(
+      MMKV_KEYS.THEME,
+      theme.backgroundColor === themes.dark.backgroundColor ? 'light' : 'dark',
+    );
   }, [theme]);
 
   const value = useMemo(() => {
-    return {theme, toggleTheme};
+    return {theme, toggleTheme, themeName: getData(MMKV_KEYS.THEME)};
   }, [theme, toggleTheme]);
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
