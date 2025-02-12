@@ -10,6 +10,7 @@ const Home = () => {
         setValue={setValue}
         label="Email"
         errorMessage="Invalid Email"
+        placeholder="Email"
       />
       <SearchBar value={value} setValue={setValue} />
     </MainLayout>

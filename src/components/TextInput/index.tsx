@@ -12,6 +12,7 @@ interface textInputProps {
   isSearchBar?: boolean;
   label?: string;
   errorMessage?: string;
+  placeholder: string;
 }
 
 const TextInput = ({
@@ -20,6 +21,7 @@ const TextInput = ({
   isSearchBar,
   label,
   errorMessage,
+  placeholder,
 }: textInputProps) => {
   const {theme} = useTheme();
   const onChangeHandler = useCallback(
@@ -43,7 +45,7 @@ const TextInput = ({
             </View>
           )}
           <TextInputBase
-            placeholder="Email Address"
+            placeholder={placeholder}
             placeholderTextColor={COLORS.gray400}
             style={styles(theme).textInput}
             selectionColor={theme.textColor}

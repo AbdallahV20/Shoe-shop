@@ -6,5 +6,12 @@ interface SearchBarProps {
   setValue: (val: string) => void;
 }
 export default function index({value, setValue}: SearchBarProps) {
-  return <TextInput value={value} setValue={setValue} isSearchBar />;
+  return (
+    <TextInput
+      value={value}
+      setValue={setValue}
+      isSearchBar
+      placeholder="Search"
+    />
+  );
 }
