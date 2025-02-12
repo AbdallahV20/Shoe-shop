@@ -1,9 +1,9 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../theme/colors';
-export const styles = (size?: string) =>
+export const styles = (size?: string, isDisabled?: boolean) =>
   StyleSheet.create({
     container: {
-      backgroundColor: COLORS.orange,
+      backgroundColor: isDisabled ? COLORS.orange100 : COLORS.orange,
       borderRadius: size === 'medium' ? 10 : 20,
       justifyContent: 'center',
       alignItems: 'center',
