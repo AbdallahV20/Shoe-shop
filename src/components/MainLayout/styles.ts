@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
 import {Theme} from '../../constants';
 const statusBarHeight = getStatusBarHeight();
@@ -8,7 +8,8 @@ export const styles = (theme: Theme) =>
     contentContainer: {
       // alignItems: isArabic && Platform.OS === 'ios' ? 'flex-end' : 'flex-start',
       flex: 1,
-      paddingTop: statusBarHeight + 24,
+      paddingTop:
+        Platform.OS === 'ios' ? statusBarHeight + 48 : statusBarHeight + 24,
       paddingHorizontal: 24,
       backgroundColor: theme.backgroundColor,
     },
