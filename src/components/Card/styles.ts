@@ -1,4 +1,40 @@
 import {StyleSheet} from 'react-native';
 import {Theme} from '../../constants';
-export const styles = (theme: Theme) => StyleSheet.create({});
+export const styles = (theme: Theme, themeName?: string) =>
+  StyleSheet.create({
+    cardContainer: {
+      borderRadius: 24,
+      shadowColor: themeName === 'dark' ? '' : '#000',
+      shadowOpacity: 0.2,
+      shadowRadius: 5,
+      elevation: 5,
+    },
+    container: {
+      padding: 12,
+      gap: 16,
+    },
+    imageContainer: {
+      width: 126,
+      height: 126,
+      borderRadius: 24,
+      overflow: 'hidden',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    rateContainer: {
+      backgroundColor: 'rgba(0,0,0,0.7)',
+      paddingHorizontal: 14,
+      paddingVertical: 2,
+      position: 'absolute',
+      top: 0,
+      end: 0,
+      borderBottomLeftRadius: 26,
+    },
+    cardFooter: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    priceContainer: {flexDirection: 'row', gap: 4},
+  });
 export default styles;
