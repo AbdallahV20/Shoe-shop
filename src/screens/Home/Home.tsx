@@ -1,23 +1,17 @@
-import {Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 
-import {Button, Icon, MainLayout} from '../../components';
+import {MainLayout, SearchBar, TextInput} from '../../components';
 const Home = () => {
+  const [value, setValue] = useState('');
   return (
     <MainLayout>
-      <Text>Home</Text>
-      <Button
-        size="large"
-        onPress={() => console.log('Yes')}
-        title=" Add to cart"
+      <TextInput
+        value={value}
+        setValue={setValue}
+        label="Email"
+        errorMessage="Invalid Email"
       />
-      <View style={{width: 40, height: 40, marginTop: 50}}>
-        <Button
-          size="medium"
-          onPress={() => console.log('Yes')}
-          icon={<Icon name="add" size={10} color={'white'} />}
-        />
-      </View>
+      <SearchBar value={value} setValue={setValue} />
     </MainLayout>
   );
 };

@@ -1,5 +1,7 @@
-export {default as MainLayout} from './MainLayout/MainLayout';
-export {default as Icon} from './Icon/Icon';
-export {default as Text} from './Text/Text';
-export {default as Card} from './Card/Card';
-export {default as Button} from './Button/Button';
+export {default as MainLayout} from './MainLayout';
+export {default as Icon} from './Icon';
+export {default as Text} from './Text';
+export {default as Card} from './Card';
+export {default as Button} from './Button';
+export {default as TextInput} from './TextInput';
+export {default as SearchBar} from './SearchBar';
