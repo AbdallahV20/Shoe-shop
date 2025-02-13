@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
 import {Theme} from '../../constants';
-export const styles = (theme: Theme, themeName?: string) =>
+export const styles = (theme: Theme, isDarkMode?: boolean) =>
   StyleSheet.create({
     cardContainer: {
       borderRadius: 24,
-      shadowColor: themeName === 'dark' ? '' : '#000',
+      shadowColor: isDarkMode ? '' : '#000',
       shadowOpacity: 0.2,
       shadowRadius: 5,
       elevation: 5,

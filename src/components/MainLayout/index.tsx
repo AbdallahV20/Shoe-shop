@@ -3,16 +3,13 @@ import React, {PropsWithChildren} from 'react';
 import {useTheme} from '../../theme';
 import styles from './styles';
 const MainLayout = ({children}: PropsWithChildren) => {
-  const {theme, themeName} = useTheme();
+  const {theme, isDarkMode} = useTheme();
   return (
-    <ScrollView
-      bounces={false}
-      overScrollMode="never"
-      contentContainerStyle={styles(theme).contentContainer}>
+    <ScrollView contentContainerStyle={styles(theme).contentContainer}>
       <StatusBar
         translucent
         backgroundColor={'transparent'}
-        barStyle={themeName === 'dark' ? 'light-content' : 'dark-content'}
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
       />
       {children}
     </ScrollView>

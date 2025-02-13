@@ -9,21 +9,19 @@ import Icon from '../Icon';
 import {COLORS} from '../../theme/colors';
 
 interface CardProps {
-  rate?: string;
+  rate?: number;
   imageSource: ImageProps;
   title: string;
   subTitle: string;
   price: string;
 }
 const Card = ({rate, imageSource, title, subTitle, price}: CardProps) => {
-  const {theme, themeName} = useTheme();
+  const {theme, isDarkMode} = useTheme();
   return (
     <LinearGradient
-      colors={
-        themeName === 'light' ? ['#FFFFFF', '#FFFFFF'] : ['#252A32', '#262B33']
-      }
-      style={styles(theme, themeName).cardContainer}>
-      <View style={styles(theme, themeName).container}>
+      colors={!isDarkMode ? ['#FFFFFF', '#FFFFFF'] : ['#252A32', '#262B33']}
+      style={styles(theme, isDarkMode).cardContainer}>
+      <View style={styles(theme, isDarkMode).container}>
         <View style={styles(theme).imageContainer}>
           <Image source={imageSource} resizeMode="contain" />
 
@@ -34,7 +32,7 @@ const Card = ({rate, imageSource, title, subTitle, price}: CardProps) => {
                 fontSize={10}
                 color="#fff"
                 icon={<Icon name="star" size={10} color={COLORS.yellow} />}>
-                {rate}
+                {rate.toString()}
               </Text>
             </View>
           )}

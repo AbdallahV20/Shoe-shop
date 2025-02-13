@@ -5,14 +5,15 @@ import React, {
   PropsWithChildren,
   useMemo,
   useCallback,
+  useEffect,
 } from 'react';
-import {getData, storeData} from '../utils';
+import {getBooleanData, storeData} from '../utils';
 import {MMKV_KEYS, Theme} from '../constants';
 import {colorsDark, colorsLight} from './colors';
 
 type ThemeContextType = {
   theme: Theme;
-  themeName: string | undefined;
+  isDarkMode: boolean;
   toggleTheme: () => void;
 };
 
@@ -32,25 +33,23 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({children}: PropsWithChildren) => {
-  const [theme, setTheme] = useState<Theme>(
-    getData(MMKV_KEYS.THEME) === 'dark' ? themes.dark : themes.light,
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(
+    () => getBooleanData(MMKV_KEYS.THEME) ?? false,
   );
-
+  useEffect(() => {
+    storeData(MMKV_KEYS.THEME, isDarkMode);
+  }, [isDarkMode]);
   const toggleTheme = useCallback(() => {
-    setTheme(prevTheme =>
-      prevTheme.backgroundColor === themes.light.backgroundColor
-        ? themes.dark
-        : themes.light,
-    );
-    storeData(
-      MMKV_KEYS.THEME,
-      theme.backgroundColor === themes.dark.backgroundColor ? 'light' : 'dark',
-    );
-  }, [theme]);
+    setIsDarkMode(prev => !prev);
+  }, []);
 
   const value = useMemo(() => {
-    return {theme, toggleTheme, themeName: getData(MMKV_KEYS.THEME)};
-  }, [theme, toggleTheme]);
+    return {
+      theme: isDarkMode ? themes.dark : themes.light,
+      toggleTheme,
+      isDarkMode,
+    };
+  }, [toggleTheme, isDarkMode]);
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
