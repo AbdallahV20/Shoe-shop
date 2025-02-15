@@ -1,9 +1,9 @@
 import {ScrollView, StatusBar} from 'react-native';
 import React, {PropsWithChildren} from 'react';
-import {useTheme} from '../../theme';
+import {useAppTheme} from '../../theme';
 import styles from './styles';
 const MainLayout = ({children}: PropsWithChildren) => {
-  const {theme, isDarkMode} = useTheme();
+  const {theme, isDarkMode} = useAppTheme();
   return (
     <ScrollView contentContainerStyle={styles(theme).contentContainer}>
       <StatusBar

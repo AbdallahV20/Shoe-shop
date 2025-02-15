@@ -3,12 +3,12 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home, Cart, Favourite, History, Settings} from '../screens';
 import {Theme} from '../constants';
-import {useTheme} from '../theme';
+import {useAppTheme} from '../theme';
 import {Icon} from '../components';
 import {COLORS} from '../theme/colors';
 const HomeBottomTabs = () => {
   const Tab = createBottomTabNavigator();
-  const {theme} = useTheme();
+  const {theme} = useAppTheme();
   return (
     <Tab.Navigator
       screenOptions={{

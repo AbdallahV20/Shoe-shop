@@ -2,7 +2,7 @@ import {ImageStyle, TextStyle, View, ViewStyle} from 'react-native';
 import {Text as ReactNativeText} from 'react-native';
 import React from 'react';
 import appFonts from '../../assets/fonts';
-import {useTheme} from '../../theme';
+import {useAppTheme} from '../../theme';
 interface TextProps {
   fontSize?: 10 | 12 | 14 | 16 | 20 | 28;
   fontWeight?:
@@ -32,7 +32,7 @@ const Text = ({
   style,
   icon,
 }: TextProps) => {
-  const {theme} = useTheme();
+  const {theme} = useAppTheme();
   return (
     <ReactNativeText
       style={[

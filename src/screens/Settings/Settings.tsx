@@ -1,10 +1,10 @@
 import {Pressable, View} from 'react-native';
 import React from 'react';
-import {useTheme} from '../../theme';
+import {useAppTheme} from '../../theme';
 import {MainLayout, Text} from '../../components';
 import {changeLanguage} from '../../utils';
 const Setttings = () => {
-  const {toggleTheme} = useTheme();
+  const {toggleTheme} = useAppTheme();
   return (
     <MainLayout>
       <View style={{gap: 40}}>

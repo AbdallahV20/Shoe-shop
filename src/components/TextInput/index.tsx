@@ -1,7 +1,7 @@
 import {TextInput as TextInputBase, View} from 'react-native';
 import React, {useCallback} from 'react';
 import styles from './styles';
-import {useTheme} from '../../theme';
+import {useAppTheme} from '../../theme';
 import Text from '../Text';
 import {COLORS} from '../../theme/colors';
 import Icon from '../Icon';
@@ -23,7 +23,7 @@ const TextInput = ({
   errorMessage,
   placeholder,
 }: textInputProps) => {
-  const {theme} = useTheme();
+  const {theme} = useAppTheme();
   const onChangeHandler = useCallback(
     (val: string) => {
       setValue(val);

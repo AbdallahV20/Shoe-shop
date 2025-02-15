@@ -1,7 +1,7 @@
 import {View, Image, ImageProps} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {useTheme} from '../../theme';
+import {useAppTheme} from '../../theme';
 import styles from './styles';
 import Text from '../Text';
 import Button from '../Button';
@@ -16,7 +16,7 @@ interface CardProps {
   price: string;
 }
 const Card = ({rate, imageSource, title, subTitle, price}: CardProps) => {
-  const {theme, isDarkMode} = useTheme();
+  const {theme, isDarkMode} = useAppTheme();
   return (
     <LinearGradient
       colors={!isDarkMode ? ['#FFFFFF', '#FFFFFF'] : ['#252A32', '#262B33']}
