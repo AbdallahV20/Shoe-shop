@@ -1,18 +1,24 @@
 import React, {useState} from 'react';
 
-import {MainLayout, SearchBar, TextInput} from '../../components';
+import {MainLayout, Tabs} from '../../components';
 const Home = () => {
-  const [value, setValue] = useState('');
+  const [_, setActiveTab] = useState('');
   return (
     <MainLayout>
-      <TextInput
-        value={value}
-        setValue={setValue}
-        label="Email"
-        errorMessage="Invalid Email"
-        placeholder="Email"
+      <Tabs
+        tabs={[
+          'coffee',
+          'tea',
+          'milk',
+          'orange',
+          'apple',
+          'water',
+          'watermelon',
+          'love',
+          'queen',
+        ]}
+        setActiveTab={setActiveTab}
       />
-      <SearchBar value={value} setValue={setValue} />
     </MainLayout>
   );
 };
