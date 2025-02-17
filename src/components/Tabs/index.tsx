@@ -25,7 +25,6 @@ const Tabs = ({tabs, setActiveTab}: TabsProps) => {
     [setActiveTab, tabs],
   );
   return (
-    <View>
       <FlatList
         ref={tabsRef}
         horizontal
@@ -55,7 +54,6 @@ const Tabs = ({tabs, setActiveTab}: TabsProps) => {
           </Pressable>
         )}
       />
-    </View>
   );
 };
 

@@ -1,18 +1,29 @@
-import {ScrollView, StatusBar} from 'react-native';
-import React, {PropsWithChildren} from 'react';
+import {SafeAreaView, ScrollView, StatusBar} from 'react-native';
+import React from 'react';
 import {useAppTheme} from '../../theme';
 import styles from './styles';
-const MainLayout = ({children}: PropsWithChildren) => {
+interface MainLayoutProps {
+  children: React.ReactNode;
+  header?: React.ReactNode;
+}
+
+const MainLayout = ({children, header}: MainLayoutProps) => {
   const {theme, isDarkMode} = useAppTheme();
   return (
-    <ScrollView contentContainerStyle={styles(theme).contentContainer}>
-      <StatusBar
-        translucent
-        backgroundColor={'transparent'}
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-      />
-      {children}
-    </ScrollView>
+    <SafeAreaView style={styles(theme).container}>
+      {header && header}
+      <ScrollView
+        bounces={false}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles(theme).contentContainer}>
+        <StatusBar
+          translucent
+          backgroundColor={'transparent'}
+          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        />
+        {children}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

@@ -6,3 +6,6 @@ export {default as Button} from './Button';
 export {default as TextInput} from './TextInput';
 export {default as SearchBar} from './SearchBar';
 export {default as Tabs} from './Tabs';
+export {default as Avatar} from './Avatar';
+export {default as NavigationHeader} from './NavigationHeader';
+export {default as NavigationAction} from './NavigationAction';

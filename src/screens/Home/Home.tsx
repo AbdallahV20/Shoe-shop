@@ -1,24 +1,31 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-import {MainLayout, Tabs} from '../../components';
+import {
+  Avatar,
+  Button,
+  MainLayout,
+  NavigationAction,
+  NavigationHeader,
+} from '../../components';
+import {View} from 'react-native';
+import {AppImages} from '../../assets/app_images';
 const Home = () => {
-  const [_, setActiveTab] = useState('');
   return (
-    <MainLayout>
-      <Tabs
-        tabs={[
-          'coffee',
-          'tea',
-          'milk',
-          'orange',
-          'apple',
-          'water',
-          'watermelon',
-          'love',
-          'queen',
-        ]}
-        setActiveTab={setActiveTab}
-      />
+    <MainLayout
+      header={
+        <NavigationHeader
+          startAction={<NavigationAction.Logo />}
+          title="Home"
+          endAction={<NavigationAction.ProfilePiture />}
+        />
+      }>
+      <View style={{gap: 20, alignItems: 'flex-start'}}>
+        <Avatar />
+        <Avatar size="small" />
+        <Avatar uploadedImage={AppImages.avatar} />
+        <Avatar isSquare isBoy />
+        <Avatar isGirl />
+      </View>
     </MainLayout>
   );
 };
