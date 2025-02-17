@@ -1,5 +1,5 @@
 import {Image} from 'react-native';
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 import {AppImages} from '../../assets/app_images';
 import styles from './styles';
 import Button from '../Button';
@@ -35,9 +35,35 @@ const ProfilePiture = () => {
   );
 };
 
+const LoveButton = ({
+  handleOnLikePressed,
+}: {
+  handleOnLikePressed: () => void;
+}) => {
+  const [like, setLike] = useState(false);
+  const handleOnPress = useCallback(() => {
+    setLike(prev => !prev);
+    handleOnLikePressed();
+  }, [handleOnLikePressed]);
+  return (
+    <Button
+      variant="themingButton"
+      icon={
+        <Icon
+          name="like"
+          color={like ? COLORS.red : COLORS.gray100}
+          size={24}
+        />
+      }
+      onPress={handleOnPress}
+    />
+  );
+};
+
 const NavigationAction = {
   Logo,
   BackButton,
+  LoveButton,
   ProfilePiture,
 };
 export default NavigationAction;

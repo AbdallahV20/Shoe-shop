@@ -2,6 +2,7 @@ import {View} from 'react-native';
 import React from 'react';
 import Text from '../Text';
 import styles from './styles';
+import {useAppTheme} from '../../theme';
 interface NavigationHeaderProps {
   startAction?: React.ReactNode;
   title: string;
@@ -12,8 +13,9 @@ const NavigationHeader = ({
   title,
   endAction,
 }: NavigationHeaderProps) => {
+  const {theme} = useAppTheme();
   return (
-    <View style={styles.container}>
+    <View style={styles(theme).container}>
       <View>{startAction}</View>
       <Text fontSize={24} fontWeight="semiBold">
         {title}

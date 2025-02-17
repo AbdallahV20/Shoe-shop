@@ -15,7 +15,6 @@ interface TextProps {
     | 'semiBold'
     | 'extraLight'
     | 'thin';
-  lineHeight?: 15 | 18 | 20 | 24 | 30 | 42;
   textAlign?: 'left' | 'center' | 'right';
   color?: string;
   children?: string;
@@ -27,7 +26,6 @@ const Text = ({
   fontWeight = 'regular',
   textAlign,
   children,
-  lineHeight = 24,
   color,
   style,
   icon,
@@ -41,7 +39,6 @@ const Text = ({
           fontSize,
           textAlign,
           color: color ?? theme.textColor,
-          lineHeight,
         },
         style,
       ]}>

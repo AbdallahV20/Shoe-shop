@@ -20,7 +20,7 @@ const Button = ({
   onPress,
   isDisabled,
   isBorder,
-  variant,
+  variant = 'orangeButton',
 }: ButtonProps) => {
   const {theme} = useAppTheme();
   return (

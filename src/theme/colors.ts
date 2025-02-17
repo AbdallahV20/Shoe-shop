@@ -11,6 +11,7 @@ export const COLORS = {
   black: '#000',
   black100: '#0C0F14',
   black200: '#141921',
+  black300: '#21262E',
   yellow: '#FFD700',
 };
 

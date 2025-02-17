@@ -3,8 +3,6 @@ export default {
   applepay: require('./applepay.png'),
   avatar: require('./avatar.png'),
   gpay: require('./gpay.png'),
-  placeholder: require('./placeholder.png'),
-  farmer: require('./farmer.png'),
   boy: require('./boy.png'),
   girl: require('./girl.png'),
   logo: require('./logo.png'),

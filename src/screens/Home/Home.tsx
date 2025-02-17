@@ -1,30 +1,18 @@
 import React from 'react';
 
-import {
-  Avatar,
-  Button,
-  MainLayout,
-  NavigationAction,
-  NavigationHeader,
-} from '../../components';
+import {Card, MainLayout} from '../../components';
 import {View} from 'react-native';
-import {AppImages} from '../../assets/app_images';
+import CoffeeData from '../../data/CoffeeData';
 const Home = () => {
   return (
-    <MainLayout
-      header={
-        <NavigationHeader
-          startAction={<NavigationAction.Logo />}
-          title="Home"
-          endAction={<NavigationAction.ProfilePiture />}
+    <MainLayout>
+      <View style={{gap: 20, alignItems: 'flex-start', flex: 1}}>
+        <Card
+          title={CoffeeData[0].name}
+          subTitle={CoffeeData[0].description}
+          imageSource={CoffeeData[0].imagelink_square}
+          price={CoffeeData[0].prices[0].price}
         />
-      }>
-      <View style={{gap: 20, alignItems: 'flex-start'}}>
-        <Avatar />
-        <Avatar size="small" />
-        <Avatar uploadedImage={AppImages.avatar} />
-        <Avatar isSquare isBoy />
-        <Avatar isGirl />
       </View>
     </MainLayout>
   );

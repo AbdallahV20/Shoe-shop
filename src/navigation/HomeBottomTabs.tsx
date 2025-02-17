@@ -1,10 +1,10 @@
-import {StyleSheet} from 'react-native';
+import {StatusBar, StyleSheet, View} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home, Cart, Favourite, History, Settings} from '../screens';
 import {Theme} from '../constants';
 import {useAppTheme} from '../theme';
-import {Icon} from '../components';
+import {Icon, NavigationAction, NavigationHeader} from '../components';
 import {COLORS} from '../theme/colors';
 const HomeBottomTabs = () => {
   const Tab = createBottomTabNavigator();
@@ -12,13 +12,19 @@ const HomeBottomTabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        headerShown: false,
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,
         tabBarStyle: styles(theme).tabBarStyle,
         tabBarItemStyle: styles(theme).tabBarItemStyle,
         tabBarInactiveTintColor: COLORS.gray100,
         tabBarActiveTintColor: COLORS.orange,
+        header: ({route}) => (
+          <NavigationHeader
+            title={route.name.charAt(0).toUpperCase() + route.name.slice(1)}
+            startAction={<NavigationAction.Logo />}
+            endAction={<NavigationAction.ProfilePiture />}
+          />
+        ),
       }}>
       <Tab.Screen
         name="home"
@@ -34,7 +40,7 @@ const HomeBottomTabs = () => {
         component={Cart}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Icon name="like" size={size} color={color} />
+            <Icon name="cart" size={size} color={color} />
           ),
         }}
       />
@@ -43,7 +49,7 @@ const HomeBottomTabs = () => {
         component={Favourite}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Icon name="cart" size={size} color={color} />
+            <Icon name="like" size={size} color={color} />
           ),
         }}
       />
