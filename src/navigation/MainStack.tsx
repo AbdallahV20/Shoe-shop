@@ -7,7 +7,7 @@ const MainStack = () => {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Navigator screenOptions={{headerShown: false, animation: 'fade'}}>
         {/* <Stack.Screen name="splash" component={Splash} /> */}
         <Stack.Screen name="home-bottom-tabs" component={HomeBottomTabs} />
         <Stack.Screen name="details" component={Details} />

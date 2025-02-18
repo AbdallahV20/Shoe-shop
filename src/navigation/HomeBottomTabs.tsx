@@ -1,4 +1,4 @@
-import {StatusBar, StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home, Cart, Favourite, History, Settings} from '../screens';
@@ -20,7 +20,11 @@ const HomeBottomTabs = () => {
         tabBarActiveTintColor: COLORS.orange,
         header: ({route}) => (
           <NavigationHeader
-            title={route.name.charAt(0).toUpperCase() + route.name.slice(1)}
+            title={
+              route.name === 'home'
+                ? ''
+                : route.name.charAt(0).toUpperCase() + route.name.slice(1)
+            }
             startAction={<NavigationAction.Logo />}
             endAction={<NavigationAction.ProfilePiture />}
           />
@@ -81,8 +85,8 @@ const styles = (theme: Theme) =>
       height: 85,
       elevation: 0,
       borderColor: 'transparent',
-      shadowOpacity: 0, // Remove shadow on iOS
-      backgroundColor: theme.tabBarBackgroundColor, // Customize background
+      shadowOpacity: 0,
+      backgroundColor: theme.tabBarBackgroundColor,
       borderTopLeftRadius: 24,
       borderTopRightRadius: 24,
       position: 'absolute',

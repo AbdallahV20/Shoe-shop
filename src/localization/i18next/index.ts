@@ -19,9 +19,6 @@ i18next.use(initReactI18next).init({
   resources,
   lng: storedLanguage ?? 'en',
   fallbackLng: 'en',
-  interpolation: {
-    escapeValue: false,
-  },
 });
 
 export const isArabic = i18next.language === 'ar';

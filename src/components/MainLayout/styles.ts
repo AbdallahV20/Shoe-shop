@@ -8,6 +8,8 @@ export const styles = (theme: Theme) =>
     },
     contentContainer: {
       paddingHorizontal: 24,
+      paddingBottom: 24 + 85,
+      paddingTop: 8,
     },
   });
 export default styles;

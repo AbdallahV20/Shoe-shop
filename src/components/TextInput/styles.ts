@@ -7,15 +7,15 @@ export const styles = (theme: Theme) =>
       gap: 12,
     },
     textInputAndErr: {gap: 8},
-    iconContainer: {marginEnd: 16},
+    iconContainer: {marginEnd: 8,marginTop:10,marginStart:8},
     textInputContainer: {
       backgroundColor: theme.textInputBackground,
-      padding: 16,
+      padding: 8,
       borderRadius: 15,
       borderWidth: 0,
       flexDirection: 'row',
     },
-    textInput: {fontSize: 16, color: theme.textColor},
+    textInput: {fontSize: 16, color: theme.textColor, flex: 1, flexShrink: 1},
   });
 
 export default styles;

@@ -4,7 +4,7 @@ import React from 'react';
 import appFonts from '../../assets/fonts';
 import {useAppTheme} from '../../theme';
 interface TextProps {
-  fontSize?: 10 | 12 | 14 | 16 | 20 | 24 | 28;
+  fontSize?: 10 | 12 | 14 | 16 | 18 | 20 | 24 | 28;
   fontWeight?:
     | 'regular'
     | 'medium'

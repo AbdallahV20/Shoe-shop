@@ -5,7 +5,7 @@ interface SearchBarProps {
   value: string;
   setValue: (val: string) => void;
 }
-export default function index({value, setValue}: SearchBarProps) {
+export default function SearchBar({value, setValue}: SearchBarProps) {
   return (
     <TextInput
       value={value}
