@@ -14,8 +14,6 @@ export const styles = (theme: Theme, isDarkMode?: boolean) =>
       gap: 16,
     },
     imageContainer: {
-      width: 126,
-      height: 126,
       borderRadius: 24,
       overflow: 'hidden',
       justifyContent: 'center',
@@ -35,6 +33,5 @@ export const styles = (theme: Theme, isDarkMode?: boolean) =>
       justifyContent: 'space-between',
       alignItems: 'center',
     },
-    priceContainer: {flexDirection: 'row', gap: 4},
   });
 export default styles;

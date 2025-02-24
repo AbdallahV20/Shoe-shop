@@ -10,3 +10,5 @@ export {default as Avatar} from './Avatar';
 export {default as NavigationHeader} from './NavigationHeader';
 export {default as NavigationAction} from './NavigationAction';
 export {default as Info} from './Info';
+export {default as CardCart} from './CartCard';
+export {default as Price} from './Price';

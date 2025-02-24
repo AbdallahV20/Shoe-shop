@@ -7,6 +7,7 @@ import Text from '../Text';
 import Button from '../Button';
 import Icon from '../Icon';
 import {COLORS} from '../../theme/colors';
+import Price from '../Price';
 
 interface CardProps {
   rate?: number;
@@ -23,7 +24,12 @@ const Card = ({rate, imageSource, title, subTitle, price}: CardProps) => {
       style={styles(theme, isDarkMode).cardContainer}>
       <View style={styles(theme, isDarkMode).container}>
         <View style={styles(theme).imageContainer}>
-          <Image source={imageSource} resizeMode="contain" />
+          <Image
+            source={imageSource}
+            resizeMode="contain"
+            width={126}
+            height={126}
+          />
 
           {rate && (
             <View style={styles(theme).rateContainer}>
@@ -42,18 +48,7 @@ const Card = ({rate, imageSource, title, subTitle, price}: CardProps) => {
           <Text fontSize={10}>{subTitle}</Text>
         </View>
         <View style={styles(theme).cardFooter}>
-          <View style={styles(theme).priceContainer}>
-            <Text
-              fontSize={16}
-              lineHeight={20}
-              color={COLORS.orange}
-              fontWeight="semiBold">
-              $
-            </Text>
-            <Text fontSize={16} lineHeight={20} fontWeight="semiBold">
-              {price}
-            </Text>
-          </View>
+          <Price price={price} priceSize={16} />
           <View>
             <Button icon={<Icon name="add" size={10} color={'#fff'} />} />
           </View>
