@@ -5,16 +5,20 @@ import {COLORS} from '../../theme/colors';
 import {useAppTheme} from '../../theme';
 import styles from './styles';
 interface InfoProps {
-  title: string;
+  title: string | number;
   icon?: React.ReactNode;
+  isBorder?: boolean;
+  color?: 'gray' | 'white';
 }
 
-const Info = ({title, icon}: InfoProps) => {
+const Info = ({title, icon, isBorder, color}: InfoProps) => {
   const {theme} = useAppTheme();
   return (
-    <View style={styles(theme, icon).container}>
+    <View style={styles(theme, icon, isBorder).container}>
       {icon && icon}
-      <Text color={COLORS.gray100} fontWeight="medium">
+      <Text
+        color={color === 'gray' ? COLORS.gray100 : COLORS.white}
+        fontWeight="medium">
         {title}
       </Text>
     </View>
