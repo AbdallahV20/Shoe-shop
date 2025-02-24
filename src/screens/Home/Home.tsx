@@ -8,9 +8,9 @@ import BeansData from '../../data/BeansData';
 const Home = () => {
   const [search, setSearch] = useState('');
   const [activeTab, setActiveTab] = useState(0);
-  const categories = [...new Set(CoffeeData.map(item => item.name))];
+  const categories = ['All', ...new Set(CoffeeData.map(item => item.name))];
   const filterDataByCategory = CoffeeData.filter(
-    item => item.name === categories[activeTab],
+    item => activeTab === 0 || item.name === categories[activeTab],
   ).filter(item => item.prices[0].price.includes(search));
   return (
     <MainLayout>
@@ -47,6 +47,9 @@ const Home = () => {
           keyExtractor={item => item.id}
           horizontal
           contentContainerStyle={{gap: 24}}
+          ListEmptyComponent={() => (
+            <Text textAlign="center">No Data Found</Text>
+          )}
         />
 
         <Text fontSize={24} fontWeight="bold">

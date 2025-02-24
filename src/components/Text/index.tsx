@@ -4,7 +4,7 @@ import React from 'react';
 import appFonts from '../../assets/fonts';
 import {useAppTheme} from '../../theme';
 interface TextProps {
-  fontSize?: 10 | 12 | 14 | 16 | 18 | 20 | 24 | 28;
+  fontSize?: number;
   fontWeight?:
     | 'regular'
     | 'medium'
@@ -17,7 +17,7 @@ interface TextProps {
     | 'thin';
   textAlign?: 'left' | 'center' | 'right';
   color?: string;
-  children?: string;
+  children?: string | number;
   style?: ViewStyle;
   icon?: React.ReactNode;
 }

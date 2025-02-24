@@ -3,4 +3,5 @@ export type Theme = {
   textColor: string;
   tabBarBackgroundColor: string;
   textInputBackground: string;
+  cardBackground: string;
 };
