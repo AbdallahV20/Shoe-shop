@@ -4,4 +4,6 @@ export type Theme = {
   tabBarBackgroundColor: string;
   textInputBackground: string;
   cardBackground: string;
+  primaryText: string;
+  secondaryText: string;
 };
