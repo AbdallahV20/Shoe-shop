@@ -1,4 +1,4 @@
-import {Image} from 'react-native';
+import {Image, View} from 'react-native';
 import React, {useCallback, useState} from 'react';
 import {AppImages} from '../../assets/app_images';
 import styles from './styles';
@@ -9,7 +9,9 @@ import {useNavigation} from '@react-navigation/native';
 import Avatar from '../Avatar';
 
 const Logo = () => {
-  return <Image style={styles.logo} source={AppImages.logo} />;
+  return (
+    <Image style={styles.logo} resizeMode="contain" source={AppImages.logo} />
+  );
 };
 
 const BackButton = () => {
@@ -26,12 +28,14 @@ const BackButton = () => {
 const ProfilePiture = () => {
   // const navigation = useNavigation();
   return (
-    <Avatar
-      isBoy
-      onPress={() => console.log('Settings')}
-      isSquare
-      size="small"
-    />
+    <View style={{marginStart: 15}}>
+      <Avatar
+        isBoy
+        onPress={() => console.log('Settings')}
+        isSquare
+        size="small"
+      />
+    </View>
   );
 };
 

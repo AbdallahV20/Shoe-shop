@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
+import {px, pxH} from '../../utils';
 
 export const styles = StyleSheet.create({
   logo: {
-    width: 40,
-    height: 40,
+    width: px(65),
+    height: pxH(50),
   },
 });
 export default styles;
