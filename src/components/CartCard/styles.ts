@@ -1,36 +1,38 @@
-import {StyleSheet} from 'react-native';
-import {Theme} from '../../constants';
+import {Dimensions, StyleSheet} from 'react-native';
+import {gutters, layout, Theme} from '../../constants';
+import {appColors} from '../../theme/colors';
 
-export const styles = (theme: Theme) =>
+const {width} = Dimensions.get('window');
+export const styles = (theme: Theme, isDarkMode?: boolean) =>
   StyleSheet.create({
     container: {
       backgroundColor: theme.cardBackground,
-      padding: 16,
-      flexDirection: 'row',
-      gap: 16,
-      borderRadius: 24,
+      ...gutters.p_16,
+      ...layout.row,
+      ...gutters.gap_16,
+      ...gutters.radius_16,
+      shadowColor: isDarkMode ? 'transparent' : appColors.gray400,
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 8,
     },
     imageContainer: {
-      width: '40%',
-      aspectRatio: 1 / 1,
-      overflow: 'hidden',
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 24,
+      width: width * 0.35,
+      ...gutters.radius_16,
+      ...layout.overflowHidden,
     },
     rightContainer: {
-      gap: 16,
-      flex: 1,
+      ...gutters.gapH_8,
+      ...layout.flex_1,
     },
     centerContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    },
-    counterConainer: {
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      flexDirection: 'row',
+      ...layout.row,
+      ...layout.itemsCenter,
+      ...layout.justifyBetween,
     },
   });
 

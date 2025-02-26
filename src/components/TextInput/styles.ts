@@ -1,21 +1,26 @@
 import {StyleSheet} from 'react-native';
-import {Theme} from '../../constants';
+import {gutters, layout, Theme} from '../../constants';
+import {moderateScale} from '../../utils';
 
 export const styles = (theme: Theme) =>
   StyleSheet.create({
     container: {
-      gap: 12,
+      ...gutters.gap_12,
     },
-    textInputAndErr: {gap: 8},
-    iconContainer: {marginEnd: 8,marginTop:10,marginStart:8},
+    textInputAndErr: {...gutters.gap_8},
+    searchIconContainer: {...layout.selfCenter, ...gutters.me_12},
     textInputContainer: {
       backgroundColor: theme.textInputBackground,
-      padding: 8,
-      borderRadius: 15,
-      borderWidth: 0,
-      flexDirection: 'row',
+      ...gutters.py_4,
+      ...gutters.px_12,
+      ...gutters.radius_12,
+      ...layout.row,
     },
-    textInput: {fontSize: 16, color: theme.textColor, flex: 1, flexShrink: 1},
+    textInput: {
+      fontSize: moderateScale(16),
+      color: theme.primaryText,
+      ...layout.flexShrink_1,
+    },
   });
 
 export default styles;

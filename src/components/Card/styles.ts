@@ -1,37 +1,45 @@
-import {StyleSheet} from 'react-native';
-import {Theme} from '../../constants';
+import {Dimensions, StyleSheet} from 'react-native';
+import {gutters, layout, Theme} from '../../constants';
+import {appColors} from '../../theme/colors';
+import {moderateScale} from '../../utils';
+const {width} = Dimensions.get('window');
 export const styles = (theme: Theme, isDarkMode?: boolean) =>
   StyleSheet.create({
-    cardContainer: {
-      borderRadius: 24,
-      shadowColor: isDarkMode ? '' : '#000',
-      shadowOpacity: 0.2,
-      shadowRadius: 5,
+    container: {
+      ...gutters.p_12,
+      ...gutters.gapH_8,
+      width: width * 0.38,
+      backgroundColor: theme.cardBackground,
+      ...gutters.radius_8,
+      shadowColor: isDarkMode ? 'transparent' : appColors.gray400,
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
       elevation: 5,
     },
-    container: {
-      padding: 12,
-      gap: 16,
-    },
     imageContainer: {
-      borderRadius: 24,
-      overflow: 'hidden',
-      justifyContent: 'center',
-      alignItems: 'center',
+      ...layout.fullWidth,
+      aspectRatio: 1 / 1,
+      ...gutters.radius_16,
+      ...layout.overflowHidden,
     },
     rateContainer: {
-      backgroundColor: 'rgba(0,0,0,0.7)',
-      paddingHorizontal: 14,
-      paddingVertical: 2,
-      position: 'absolute',
-      top: 0,
-      end: 0,
-      borderBottomLeftRadius: 26,
+      ...layout.row,
+      ...layout.itemsCenter,
+      ...gutters.gap_4,
+      ...layout.selfEnd,
+      backgroundColor: 'rgba(0,0,0,0.6)',
+      ...gutters.px_8,
+      borderBottomLeftRadius: moderateScale(18),
     },
+    starIcon: {...gutters.mb_2},
     cardFooter: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
+      ...layout.row,
+      ...layout.justifyBetween,
+      ...layout.itemsCenter,
     },
   });
 export default styles;

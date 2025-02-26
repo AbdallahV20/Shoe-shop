@@ -4,7 +4,7 @@ import {AppImages} from '../../assets/app_images';
 import styles from './styles';
 import Button from '../Button';
 import Icon from '../Icon';
-import {COLORS} from '../../theme/colors';
+import {appColors} from '../../theme/colors';
 import {useNavigation} from '@react-navigation/native';
 import Avatar from '../Avatar';
 
@@ -18,8 +18,8 @@ const BackButton = () => {
   const navigation = useNavigation();
   return (
     <Button
-      icon={<Icon name="left" size={21} color={COLORS.gray200} />}
-      variant="transparentButton"
+      icon={<Icon name="left" size={18} color={appColors.gray200} />}
+      variant="transparent"
       onPress={() => navigation.goBack()}
     />
   );
@@ -28,13 +28,8 @@ const BackButton = () => {
 const ProfilePiture = () => {
   // const navigation = useNavigation();
   return (
-    <View style={{marginStart: 15}}>
-      <Avatar
-        isBoy
-        onPress={() => console.log('Settings')}
-        isSquare
-        size="small"
-      />
+    <View style={styles.extraMargin}>
+      <Avatar onPress={() => console.log('Settings')} isSquare size="small" />
     </View>
   );
 };
@@ -51,11 +46,11 @@ const LoveButton = ({
   }, [handleOnLikePressed]);
   return (
     <Button
-      variant="themingButton"
+      variant="theming"
       icon={
         <Icon
           name="like"
-          color={like ? COLORS.red : COLORS.gray100}
+          color={like ? appColors.red : appColors.gray100}
           size={24}
         />
       }

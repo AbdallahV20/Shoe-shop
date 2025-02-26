@@ -1,5 +1,9 @@
 import {StyleSheet} from 'react-native';
+import {gutters, layout} from '../../constants';
 
 export default StyleSheet.create({
-  priceContainer: {flexDirection: 'row', gap: 4},
+  priceContainer: {
+    ...layout.row,
+    ...gutters.gap_4,
+  },
 });

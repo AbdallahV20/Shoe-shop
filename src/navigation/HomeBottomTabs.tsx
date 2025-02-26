@@ -2,10 +2,11 @@ import {StyleSheet} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home, Cart, Favourite, History, Settings} from '../screens';
-import {Theme} from '../constants';
+import {gutters, layout, Theme} from '../constants';
 import {useAppTheme} from '../theme';
 import {Icon, NavigationAction, NavigationHeader} from '../components';
-import {COLORS} from '../theme/colors';
+import {appColors} from '../theme/colors';
+import {moderateScale, pxH} from '../utils';
 const HomeBottomTabs = () => {
   const Tab = createBottomTabNavigator();
   const {theme} = useAppTheme();
@@ -16,8 +17,8 @@ const HomeBottomTabs = () => {
         tabBarShowLabel: false,
         tabBarStyle: styles(theme).tabBarStyle,
         tabBarItemStyle: styles(theme).tabBarItemStyle,
-        tabBarInactiveTintColor: COLORS.gray100,
-        tabBarActiveTintColor: COLORS.orange,
+        tabBarInactiveTintColor: appColors.gray100,
+        tabBarActiveTintColor: appColors.orange,
         header: ({route}) => (
           <NavigationHeader
             title={
@@ -82,19 +83,19 @@ const HomeBottomTabs = () => {
 const styles = (theme: Theme) =>
   StyleSheet.create({
     tabBarStyle: {
-      height: 85,
+      height: pxH(85),
       elevation: 0,
       borderColor: 'transparent',
       shadowOpacity: 0,
       backgroundColor: theme.tabBarBackgroundColor,
-      borderTopLeftRadius: 24,
-      borderTopRightRadius: 24,
-      position: 'absolute',
-      overflow: 'hidden',
+      borderTopLeftRadius: moderateScale(28),
+      borderTopRightRadius: moderateScale(28),
+      ...layout.absolute,
+      ...layout.overflowHidden,
     },
     tabBarItemStyle: {
       backgroundColor: theme.tabBarBackgroundColor,
-      paddingTop: 16,
+      ...gutters.pt_18,
     },
   });
 

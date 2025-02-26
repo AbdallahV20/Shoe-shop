@@ -1,4 +1,4 @@
-export const COLORS = {
+export const appColors = {
   red: '#DC3535',
   orange: '#C67C4E',
   orange100: '#E0BFAF',
@@ -10,7 +10,7 @@ export const COLORS = {
   white: '#fff',
   white100: '#f9f9f9',
   black: '#000',
-  navy: '#0C0F14', //for labels inside the card => 2B303A
+  navy: '#0C0F14',
   black200: '#141921',
   black300: '#21262E',
   black400: '#252A32',
@@ -21,16 +21,20 @@ export const colorsLight = {
   backgroundColor: '#f5f4f4',
   primaryText: '#2A2D35',
   secondaryText: '#6E7480',
-  tabBarBackgroundColor: COLORS.white,
-  textInputBackground: COLORS.white,
-  cardBackground: COLORS.white,
+  tabBarBackgroundColor: appColors.white,
+  textInputBackground: appColors.white,
+  cardBackground: appColors.white,
+  infoBackground: appColors.white,
+  infoBorder: '#aaa',
 };
 
 export const colorsDark = {
-  backgroundColor: COLORS.navy,
+  backgroundColor: appColors.navy,
   primaryText: '#E3E6EC',
   secondaryText: '#848A94',
-  tabBarBackgroundColor: COLORS.navy100,
-  textInputBackground: COLORS.navy100,
-  cardBackground: COLORS.navy100,
+  tabBarBackgroundColor: appColors.navy100,
+  textInputBackground: appColors.navy100,
+  cardBackground: appColors.navy100,
+  infoBackground: appColors.navy,
+  infoBorder: appColors.orange,
 };

@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {Card, MainLayout, SearchBar, Tabs, Text} from '../../components';
 import {FlatList, View} from 'react-native';
 import CoffeeData from '../../data/CoffeeData';
-import {COLORS} from '../../theme/colors';
+import {appColors} from '../../theme/colors';
 import BeansData from '../../data/BeansData';
 const Home = () => {
   const [search, setSearch] = useState('');
@@ -16,7 +16,7 @@ const Home = () => {
     <MainLayout>
       <View style={{gap: 24}}>
         <View>
-          <Text fontSize={16} color={COLORS.gray100}>
+          <Text fontSize={16} color={appColors.gray100}>
             Welcome
           </Text>
           <Text fontWeight="semiBold" fontSize={24}>
@@ -44,12 +44,19 @@ const Home = () => {
               rate={item.average_rating}
             />
           )}
+          contentContainerStyle={{
+            gap: 16,
+            paddingVertical: 10,
+            marginStart: -24,
+          }}
           keyExtractor={item => item.id}
           horizontal
-          contentContainerStyle={{gap: 24}}
           ListEmptyComponent={() => (
             <Text textAlign="center">No Data Found</Text>
           )}
+          showsHorizontalScrollIndicator={false}
+          ListHeaderComponent={<View style={{width: 8}} />}
+          ListFooterComponent={<View style={{width: 8}} />}
         />
 
         <Text fontSize={24} fontWeight="bold">
@@ -63,11 +70,11 @@ const Home = () => {
               imageSource={item.imagelink_square}
               price={item.prices[0].price}
               subTitle={item.roasted}
+              rate={item.average_rating}
             />
           )}
           keyExtractor={item => item.id}
           horizontal
-          contentContainerStyle={{gap: 24}}
         />
       </View>
     </MainLayout>

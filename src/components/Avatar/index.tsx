@@ -7,7 +7,6 @@ interface AvatarProps {
   isSquare?: boolean;
   uploadedImage?: ImageSourcePropType;
   onPress?: () => void;
-  isBoy?: boolean;
   isGirl?: boolean;
 }
 const Avatar = ({
@@ -15,18 +14,12 @@ const Avatar = ({
   isSquare,
   uploadedImage,
   onPress,
-  isBoy,
   isGirl,
 }: AvatarProps) => {
-  const isAvatar = isBoy || isGirl;
   return (
-    <Pressable
-      style={styles(size, isSquare, isAvatar).container}
-      onPress={onPress}>
+    <Pressable style={styles(size, isSquare).container} onPress={onPress}>
       <Image
-        source={
-          uploadedImage ? uploadedImage : isBoy ? AppImages.boy : AppImages.girl
-        }
+        source={uploadedImage || (isGirl ? AppImages.girl : AppImages.boy)}
         style={styles().image}
       />
     </Pressable>

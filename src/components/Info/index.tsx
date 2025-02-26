@@ -1,24 +1,21 @@
 import {View} from 'react-native';
 import React from 'react';
 import Text from '../Text';
-import {COLORS} from '../../theme/colors';
 import {useAppTheme} from '../../theme';
 import styles from './styles';
 interface InfoProps {
   title: string | number;
   icon?: React.ReactNode;
   isBorder?: boolean;
-  color?: 'gray' | 'white';
+  size?: 'medium' | 'large';
 }
 
-const Info = ({title, icon, isBorder, color}: InfoProps) => {
+const Info = ({title, icon, isBorder, size = 'medium'}: InfoProps) => {
   const {theme} = useAppTheme();
   return (
-    <View style={styles(theme, icon, isBorder).container}>
+    <View style={styles(theme, icon, isBorder, size).container}>
       {icon && icon}
-      <Text
-        color={color === 'gray' ? COLORS.gray100 : COLORS.white}
-        fontWeight="medium">
+      <Text textAlign="center" color={theme.primaryText} fontWeight="medium">
         {title}
       </Text>
     </View>

@@ -17,7 +17,7 @@ const NavigationHeader = ({
   return (
     <View style={styles(theme).container}>
       <View>{startAction}</View>
-      <Text fontSize={24} fontWeight="semiBold">
+      <Text fontSize={21} textAlign="center" fontWeight="semiBold">
         {title}
       </Text>
       <View>{endAction}</View>

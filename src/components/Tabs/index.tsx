@@ -1,14 +1,21 @@
 import {View, FlatList, Pressable} from 'react-native';
 import React, {useCallback, useRef} from 'react';
 import Text from '../Text';
-import {COLORS} from '../../theme/colors';
-
+import {appColors} from '../../theme/colors';
+import styles from './styles';
+import {useAppTheme} from '../../theme';
 interface TabsProps {
   tabs: string[];
   activeTab: number;
   setActiveTab: React.Dispatch<React.SetStateAction<number>>;
 }
+
+interface tabProps {
+  item: string;
+  index: number;
+}
 const Tabs = ({tabs, activeTab, setActiveTab}: TabsProps) => {
+  const {theme} = useAppTheme();
   const tabsRef = useRef<FlatList>(null);
   const handleOnPress = useCallback(
     (_: unknown, index: number) => {
@@ -21,35 +28,26 @@ const Tabs = ({tabs, activeTab, setActiveTab}: TabsProps) => {
     },
     [setActiveTab],
   );
+
+  const tabItem = ({item, index}: tabProps) => (
+    <Pressable onPress={() => handleOnPress(item, index)}>
+      <Text
+        fontWeight="semiBold"
+        color={activeTab === index ? appColors.orange : theme.primaryText}>
+        {item}
+      </Text>
+      {activeTab === index && <View style={styles.selectedTabBorder} />}
+    </Pressable>
+  );
   return (
     <FlatList
       ref={tabsRef}
       horizontal
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={{gap: 21}}
+      contentContainerStyle={styles.tabsContainer}
       data={tabs}
       keyExtractor={item => item}
-      renderItem={({item, index}) => (
-        <Pressable onPress={() => handleOnPress(item, index)}>
-          <Text
-            fontWeight="semiBold"
-            color={activeTab === index ? COLORS.orange : COLORS.gray200}>
-            {item}
-          </Text>
-          {activeTab === index && (
-            <View
-              style={{
-                alignSelf: 'center',
-                width: '90%',
-                height: 5,
-                backgroundColor: COLORS.orange,
-                marginTop: 4,
-                borderRadius: 20,
-              }}
-            />
-          )}
-        </Pressable>
-      )}
+      renderItem={tabItem}
     />
   );
 };

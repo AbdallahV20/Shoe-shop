@@ -1,37 +1,30 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../../theme/colors';
-import {Theme} from '../../constants';
+import {appColors} from '../../theme/colors';
+import {gutters, Theme} from '../../constants';
+import {px} from '../../utils';
 export const styles = (
   theme?: Theme,
-  size?: string,
+  size?: 'small' | 'medium' | 'large',
   isDisabled?: boolean,
-  isBorder?: boolean,
-  variant?: 'transparentButton' | 'orangeButton' | 'themingButton',
+  variant?: 'transparent' | 'main' | 'theming',
 ) =>
   StyleSheet.create({
     container: {
       backgroundColor: isDisabled
-        ? COLORS.orange100
-        : isBorder
-        ? theme?.backgroundColor
-        : variant === 'orangeButton'
-        ? COLORS.orange
-        : variant === 'transparentButton'
+        ? appColors.orange100
+        : variant === 'main'
+        ? appColors.orange
+        : variant === 'transparent'
         ? 'transparent'
-        : theme?.backgroundColor,
-      borderRadius: size === 'medium' ? 10 : 20,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderWidth: isBorder ? 2 : 0,
-      borderColor: COLORS.orange,
+        : theme?.cardBackground,
+      ...gutters.radius_12,
     },
     text: {
-      color: isBorder ? COLORS.orange : COLORS.white,
-      padding:
-        variant === 'transparentButton' ? 0 : size === 'medium' ? 10 : 20,
+      color: variant === 'main' ? appColors.white : theme?.primaryText,
+      padding: variant === 'transparent' ? 0 : px(12),
     },
     iconContainer: {
-      padding: 12,
+      ...gutters.p_12,
     },
   });
 

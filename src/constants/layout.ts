@@ -69,6 +69,7 @@ export const layout = StyleSheet.create({
   flex_1: {
     flex: 1,
   },
+  flexShrink_1: {flexShrink: 1},
   fullWidth: {
     width: '100%',
   },

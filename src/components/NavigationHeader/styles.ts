@@ -1,17 +1,18 @@
 import {StyleSheet} from 'react-native';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
-import {Theme} from '../../constants';
+import {gutters, layout, Theme} from '../../constants';
+import {pxH} from '../../utils';
 
 const statusBarHeight = getStatusBarHeight();
 export const styles = (theme: Theme) =>
   StyleSheet.create({
     container: {
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      paddingTop: statusBarHeight + 16,
-      flexDirection: 'row',
-      paddingHorizontal: 24,
-      paddingBottom: 16,
+      ...layout.row,
+      ...layout.justifyBetween,
+      ...layout.itemsCenter,
+      paddingTop: statusBarHeight + pxH(16),
+      ...gutters.px_24,
+      ...gutters.pb_16,
       backgroundColor: theme.backgroundColor,
     },
   });

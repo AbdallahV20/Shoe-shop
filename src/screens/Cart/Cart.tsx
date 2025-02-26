@@ -1,16 +1,14 @@
-import {View, Text} from 'react-native';
+import {View, Text, Pressable} from 'react-native';
 import React from 'react';
-import {Icon, Info} from '../../components';
+import {CardCart, Icon, Info, MainLayout} from '../../components';
+import styles from './styles';
 const Cart = () => {
   return (
-    <View style={{gap: 40, alignItems: 'flex-start'}}>
-      <Text>Cart</Text>
-      <Info title="Medium Roasted" />
-      <Info
-        title="Coffee"
-        icon={<Icon name="star" size={24} color={'yellow'} />}
-      />
-    </View>
+    <MainLayout>
+      <View style={{padding: 5}}>
+        <CardCart />
+      </View>
+    </MainLayout>
   );
 };
 

@@ -5,13 +5,13 @@ import Text from '../Text';
 import {useAppTheme} from '../../theme';
 
 interface ButtonProps {
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   onPress?: () => void;
   title?: string;
   icon?: React.ReactNode;
   isDisabled?: boolean;
   isBorder?: boolean;
-  variant?: 'transparentButton' | 'orangeButton' | 'themingButton';
+  variant?: 'transparent' | 'main' | 'theming';
 }
 const Button = ({
   size = 'medium',
@@ -19,22 +19,21 @@ const Button = ({
   icon,
   onPress,
   isDisabled,
-  isBorder,
-  variant = 'orangeButton',
+  variant = 'main',
 }: ButtonProps) => {
   const {theme} = useAppTheme();
   return (
     <View>
       <Pressable
         onPress={onPress}
-        style={[styles(theme, size, isDisabled, isBorder, variant).container]}
+        style={[styles(theme, size, isDisabled, variant).container]}
         disabled={isDisabled}>
         {title && (
           <Text
             fontWeight="semiBold"
             textAlign="center"
             fontSize={16}
-            style={styles(theme, size, isDisabled, isBorder).text}>
+            style={styles(theme, size, isDisabled, variant).text}>
             {title}
           </Text>
         )}

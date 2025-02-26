@@ -3,8 +3,9 @@ import React, {useCallback} from 'react';
 import styles from './styles';
 import {useAppTheme} from '../../theme';
 import Text from '../Text';
-import {COLORS} from '../../theme/colors';
+import {appColors} from '../../theme/colors';
 import Icon from '../Icon';
+import { px } from '../../utils';
 
 interface textInputProps {
   value: string;
@@ -33,28 +34,30 @@ const TextInput = ({
   return (
     <View style={styles(theme).container}>
       {label && (
-        <Text color={theme.textColor} fontWeight="semiBold">
+        <Text color={theme.primaryText} fontWeight="semiBold">
           {label}
         </Text>
       )}
       <View style={styles(theme).textInputAndErr}>
         <View style={styles(theme).textInputContainer}>
           {isSearchBar && (
-            <View style={styles(theme).iconContainer}>
-              <Icon name="search" size={18} color={COLORS.gray400} />
+            <View style={styles(theme).searchIconContainer}>
+              <Icon name="search" size={px(18)} color={appColors.gray400} />
             </View>
           )}
           <TextInputBase
             placeholder={placeholder}
-            placeholderTextColor={COLORS.gray400}
+            placeholderTextColor={appColors.gray400}
             style={styles(theme).textInput}
-            selectionColor={theme.textColor}
+            selectionColor={appColors.orange}
             value={value}
+            cursorColor={appColors.orange}
             onChangeText={onChangeHandler}
+            numberOfLines={1}
           />
         </View>
         {errorMessage && (
-          <Text color={COLORS.red} fontSize={14}>
+          <Text color={appColors.red} fontSize={14}>
             {errorMessage}
           </Text>
         )}

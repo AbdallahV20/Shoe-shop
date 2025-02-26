@@ -1,24 +1,22 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../../theme/colors';
+import {appColors} from '../../theme/colors';
+import {moderateScale, px} from '../../utils';
+import {layout} from '../../constants';
 
 export const styles = (
   size?: 'small' | 'medium' | 'large',
   isSquare?: boolean,
-  isAvatar?: boolean,
 ) =>
   StyleSheet.create({
     container: {
-      width: size === 'small' ? 40 : size === 'medium' ? 50 : 60,
+      width: size === 'small' ? px(40) : size === 'medium' ? px(60) : px(80),
       aspectRatio: 1 / 1,
-      borderRadius: isSquare ? 18 : 500,
-      overflow: 'hidden',
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: isAvatar ? 3 : 0,
-      paddingBottom: 0,
-      backgroundColor: COLORS.white,
+      borderRadius: isSquare ? moderateScale(12) : moderateScale(200),
+      ...layout.overflowHidden,
+      ...layout.allCenter,
+      backgroundColor: appColors.white,
     },
-    image: {width: '100%', height: '100%'},
+    image: {...layout.fullHeight, ...layout.fullWidth},
   });
 
 export default styles;

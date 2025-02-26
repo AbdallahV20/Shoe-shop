@@ -1,13 +1,13 @@
-import {View, Image, ImageProps} from 'react-native';
+import {View, ImageProps, ImageBackground} from 'react-native';
 import React from 'react';
-import LinearGradient from 'react-native-linear-gradient';
 import {useAppTheme} from '../../theme';
 import styles from './styles';
 import Text from '../Text';
 import Button from '../Button';
 import Icon from '../Icon';
-import {COLORS} from '../../theme/colors';
+import {appColors} from '../../theme/colors';
 import Price from '../Price';
+import {px} from '../../utils';
 
 interface CardProps {
   rate?: number;
@@ -19,42 +19,38 @@ interface CardProps {
 const Card = ({rate, imageSource, title, subTitle, price}: CardProps) => {
   const {theme, isDarkMode} = useAppTheme();
   return (
-    <LinearGradient
-      colors={!isDarkMode ? ['#FFFFFF', '#FFFFFF'] : ['#252A32', '#262B33']}
-      style={styles(theme, isDarkMode).cardContainer}>
-      <View style={styles(theme, isDarkMode).container}>
-        <View style={styles(theme).imageContainer}>
-          <Image
-            source={imageSource}
-            resizeMode="contain"
-            width={126}
-            height={126}
-          />
-
-          {rate && (
-            <View style={styles(theme).rateContainer}>
-              <Text
-                fontWeight="semiBold"
-                fontSize={10}
-                color="#fff"
-                icon={<Icon name="star" size={10} color={COLORS.yellow} />}>
-                {rate.toString()}
-              </Text>
-            </View>
-          )}
-        </View>
-        <View>
-          <Text fontSize={14}>{title}</Text>
-          <Text fontSize={10}>{subTitle}</Text>
-        </View>
-        <View style={styles(theme).cardFooter}>
-          <Price price={price} priceSize={16} />
-          <View>
-            <Button icon={<Icon name="add" size={10} color={'#fff'} />} />
+    <View style={styles(theme, isDarkMode).container}>
+      <ImageBackground
+        source={imageSource}
+        resizeMode="cover"
+        style={styles(theme).imageContainer}>
+        {rate && (
+          <View style={styles(theme).rateContainer}>
+            <Icon
+              name="star"
+              size={px(12)}
+              color={appColors.yellow}
+              style={styles(theme).starIcon}
+            />
+            <Text fontWeight="semiBold" fontSize={12} color="#fff">
+              {rate.toString()}
+            </Text>
           </View>
-        </View>
+        )}
+      </ImageBackground>
+      <View>
+        <Text fontSize={16}>{title}</Text>
+        <Text fontSize={12} color={theme.secondaryText}>
+          {subTitle}
+        </Text>
       </View>
-    </LinearGradient>
+      <View style={styles(theme).cardFooter}>
+        <Price price={price} priceSize={16} />
+        <Button
+          icon={<Icon name="add" size={px(12)} color={appColors.white} />}
+        />
+      </View>
+    </View>
   );
 };
 

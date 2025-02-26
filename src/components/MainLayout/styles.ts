@@ -1,15 +1,16 @@
 import {StyleSheet} from 'react-native';
-import {Theme} from '../../constants';
+import {gutters, layout, Theme} from '../../constants';
+import {pxH} from '../../utils';
 export const styles = (theme: Theme) =>
   StyleSheet.create({
     container: {
-      flex: 1,
+      ...layout.flex_1,
       backgroundColor: theme.backgroundColor,
     },
     contentContainer: {
-      paddingHorizontal: 24,
-      paddingBottom: 24 + 85,
-      paddingTop: 8,
+      ...gutters.px_24,
+      paddingBottom: pxH(24) + pxH(85), //Bottom tab height
+      ...gutters.pt_8,
     },
   });
 export default styles;

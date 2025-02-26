@@ -6,5 +6,6 @@ export const styles = StyleSheet.create({
     width: px(65),
     height: pxH(50),
   },
+  extraMargin: {marginStart: px(15)},
 });
 export default styles;
