@@ -6,4 +6,7 @@ export default {
   boy: require('./boy.png'),
   girl: require('./girl.png'),
   logo: require('./logo.png'),
+  promo1: require('./promo1.png'),
+  promo2: require('./promo2.png'),
+  promo3: require('./promo3.png'),
 };

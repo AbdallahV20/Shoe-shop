@@ -13,3 +13,6 @@ export {default as Info} from './Info';
 export {default as CardCart} from './CartCard';
 export {default as Price} from './Price';
 export {default as Counter} from './Counter';
+export {default as SectionHeader} from './SectionHeader';
+export {default as OffersSlider} from './OffersSlider';
+export {default as SliderDots} from './SliderDots';
