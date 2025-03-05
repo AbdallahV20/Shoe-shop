@@ -1,6 +1,7 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {gutters, layout, Theme} from '../../constants';
 import {appColors} from '../../theme/colors';
+import { pxH } from '../../utils';
 
 const {width} = Dimensions.get('window');
 export const styles = (theme: Theme, isDarkMode?: boolean) =>
@@ -34,6 +35,7 @@ export const styles = (theme: Theme, isDarkMode?: boolean) =>
       ...layout.itemsCenter,
       ...layout.justifyBetween,
     },
+    productName: {height: pxH(24)},
   });
 
 export default styles;

@@ -1,4 +1,4 @@
-import {View, ImageProps, ImageBackground} from 'react-native';
+import {View, ImageBackground} from 'react-native';
 import React from 'react';
 import {useAppTheme} from '../../theme';
 import styles from './styles';
@@ -8,20 +8,18 @@ import Icon from '../Icon';
 import {appColors} from '../../theme/colors';
 import Price from '../Price';
 import {px} from '../../utils';
+import {ProductDto} from '../../constants';
+import {add} from '../../store/slices/cart.slice';
+import {useDispatch} from 'react-redux';
 
-interface CardProps {
-  rate?: number;
-  imageSource: ImageProps;
-  title: string;
-  subTitle: string;
-  price: string;
-}
-const Card = ({rate, imageSource, title, subTitle, price}: CardProps) => {
+const Card = ({product}: {product: ProductDto}) => {
   const {theme, isDarkMode} = useAppTheme();
+  const {name, image, price, average_rating: rate} = product;
+  const dispatch = useDispatch();
   return (
     <View style={styles(theme, isDarkMode).container}>
       <ImageBackground
-        source={imageSource}
+        source={{uri: image}}
         resizeMode="cover"
         style={styles(theme).imageContainer}>
         {rate && (
@@ -38,15 +36,13 @@ const Card = ({rate, imageSource, title, subTitle, price}: CardProps) => {
           </View>
         )}
       </ImageBackground>
-      <View>
-        <Text fontSize={16}>{title}</Text>
-        <Text fontSize={12} color={theme.secondaryText}>
-          {subTitle}
-        </Text>
-      </View>
+      <Text fontSize={16} numberOfLines={1} style={styles(theme).productName}>
+        {name}
+      </Text>
       <View style={styles(theme).cardFooter}>
         <Price price={price} priceSize={16} />
         <Button
+          onPress={() => dispatch(add(product))}
           icon={<Icon name="add" size={px(12)} color={appColors.white} />}
         />
       </View>

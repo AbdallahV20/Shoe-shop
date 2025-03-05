@@ -1,7 +1,7 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {gutters, layout, Theme} from '../../constants';
 import {appColors} from '../../theme/colors';
-import {moderateScale} from '../../utils';
+import {moderateScale, pxH} from '../../utils';
 const {width} = Dimensions.get('window');
 export const styles = (theme: Theme, isDarkMode?: boolean) =>
   StyleSheet.create({
@@ -35,6 +35,7 @@ export const styles = (theme: Theme, isDarkMode?: boolean) =>
       ...gutters.px_8,
       borderBottomLeftRadius: moderateScale(18),
     },
+    productName: {height: pxH(24)},
     starIcon: {...gutters.mb_2},
     cardFooter: {
       ...layout.row,

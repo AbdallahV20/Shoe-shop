@@ -21,6 +21,7 @@ interface TextProps {
   children?: string | number;
   style?: ViewStyle;
   icon?: React.ReactNode;
+  numberOfLines?: number;
 }
 const Text = ({
   fontSize = 16,
@@ -29,6 +30,7 @@ const Text = ({
   children,
   color,
   style,
+  numberOfLines,
 }: TextProps) => {
   const {theme} = useAppTheme();
   return (
@@ -41,7 +43,8 @@ const Text = ({
           color: color ?? theme.primaryText,
         },
         style,
-      ]}>
+      ]}
+      numberOfLines={numberOfLines}>
       {children}
     </ReactNativeText>
   );

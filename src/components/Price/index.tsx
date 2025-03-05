@@ -5,10 +5,10 @@ import {appColors} from '../../theme/colors';
 import styles from './styles';
 
 interface PriceProps {
-  price: string;
-  priceSize: number;
+  price: number;
+  priceSize?: number;
 }
-const Price = ({price, priceSize}: PriceProps) => {
+const Price = ({price, priceSize = 16}: PriceProps) => {
   return (
     <View style={styles.priceContainer}>
       <Text fontSize={priceSize} color={appColors.orange} fontWeight="semiBold">
