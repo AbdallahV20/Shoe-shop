@@ -4,13 +4,11 @@ import {pxH} from '../../utils';
 export const styles = (theme: Theme) =>
   StyleSheet.create({
     container: {
-      ...layout.flex_1,
       backgroundColor: theme.backgroundColor,
-    },
-    contentContainer: {
+      ...layout.flex_1,
+      paddingBottom: pxH(85), //Bottom tab height
       ...gutters.px_24,
-      paddingBottom: pxH(24) + pxH(85), //Bottom tab height
-      ...gutters.pt_8,
     },
+    contentContainer: {...gutters.mt_16},
   });
 export default styles;

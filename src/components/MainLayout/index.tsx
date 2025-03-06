@@ -5,32 +5,37 @@ import styles from './styles';
 interface MainLayoutProps {
   children: React.ReactNode;
   header?: React.ReactNode;
+  footer?: React.ReactNode;
   variant?: 'normal' | 'scroll';
+  isHeaderFixed?: boolean;
 }
 
 const MainLayout = ({
   children,
   header,
-  variant = 'scroll',
+  isHeaderFixed = false,
 }: MainLayoutProps) => {
   const {theme, isDarkMode} = useAppTheme();
   return (
     <SafeAreaView style={styles(theme).container}>
       <StatusBar
         translucent
-        backgroundColor={'transparent'}
+        backgroundColor={isHeaderFixed ? 'transparent' : theme.backgroundColor}
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
       />
-      {header && header}
-      {variant === 'scroll' ? (
-        <ScrollView
-          bounces={false}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles(theme).contentContainer}>
-          {children}
+
+      {!isHeaderFixed ? (
+        <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
+          {header && header}
+          <View style={styles(theme).contentContainer}>{children}</View>
         </ScrollView>
       ) : (
-        <View style={styles(theme).contentContainer}>{children}</View>
+        <>
+          {header && header}
+          <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
+            <View style={styles(theme).contentContainer}>{children}</View>
+          </ScrollView>
+        </>
       )}
     </SafeAreaView>
   );
