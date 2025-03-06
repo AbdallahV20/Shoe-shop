@@ -10,9 +10,8 @@ export const styles = (theme: Theme) =>
       ...layout.row,
       ...layout.justifyBetween,
       ...layout.itemsCenter,
-      paddingTop: statusBarHeight + pxH(16),
-      ...gutters.px_24,
-      ...gutters.pb_16,
+      paddingTop: statusBarHeight + pxH(8),
+      ...gutters.pb_8,
       backgroundColor: theme.backgroundColor,
     },
   });

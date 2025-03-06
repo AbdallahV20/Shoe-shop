@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home, Cart, Favourite, History, Settings} from '../screens';
 import {gutters, layout, Theme} from '../constants';
 import {useAppTheme} from '../theme';
-import {Icon, NavigationAction, NavigationHeader} from '../components';
+import {Icon} from '../components';
 import {appColors} from '../theme/colors';
 import {moderateScale, pxH} from '../utils';
 const HomeBottomTabs = () => {
@@ -13,23 +13,13 @@ const HomeBottomTabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        headerShown: false,
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,
         tabBarStyle: styles(theme).tabBarStyle,
         tabBarItemStyle: styles(theme).tabBarItemStyle,
         tabBarInactiveTintColor: appColors.gray100,
         tabBarActiveTintColor: appColors.orange,
-        header: ({route}) => (
-          <NavigationHeader
-            title={
-              route.name === 'home'
-                ? ''
-                : route.name.charAt(0).toUpperCase() + route.name.slice(1)
-            }
-            startAction={<NavigationAction.Logo />}
-            endAction={<NavigationAction.ProfilePiture />}
-          />
-        ),
       }}>
       <Tab.Screen
         name="home"
