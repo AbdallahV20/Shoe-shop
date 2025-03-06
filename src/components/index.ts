@@ -16,3 +16,4 @@ export {default as Counter} from './Counter';
 export {default as SectionHeader} from './SectionHeader';
 export {default as OffersSlider} from './OffersSlider';
 export {default as SliderDots} from './SliderDots';
+export {default as FavouriteCard} from './FavouriteCard';

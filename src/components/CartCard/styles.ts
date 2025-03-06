@@ -1,7 +1,7 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {gutters, layout, Theme} from '../../constants';
 import {appColors} from '../../theme/colors';
-import { pxH } from '../../utils';
+import {pxH} from '../../utils';
 
 const {width} = Dimensions.get('window');
 export const styles = (theme: Theme, isDarkMode?: boolean) =>
@@ -24,7 +24,6 @@ export const styles = (theme: Theme, isDarkMode?: boolean) =>
     imageContainer: {
       width: width * 0.35,
       ...gutters.radius_16,
-      ...layout.overflowHidden,
     },
     rightContainer: {
       ...gutters.gapH_8,
