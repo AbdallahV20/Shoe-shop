@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home, Cart, Favourite, History, Settings} from '../screens';
+import {Home, Cart, Favourite, History, Profile} from '../screens';
 import {gutters, layout, Theme} from '../constants';
 import {useAppTheme} from '../theme';
 import {Icon} from '../components';
@@ -58,8 +58,8 @@ const HomeBottomTabs = () => {
         }}
       />
       <Tab.Screen
-        name="settings"
-        component={Settings}
+        name="profile"
+        component={Profile}
         options={{
           tabBarIcon: ({color, size}) => (
             <Icon name="menu" size={size} color={color} />
