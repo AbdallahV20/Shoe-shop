@@ -3,6 +3,8 @@ import React, {useState} from 'react';
 import {
   Card,
   MainLayout,
+  NavigationAction,
+  NavigationHeader,
   SearchBar,
   SectionHeader,
   Tabs,
@@ -27,7 +29,14 @@ const Home = () => {
 
   console.log(EcommerceProducts);
   return (
-    <MainLayout variant="normal">
+    <MainLayout
+      header={
+        <NavigationHeader
+          startAction={<NavigationAction.Logo />}
+          title="Home"
+          endAction={<NavigationAction.ProfilePiture />}
+        />
+      }>
       <View style={{gap: 24}}>
         <View>
           <Text fontSize={16} color={appColors.gray100}>
@@ -59,6 +68,19 @@ const Home = () => {
             contentContainerStyle={{
               gap: 16,
               padding: 10,
+            }}
+            keyExtractor={item => item.id.toString()}
+            horizontal
+            ListEmptyComponent={() => (
+              <Text textAlign="center">No Data Found</Text>
+            )}
+            showsHorizontalScrollIndicator={false}
+          />
+          <FlatList
+            data={EcommerceProducts}
+            renderItem={({item}) => <Card product={item} />}
+            contentContainerStyle={{
+              gap: 16,
             }}
             keyExtractor={item => item.id.toString()}
             horizontal

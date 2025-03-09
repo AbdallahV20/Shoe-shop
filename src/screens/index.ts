@@ -5,4 +5,4 @@ export {default as Favourite} from './Favourite/Favourite';
 export {default as History} from './History/History';
 export {default as Details} from './Details/Details';
 export {default as Payment} from './Payment/Payment';
-export {default as Settings} from './Settings/Settings';
+export {default as Profile} from './Profile/Profile';
