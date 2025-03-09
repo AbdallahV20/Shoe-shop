@@ -25,6 +25,16 @@ const BackButton = () => {
   );
 };
 
+const NofificationsButton = () => {
+  return (
+    <Button
+      icon={<Icon name="bell" size={21} color={appColors.gray200} />}
+      variant="theming"
+      onPress={() => console.log('notofications')}
+    />
+  );
+};
+
 const ProfilePiture = () => {
   // const navigation = useNavigation();
   return (
@@ -64,5 +74,6 @@ const NavigationAction = {
   BackButton,
   LoveButton,
   ProfilePiture,
+  NofificationsButton,
 };
 export default NavigationAction;

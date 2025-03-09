@@ -22,6 +22,7 @@ interface TextProps {
   style?: ViewStyle;
   icon?: React.ReactNode;
   numberOfLines?: number;
+  lineHeight?: number;
 }
 const Text = ({
   fontSize = 16,
@@ -31,6 +32,7 @@ const Text = ({
   color,
   style,
   numberOfLines,
+  lineHeight,
 }: TextProps) => {
   const {theme} = useAppTheme();
   return (
@@ -41,6 +43,7 @@ const Text = ({
           fontSize: moderateScale(fontSize),
           textAlign,
           color: color ?? theme.primaryText,
+          lineHeight,
         },
         style,
       ]}
