@@ -13,7 +13,8 @@
           "price": 799.99,
           "average_rating": 4.5,
           "rating_counts": 1200,
-          "quantity": 50
+          "quantity": 50,
+          "category": "Phones"
         },
         {
           "id": 102,
@@ -23,7 +24,8 @@
           "price": 199.99,
           "average_rating": 4.2,
           "rating_counts": 850,
-          "quantity": 100
+          "quantity": 100,
+          "category": "Phones"
         },
         {
           "id": 103,
@@ -33,7 +35,8 @@
           "price": 999.99,
           "average_rating": 4.8,
           "rating_counts": 2000,
-          "quantity": 30
+          "quantity": 30,
+          "category": "Phones"
         },
         {
           "id": 104,
@@ -43,7 +46,8 @@
           "price": 499.99,
           "average_rating": 4.4,
           "rating_counts": 1200,
-          "quantity": 70
+          "quantity": 70,
+          "category": "Phones"
         }
       ]
     },
@@ -60,7 +64,8 @@
           "price": 499.99,
           "average_rating": 4.8,
           "rating_counts": 3000,
-          "quantity": 20
+          "quantity": 20,
+          "category": "Consoles"
         },
         {
           "id": 202,
@@ -70,7 +75,8 @@
           "price": 199.99,
           "average_rating": 4.6,
           "rating_counts": 1800,
-          "quantity": 50
+          "quantity": 50,
+          "category": "Consoles"
         },
         {
           "id": 203,
@@ -80,7 +86,8 @@
           "price": 299.99,
           "average_rating": 4.7,
           "rating_counts": 2200,
-          "quantity": 40
+          "quantity": 40,
+          "category": "Consoles"
         },
         {
           "id": 204,
@@ -90,7 +97,8 @@
           "price": 699.99,
           "average_rating": 4.9,
           "rating_counts": 1000,
-          "quantity": 25
+          "quantity": 25,
+          "category": "Consoles"
         }
       ]
     },
@@ -107,7 +115,8 @@
           "price": 1199.99,
           "average_rating": 4.7,
           "rating_counts": 1500,
-          "quantity": 30
+          "quantity": 30,
+          "category": "Laptops"
         },
         {
           "id": 302,
@@ -117,7 +126,8 @@
           "price": 1499.99,
           "average_rating": 4.9,
           "rating_counts": 1800,
-          "quantity": 40
+          "quantity": 40,
+          "category": "Laptops"
         },
         {
           "id": 303,
@@ -127,7 +137,8 @@
           "price": 899.99,
           "average_rating": 4.5,
           "rating_counts": 900,
-          "quantity": 50
+          "quantity": 50,
+          "category": "Laptops"
         },
         {
           "id": 304,
@@ -137,7 +148,8 @@
           "price": 1099.99,
           "average_rating": 4.6,
           "rating_counts": 1200,
-          "quantity": 35
+          "quantity": 35,
+          "category": "Laptops"
         }
       ]
     },
@@ -154,7 +166,8 @@
           "price": 899.99,
           "average_rating": 4.6,
           "rating_counts": 1100,
-          "quantity": 25
+          "quantity": 25,
+          "category": "Cameras"
         },
         {
           "id": 402,
@@ -164,7 +177,8 @@
           "price": 1299.99,
           "average_rating": 4.7,
           "rating_counts": 1400,
-          "quantity": 20
+          "quantity": 20,
+          "category": "Cameras"
         },
         {
           "id": 403,
@@ -174,7 +188,8 @@
           "price": 299.99,
           "average_rating": 4.8,
           "rating_counts": 1800,
-          "quantity": 50
+          "quantity": 50,
+          "category": "Cameras"
         },
         {
           "id": 404,
@@ -184,7 +199,8 @@
           "price": 149.99,
           "average_rating": 4.5,
           "rating_counts": 800,
-          "quantity": 60
+          "quantity": 60,
+          "category": "Cameras"
         }
       ]
     }
