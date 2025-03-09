@@ -1,4 +1,4 @@
-import {View, Pressable} from 'react-native';
+import {View, Pressable, StyleProp, ViewStyle} from 'react-native';
 import React from 'react';
 import styles from './styles';
 import Text from '../Text';
@@ -12,6 +12,7 @@ interface ButtonProps {
   isDisabled?: boolean;
   isBorder?: boolean;
   variant?: 'transparent' | 'main' | 'theming';
+  style?: ViewStyle;
 }
 const Button = ({
   size = 'medium',
@@ -20,13 +21,14 @@ const Button = ({
   onPress,
   isDisabled,
   variant = 'main',
+  style,
 }: ButtonProps) => {
   const {theme} = useAppTheme();
   return (
     <View>
       <Pressable
         onPress={onPress}
-        style={[styles(theme, size, isDisabled, variant).container]}
+        style={[styles(theme, size, isDisabled, variant).container, style]}
         disabled={isDisabled}>
         {title && (
           <Text

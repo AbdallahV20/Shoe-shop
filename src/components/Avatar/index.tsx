@@ -8,6 +8,7 @@ interface AvatarProps {
   uploadedImage?: ImageSourcePropType;
   onPress?: () => void;
   isGirl?: boolean;
+  pointerEvents?: 'none' | 'auto';
 }
 const Avatar = ({
   size = 'medium',
@@ -15,9 +16,13 @@ const Avatar = ({
   uploadedImage,
   onPress,
   isGirl,
+  pointerEvents,
 }: AvatarProps) => {
   return (
-    <Pressable style={styles(size, isSquare).container} onPress={onPress}>
+    <Pressable
+      style={styles(size, isSquare).container}
+      onPress={onPress}
+      pointerEvents={pointerEvents}>
       <Image
         source={uploadedImage || (isGirl ? AppImages.girl : AppImages.boy)}
         style={styles().image}
