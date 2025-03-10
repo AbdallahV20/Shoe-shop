@@ -12,6 +12,7 @@ const HomeBottomTabs = () => {
   const {theme} = useAppTheme();
   return (
     <Tab.Navigator
+      initialRouteName="profile"
       screenOptions={{
         headerShown: false,
         tabBarHideOnKeyboard: true,
@@ -26,7 +27,7 @@ const HomeBottomTabs = () => {
         component={Home}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Icon name="home" size={size} color={color} />
+            <Icon name="home-door-svgrepo-com" size={size} color={color} />
           ),
         }}
       />
@@ -35,7 +36,7 @@ const HomeBottomTabs = () => {
         component={Cart}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Icon name="cart" size={size} color={color} />
+            <Icon name="cart-1-svgrepo-com" size={size} color={color} />
           ),
         }}
       />
@@ -44,11 +45,11 @@ const HomeBottomTabs = () => {
         component={Favourite}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Icon name="like" size={size} color={color} />
+            <Icon name="heart-svgrepo-com" size={size} color={color} />
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="history"
         component={History}
         options={{
@@ -56,13 +57,13 @@ const HomeBottomTabs = () => {
             <Icon name="bell" size={size} color={color} />
           ),
         }}
-      />
+      /> */}
       <Tab.Screen
         name="profile"
         component={Profile}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Icon name="menu" size={size} color={color} />
+            <Icon name="user-1" size={size} color={color} />
           ),
         }}
       />

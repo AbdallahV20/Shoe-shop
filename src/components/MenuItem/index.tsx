@@ -4,20 +4,22 @@ import {useAppTheme} from '../../theme';
 import Icon from '../Icon';
 import Text from '../Text';
 import {appColors} from '../../theme/colors';
-import ToggleSwitch from 'toggle-switch-react-native';
 import {useNavigation} from '@react-navigation/native';
+import styles from './styles';
+import Toggle from '../Toggle';
+import {moderateScale} from '../../utils';
 interface MenuItemProps {
   title: string;
-  icon: string;
+  iconName: string;
   screenName?: string;
 }
-const MenuItem = ({title, icon, screenName}: MenuItemProps) => {
+const MenuItem = ({title, iconName, screenName}: MenuItemProps) => {
   const {theme, toggleTheme, isDarkMode} = useAppTheme();
   const [darkMode, setDarkMode] = useState(isDarkMode);
   const onChangeModeHandler = useCallback(
     (isOn: boolean) => {
-      setDarkMode(isOn);
       toggleTheme();
+      setDarkMode(isOn);
     },
     [toggleTheme],
   );
@@ -26,47 +28,21 @@ const MenuItem = ({title, icon, screenName}: MenuItemProps) => {
   return (
     <Pressable
       onPress={() => screenName && navigation.navigate(screenName as never)}
-      style={{
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexDirection: 'row',
-        borderBottomWidth: title === 'Log Out' ? 0 : 1,
-        borderColor: appColors.gray100,
-        paddingVertical: 16,
-      }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: 16,
-        }}>
-        <View
-          style={{
-            backgroundColor: appColors.orange100,
-            borderRadius: 50,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <Icon
-            name={icon}
-            size={18}
-            color={appColors.orange}
-            style={{padding: 10}}
-          />
+      style={styles(theme, screenName).container}>
+      <View style={styles(theme).rowContainer}>
+        <View style={styles(theme).iconContainer}>
+          <Icon name={iconName} size={18} color={appColors.orange} />
         </View>
-        <Text>{title}</Text>
+        <Text lineHeight={24}>{title}</Text>
       </View>
       {title === 'Dark Mode' ? (
-        <ToggleSwitch
-          isOn={darkMode}
-          onColor={appColors.orange}
-          offColor={appColors.gray100}
-          size="medium"
-          onToggle={onChangeModeHandler}
-          animationSpeed={200}
-        />
+        <Toggle isOn={darkMode} onToggle={onChangeModeHandler} />
       ) : (
-        <Icon name="left" size={18} color={theme.primaryText} />
+        <Icon
+          name="arrow-right-2"
+          size={moderateScale(18)}
+          color={theme.primaryText}
+        />
       )}
     </Pressable>
   );

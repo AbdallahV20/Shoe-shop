@@ -1,12 +1,13 @@
-import {StyleSheet} from 'react-native';
+import {FlexAlignType, StyleSheet, TextStyle} from 'react-native';
 import {appColors} from '../../theme/colors';
-import {gutters, Theme} from '../../constants';
+import {gutters, layout, Theme} from '../../constants';
 import {px} from '../../utils';
 export const styles = (
   theme?: Theme,
   size?: 'small' | 'medium' | 'large',
   isDisabled?: boolean,
   variant?: 'transparent' | 'main' | 'theming',
+  alignSelf?: FlexAlignType,
 ) =>
   StyleSheet.create({
     container: {
@@ -18,14 +19,30 @@ export const styles = (
         ? 'transparent'
         : theme?.cardBackground,
       ...gutters.radius_12,
+      ...layout.row,
+      ...layout.itemsCenter,
+      ...gutters.gap_8,
+      alignSelf: alignSelf,
+      paddingVertical:
+        variant === 'transparent'
+          ? 0
+          : size === 'small'
+          ? px(4)
+          : size === 'medium'
+          ? px(6)
+          : px(8),
+      paddingHorizontal:
+        variant === 'transparent'
+          ? 0
+          : size === 'small'
+          ? px(6)
+          : size === 'medium'
+          ? px(8)
+          : px(12),
     },
     text: {
       color: variant === 'main' ? appColors.white : theme?.primaryText,
-      padding: variant === 'transparent' ? 0 : px(12),
-    },
-    iconContainer: {
-      ...gutters.p_12,
-    },
+    } as TextStyle,
   });
 
 export default styles;
