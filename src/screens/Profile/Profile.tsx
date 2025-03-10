@@ -4,7 +4,6 @@ import {
   Pressable,
   ScrollView,
   StatusBar,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import React from 'react';
@@ -17,11 +16,16 @@ import {pxH} from '../../utils';
 import {SheetManager} from 'react-native-actions-sheet';
 const Profile = () => {
   const menuItem = [
-    {id: 1, title: 'Dark Mode', icon: 'dark'},
+    {id: 1, title: 'Dark Mode', icon: 'moon-1'},
     {id: 2, title: 'Language', icon: 'language', screenName: 'language'},
-    {id: 3, title: 'About us', icon: 'about', screenName: 'about'},
-    {id: 4, title: 'Help & Support', icon: 'help', screenName: 'help'},
-    {id: 5, title: 'Log Out', icon: 'logout', screenName: 'login'},
+    {id: 3, title: 'History', icon: 'history', screenName: 'history'},
+    {id: 4, title: 'Help & Support', icon: 'help-circle', screenName: 'help'},
+    {
+      id: 5,
+      title: 'Log Out',
+      icon: 'logout-circle-svgrepo-com',
+      screenName: 'login',
+    },
   ];
   const {theme} = useAppTheme();
   const {height} = Dimensions.get('window');
@@ -60,7 +64,7 @@ const Profile = () => {
         }}>
         <Avatar size="large" pointerEvents="none" />
         <Icon
-          name="bell"
+          name="camera-svgrepo-com-1"
           color={appColors.white}
           style={{
             backgroundColor: appColors.orange,
@@ -75,18 +79,14 @@ const Profile = () => {
         />
       </Pressable>
       <View style={{marginTop: 40 + 16, alignSelf: 'center'}}>
-        <Button
-          title="Edit Profile"
-          size="small"
-          onPress={() => console.log('No')}
-        />
+        <Button title="Edit Profile" onPress={() => console.log('No')} />
       </View>
       <View style={{marginTop: 16, paddingHorizontal: 24}}>
         {menuItem.map(item => (
           <MenuItem
             key={item.id}
             title={item.title}
-            icon={'location'}
+            iconName={item.icon}
             screenName={item.screenName}
           />
         ))}

@@ -1,13 +1,15 @@
-const appFonts = {
-  thin: 'Poppins-Thin',
-  light: 'Poppins-Light',
-  extraLight: 'Poppins-ExtraLight',
-  regular: 'Poppins-Regular',
-  medium: 'Poppins-Medium',
-  italic: 'Poppins-Light',
-  semiBold: 'Poppins-SemiBold',
-  bold: 'Poppins-Bold',
-  extraBold: 'Poppins-ExtraBold',
+export const AppImages = {
+  amazonpay: require('./amazonpay.png'),
+  applepay: require('./applepay.png'),
+  avatar: require('./avatar.png'),
+  gpay: require('./gpay.png'),
+  boy: require('./boy.png'),
+  girl: require('./girl.png'),
+  logo: require('./logo.png'),
+  promo1: require('./promo1.png'),
+  promo2: require('./promo2.png'),
+  promo3: require('./promo3.png'),
+  profile_background: require('./profile_background.jpg'),
 };
 
-export default appFonts;
+export default AppImages;
