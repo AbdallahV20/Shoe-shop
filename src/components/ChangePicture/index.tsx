@@ -1,73 +1,47 @@
-import React, {View} from 'react-native';
-import ActionSheet from 'react-native-actions-sheet';
+import React, {Pressable, View} from 'react-native';
 import Text from '../Text';
 import Icon from '../Icon';
 import {appColors} from '../../theme/colors';
-import Button from '../Button';
 import {useAppTheme} from '../../theme';
+import AppBottomSheet from '../AppBottomSheet';
+import IconButton from '../IconButton';
+import styles from './styles';
+import {moderateScale} from '../../utils';
 
 const ChangePicture = () => {
   const {theme} = useAppTheme();
   return (
-    <ActionSheet
-      keyboardHandlerEnabled={true}
-      gestureEnabled={true}
-      containerStyle={{
-        paddingVertical: 8,
-        gap: 16,
-        paddingHorizontal: 24,
-        paddingBottom: 16,
-        backgroundColor: theme.backgroundColor,
-      }}
-      indicatorStyle={{backgroundColor:appColors.gray100}}>
-      <View
-        style={{
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: 24,
-          flexDirection: 'row',
-        }}>
-        <Button
-          variant="transparent"
-          icon={<Icon name="location" color={theme.primaryText} />}
+    <AppBottomSheet
+      sheetName={'change-picture-sheet'}
+      leftComponent={
+        <IconButton
+          iconName="garbage-svgrepo-com"
+          onPress={() => console.log('delete image')}
         />
-        <Text>Profile Picture</Text>
-
-        <Button icon={<Icon name="bell" color={appColors.white} />} />
-      </View>
-      <View style={{flexDirection: 'row', gap: 24}}>
-        <View style={{gap: 8, alignItems: 'center', justifyContent: 'center'}}>
-          <Icon
-            name="bell"
-            color={appColors.white}
-            style={{
-              padding: 10,
-              backgroundColor: appColors.orange,
-              borderRadius: 100,
-            }}
-            size={18}
-          />
-          <Text fontSize={14} color={theme.primaryText}>
-            Camera
-          </Text>
+      }
+      sheetContent={
+        <View style={styles(theme).container}>
+          <Pressable style={styles(theme).optionContainer}>
+            <Icon
+              name="camera-svgrepo-com-2"
+              color={appColors.white}
+              style={styles(theme).icon}
+              size={moderateScale(21)}
+            />
+            <Text fontSize={12}>Camera</Text>
+          </Pressable>
+          <Pressable style={styles(theme).optionContainer}>
+            <Icon
+              name="picture-photo-image-svgrepo-com"
+              color={appColors.white}
+              style={styles(theme).icon}
+              size={moderateScale(21)}
+            />
+            <Text fontSize={12}>Gallery</Text>
+          </Pressable>
         </View>
-        <View style={{gap: 8, alignItems: 'center', justifyContent: 'center'}}>
-          <Icon
-            name="location"
-            color={appColors.white}
-            style={{
-              padding: 10,
-              backgroundColor: appColors.orange,
-              borderRadius: 100,
-            }}
-            size={18}
-          />
-          <Text fontSize={14} color={theme.primaryText}>
-            Gallery
-          </Text>
-        </View>
-      </View>
-    </ActionSheet>
+      }
+    />
   );
 };
 
