@@ -11,7 +11,7 @@ const Toggle = ({isOn, onToggle}: ToggleProps) => {
     <ToggleSwitch
       isOn={isOn}
       onColor={appColors.primary}
-      offColor={appColors.gray100}
+      offColor={appColors.gray500}
       size="medium"
       onToggle={onToggle}
       animationSpeed={200}

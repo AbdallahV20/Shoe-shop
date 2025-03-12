@@ -8,6 +8,7 @@ export interface Theme {
   infoBackground: string;
   infoBorder: string;
   iconBackground: string;
+  bottomSheetBackground: string;
 }
 
 export interface ProductDto {

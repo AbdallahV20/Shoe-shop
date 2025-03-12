@@ -28,6 +28,7 @@ export const colorsLight = {
   infoBackground: appColors.white,
   infoBorder: '#aaa',
   iconBackground: appColors.gray500,
+  bottomSheetBackground: appColors.white,
 };
 
 export const colorsDark = {
@@ -39,5 +40,6 @@ export const colorsDark = {
   cardBackground: '#1F2A33',
   infoBackground: '#2D3B48',
   infoBorder: appColors.primary,
-  iconBackground: appColors.navy100,
+  iconBackground: '#1F2A33',
+  bottomSheetBackground: '#3F4D5A',
 };
