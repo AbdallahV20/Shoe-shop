@@ -2,11 +2,13 @@ import {Image, View} from 'react-native';
 import React, {useCallback, useState} from 'react';
 import {AppImages} from '../../assets/app_images';
 import styles from './styles';
-import Button from '../Button';
-import Icon from '../Icon';
 import {appColors} from '../../theme/colors';
 import {useNavigation} from '@react-navigation/native';
 import Avatar from '../Avatar';
+import IconButton from '../IconButton';
+import {useAppTheme} from '../../theme';
+import Text from '../Text';
+import {isArabic} from '../../localization/i18next';
 
 const Logo = () => {
   return (
@@ -16,21 +18,47 @@ const Logo = () => {
 
 const BackButton = () => {
   const navigation = useNavigation();
+  const {theme} = useAppTheme();
   return (
-    <Button
-      icon={<Icon name="left" size={18} color={appColors.gray200} />}
-      variant="transparent"
+    <IconButton
+      iconColor={theme.primaryText}
+      backgroundColor={theme.iconBackground}
+      isRounded
+      iconName={isArabic ? 'arrow-right-2' : 'arrow-left-2'}
       onPress={() => navigation.goBack()}
     />
   );
 };
 
-const NofificationsButton = () => {
+const WelcomeComponent = () => (
+  <View style={{flexDirection: 'row', gap: 12, alignItems: 'center'}}>
+    <Avatar size="small" />
+    <Text>Hi, Khaled</Text>
+  </View>
+);
+
+const ShareButton = () => {
+  const {theme} = useAppTheme();
   return (
-    <Button
-      icon={<Icon name="bell" size={21} color={appColors.gray200} />}
-      variant="theming"
-      onPress={() => console.log('notofications')}
+    <IconButton
+      iconColor={theme.primaryText}
+      backgroundColor={theme.iconBackground}
+      isRounded
+      iconName="share-2"
+      onPress={() => console.log('share')}
+    />
+  );
+};
+
+const NofificationsButton = () => {
+  const {theme} = useAppTheme();
+  return (
+    <IconButton
+      iconColor={theme.primaryText}
+      backgroundColor={theme.iconBackground}
+      isRounded
+      iconName="notification-2"
+      onPress={() => console.log('notificaitons')}
     />
   );
 };
@@ -50,20 +78,17 @@ const LoveButton = ({
   handleOnLikePressed: () => void;
 }) => {
   const [like, setLike] = useState(false);
+  const {theme} = useAppTheme();
   const handleOnPress = useCallback(() => {
     setLike(prev => !prev);
     handleOnLikePressed();
   }, [handleOnLikePressed]);
   return (
-    <Button
-      variant="theming"
-      icon={
-        <Icon
-          name="like"
-          color={like ? appColors.red : appColors.gray100}
-          size={24}
-        />
-      }
+    <IconButton
+      iconColor={like ? appColors.red : appColors.gray100}
+      backgroundColor={theme.iconBackground}
+      isRounded
+      iconName="love2"
       onPress={handleOnPress}
     />
   );
@@ -75,5 +100,7 @@ const NavigationAction = {
   LoveButton,
   ProfilePiture,
   NofificationsButton,
+  WelcomeComponent,
+  ShareButton,
 };
 export default NavigationAction;

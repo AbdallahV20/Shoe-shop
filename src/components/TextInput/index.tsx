@@ -5,7 +5,7 @@ import {useAppTheme} from '../../theme';
 import Text from '../Text';
 import {appColors} from '../../theme/colors';
 import Icon from '../Icon';
-import { px } from '../../utils';
+import {px} from '../../utils';
 
 interface textInputProps {
   value: string;
@@ -33,11 +33,7 @@ const TextInput = ({
   );
   return (
     <View style={styles(theme).container}>
-      {label && (
-        <Text color={theme.primaryText} fontWeight="semiBold">
-          {label}
-        </Text>
-      )}
+      {label && <Text fontWeight="semiBold">{label}</Text>}
       <View style={styles(theme).textInputAndErr}>
         <View style={styles(theme).textInputContainer}>
           {isSearchBar && (

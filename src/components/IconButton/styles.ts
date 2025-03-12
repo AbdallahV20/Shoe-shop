@@ -7,14 +7,16 @@ export const styles = (
   theme: Theme,
   isBorder?: boolean,
   isRounded?: boolean,
+  backgroundColor?: string,
 ) =>
   StyleSheet.create({
     container: {
       ...layout.allCenter,
-      padding: isBorder ? px(8) : 0,
+      padding: isBorder || backgroundColor ? px(10) : 0,
       borderWidth: isBorder ? px(2) : 0,
       borderColor: appColors.orange,
       borderRadius: isRounded ? moderateScale(100) : moderateScale(10),
+      backgroundColor,
     },
   });
 

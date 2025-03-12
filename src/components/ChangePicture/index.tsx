@@ -9,13 +9,15 @@ import styles from './styles';
 import {deleteData, moderateScale, storeData} from '../../utils';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {request, PERMISSIONS, RESULTS} from 'react-native-permissions';
-import {SheetManager, useSheetPayload} from 'react-native-actions-sheet';
+import {SheetManager} from 'react-native-actions-sheet';
 import {MMKV_KEYS} from '../../constants';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../store/store';
+import {addImageProfile} from '../../store/slices/user.slice';
 const ChangePicture = () => {
   const {theme} = useAppTheme();
-  const payload = useSheetPayload('change-picture-sheet');
-  const {setImageProile, imageProfile} = payload;
-  // Request permission for Camera
+  const userData = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
   const requestCameraPermission = async (): Promise<boolean> => {
     const permission =
       Platform.OS === 'android'
@@ -44,8 +46,7 @@ const ChangePicture = () => {
           response.assets &&
           response.assets.length > 0
         ) {
-          //
-          setImageProile(response.assets[0].uri || null);
+          dispatch(addImageProfile(response.assets[0].uri || null));
           storeData(MMKV_KEYS.PROFILE_IMAGE, response.assets[0].uri);
           SheetManager.hide('change-picture-sheet');
         }
@@ -65,8 +66,7 @@ const ChangePicture = () => {
           response.assets &&
           response.assets.length > 0
         ) {
-          // storeData(MMKV_KEYS.PROFILE_IMAGE, response.assets[0].uri || null);
-          setImageProile(response.assets[0].uri || null);
+          dispatch(addImageProfile(response.assets[0].uri || null));
           storeData(MMKV_KEYS.PROFILE_IMAGE, response.assets[0].uri || null);
           SheetManager.hide('change-picture-sheet');
         }
@@ -78,14 +78,18 @@ const ChangePicture = () => {
 
   const onDeletePress = () => {
     deleteData(MMKV_KEYS.PROFILE_IMAGE);
-    setImageProile(undefined);
+    dispatch(addImageProfile(undefined));
     SheetManager.hide('change-picture-sheet');
   };
   return (
     <AppBottomSheet
       sheetName={'change-picture-sheet'}
       leftComponent={
-        <IconButton isDisabled={!imageProfile} iconName="garbage-svgrepo-com" onPress={onDeletePress} />
+        <IconButton
+          isDisabled={!userData.imageProfile}
+          iconName="garbage-svgrepo-com"
+          onPress={onDeletePress}
+        />
       }
       sheetContent={
         <View style={styles(theme).container}>

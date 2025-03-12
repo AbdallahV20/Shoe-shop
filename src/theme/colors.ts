@@ -6,6 +6,7 @@ export const appColors = {
   gray200: '#52555A',
   gray300: '#252A32',
   gray400: '#aaa',
+  gray500: '#E0E0E0',
   navy100: '#1A1E26',
   white: '#fff',
   white100: '#f9f9f9',
@@ -26,6 +27,7 @@ export const colorsLight = {
   cardBackground: appColors.white,
   infoBackground: appColors.white,
   infoBorder: '#aaa',
+  iconBackground:appColors.gray500,
 };
 
 export const colorsDark = {
@@ -37,4 +39,5 @@ export const colorsDark = {
   cardBackground: appColors.navy100,
   infoBackground: appColors.navy,
   infoBorder: appColors.orange,
+  iconBackground:appColors.navy100,
 };

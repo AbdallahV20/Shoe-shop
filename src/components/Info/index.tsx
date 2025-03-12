@@ -15,7 +15,7 @@ const Info = ({title, icon, isBorder, size = 'medium'}: InfoProps) => {
   return (
     <View style={styles(theme, icon, isBorder, size).container}>
       {icon && icon}
-      <Text textAlign="center" color={theme.primaryText} fontWeight="medium">
+      <Text textAlign="center" fontWeight="medium">
         {title}
       </Text>
     </View>

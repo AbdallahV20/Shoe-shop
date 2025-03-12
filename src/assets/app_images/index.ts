@@ -10,6 +10,8 @@ export const AppImages = {
   promo2: require('./promo2.png'),
   promo3: require('./promo3.png'),
   profile_background: require('./profile_background.jpg'),
+  egypt: require('./egypt.png'),
+  usa: require('./usa.png'),
 };
 
 export default AppImages;

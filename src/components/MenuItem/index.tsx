@@ -33,7 +33,7 @@ const MenuItem = ({title, iconName, screenName}: MenuItemProps) => {
         <View style={styles(theme).iconContainer}>
           <Icon name={iconName} size={18} color={appColors.orange} />
         </View>
-        <Text lineHeight={24}>{title}</Text>
+        <Text>{title}</Text>
       </View>
       {title === 'Dark Mode' ? (
         <Toggle isOn={darkMode} onToggle={onChangeModeHandler} />
