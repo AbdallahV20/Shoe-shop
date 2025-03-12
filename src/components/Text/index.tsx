@@ -32,7 +32,7 @@ const Text = ({
   color,
   style,
   numberOfLines,
-  lineHeight,
+  lineHeight = 24,
 }: TextProps) => {
   const {theme} = useAppTheme();
   return (

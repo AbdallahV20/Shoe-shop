@@ -6,12 +6,14 @@ import Icon from '../Icon';
 import {moderateScale} from '../../utils';
 
 interface ButtonProps {
-  onPress?: () => void;
+  onPress: () => void;
   iconName: string;
   iconSize?: number;
   isDisabled?: boolean;
   isBorder?: boolean;
   isRounded?: boolean;
+  backgroundColor?: string;
+  iconColor?: string;
 }
 const IconButton = ({
   iconName,
@@ -20,17 +22,21 @@ const IconButton = ({
   isDisabled,
   isBorder,
   isRounded,
+  backgroundColor,
+  iconColor,
 }: ButtonProps) => {
   const {theme} = useAppTheme();
   return (
     <Pressable
       onPress={onPress}
-      style={styles(theme, isBorder, isRounded).container}
+      style={styles(theme, isBorder, isRounded, backgroundColor).container}
       disabled={isDisabled}>
       <Icon
         name={iconName}
         size={moderateScale(iconSize)}
-        color={isDisabled ? theme.secondaryText : theme?.primaryText}
+        color={
+          iconColor ?? (isDisabled ? theme.secondaryText : theme?.primaryText)
+        }
       />
     </Pressable>
   );

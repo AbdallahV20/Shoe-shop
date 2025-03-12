@@ -2,6 +2,8 @@ import {Image, Pressable} from 'react-native';
 import React from 'react';
 import styles from './styles';
 import {AppImages} from '../../assets/app_images';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/store';
 interface AvatarProps {
   size?: 'small' | 'medium' | 'large';
   isSquare?: boolean;
@@ -18,6 +20,7 @@ const Avatar = ({
   isGirl,
   pointerEvents,
 }: AvatarProps) => {
+  const user = useSelector((state: RootState) => state.user);
   return (
     <Pressable
       style={styles(size, isSquare).container}
@@ -27,6 +30,8 @@ const Avatar = ({
         source={
           uploadedImage
             ? {uri: uploadedImage}
+            : user.imageProfile
+            ? {uri: user.imageProfile}
             : isGirl
             ? AppImages.girl
             : AppImages.boy

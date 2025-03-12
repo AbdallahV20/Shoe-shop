@@ -7,6 +7,7 @@ export interface Theme {
   secondaryText: string;
   infoBackground: string;
   infoBorder: string;
+  iconBackground: string;
 }
 
 export interface ProductDto {

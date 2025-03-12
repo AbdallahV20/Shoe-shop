@@ -6,15 +6,16 @@ import {
   StatusBar,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import {Avatar, Button, Icon, MenuItem, Text} from '../../components';
 import {appColors} from '../../theme/colors';
 import {useAppTheme} from '../../theme';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
 import AppImages from '../../assets/app_images';
-import {getData, pxH} from '../../utils';
+import {pxH} from '../../utils';
 import {SheetManager} from 'react-native-actions-sheet';
-import {MMKV_KEYS} from '../../constants';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/store';
 const Profile = () => {
   const menuItem = [
     {id: 1, title: 'Dark Mode', icon: 'moon-1'},
@@ -30,10 +31,7 @@ const Profile = () => {
   ];
   const {theme} = useAppTheme();
   const {height} = Dimensions.get('window');
-  const [imageProfile, setImageProile] = useState(
-    getData(MMKV_KEYS.PROFILE_IMAGE),
-  );
-  console.log({imageProfile});
+  const user = useSelector((state: RootState) => state.user);
   const statusBarHeight = getStatusBarHeight();
   return (
     <ScrollView
@@ -47,37 +45,29 @@ const Profile = () => {
       <ImageBackground
         source={AppImages.profile_background}
         style={{
-          height: height * 0.35,
+          height: height * 0.3,
           width: '100%',
           backgroundColor: appColors.gray100,
         }}>
         <Text
           color={appColors.white}
           style={{marginTop: statusBarHeight + 8}}
-          fontSize={21}
+          fontSize={18}
           fontWeight="semiBold"
           textAlign="center">
           My Profile
         </Text>
       </ImageBackground>
       <Pressable
-        onPress={() =>
-          SheetManager.show('change-picture-sheet', {
-            payload: {
-              imageProfile,
-              setImageProile,
-            },
-          })
-        }
+        onPress={() => SheetManager.show('change-picture-sheet')}
         style={{
           position: 'absolute',
-          top: height * 0.296,
+          top: height * 0.246,
           alignSelf: 'center',
         }}>
         <Avatar
           size="large"
           pointerEvents="none"
-          uploadedImage={imageProfile}
         />
         <Icon
           name="camera-svgrepo-com-1"
