@@ -25,12 +25,12 @@ const IconButton = ({
   return (
     <Pressable
       onPress={onPress}
-      style={styles(theme, isDisabled, isBorder, isRounded).container}
+      style={styles(theme, isBorder, isRounded).container}
       disabled={isDisabled}>
       <Icon
         name={iconName}
         size={moderateScale(iconSize)}
-        color={theme?.primaryText}
+        color={isDisabled ? theme.secondaryText : theme?.primaryText}
       />
     </Pressable>
   );

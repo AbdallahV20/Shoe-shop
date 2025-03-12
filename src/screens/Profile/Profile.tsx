@@ -6,14 +6,15 @@ import {
   StatusBar,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {Avatar, Button, Icon, MenuItem, Text} from '../../components';
 import {appColors} from '../../theme/colors';
 import {useAppTheme} from '../../theme';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
 import AppImages from '../../assets/app_images';
-import {pxH} from '../../utils';
+import {getData, pxH} from '../../utils';
 import {SheetManager} from 'react-native-actions-sheet';
+import {MMKV_KEYS} from '../../constants';
 const Profile = () => {
   const menuItem = [
     {id: 1, title: 'Dark Mode', icon: 'moon-1'},
@@ -29,6 +30,10 @@ const Profile = () => {
   ];
   const {theme} = useAppTheme();
   const {height} = Dimensions.get('window');
+  const [imageProfile, setImageProile] = useState(
+    getData(MMKV_KEYS.PROFILE_IMAGE),
+  );
+  console.log({imageProfile});
   const statusBarHeight = getStatusBarHeight();
   return (
     <ScrollView
@@ -56,13 +61,24 @@ const Profile = () => {
         </Text>
       </ImageBackground>
       <Pressable
-        onPress={() => SheetManager.show('change-picture-sheet')}
+        onPress={() =>
+          SheetManager.show('change-picture-sheet', {
+            payload: {
+              imageProfile,
+              setImageProile,
+            },
+          })
+        }
         style={{
           position: 'absolute',
           top: height * 0.296,
           alignSelf: 'center',
         }}>
-        <Avatar size="large" pointerEvents="none" />
+        <Avatar
+          size="large"
+          pointerEvents="none"
+          uploadedImage={imageProfile}
+        />
         <Icon
           name="camera-svgrepo-com-1"
           color={appColors.white}

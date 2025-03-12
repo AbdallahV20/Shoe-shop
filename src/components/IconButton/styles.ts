@@ -5,7 +5,6 @@ import {appColors} from '../../theme/colors';
 
 export const styles = (
   theme: Theme,
-  isDisabled?: boolean,
   isBorder?: boolean,
   isRounded?: boolean,
 ) =>

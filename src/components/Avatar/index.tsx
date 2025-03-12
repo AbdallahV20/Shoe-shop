@@ -1,11 +1,11 @@
-import {Image, ImageSourcePropType, Pressable} from 'react-native';
+import {Image, Pressable} from 'react-native';
 import React from 'react';
 import styles from './styles';
 import {AppImages} from '../../assets/app_images';
 interface AvatarProps {
   size?: 'small' | 'medium' | 'large';
   isSquare?: boolean;
-  uploadedImage?: ImageSourcePropType;
+  uploadedImage?: string;
   onPress?: () => void;
   isGirl?: boolean;
   pointerEvents?: 'none' | 'auto';
@@ -24,8 +24,15 @@ const Avatar = ({
       onPress={onPress}
       pointerEvents={pointerEvents}>
       <Image
-        source={uploadedImage || (isGirl ? AppImages.girl : AppImages.boy)}
+        source={
+          uploadedImage
+            ? {uri: uploadedImage}
+            : isGirl
+            ? AppImages.girl
+            : AppImages.boy
+        }
         style={styles().image}
+        resizeMode="cover"
       />
     </Pressable>
   );

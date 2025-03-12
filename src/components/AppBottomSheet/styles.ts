@@ -9,7 +9,7 @@ export const styles = (theme?: Theme) =>
       ...gutters.px_24,
       ...gutters.pb_16,
       ...gutters.gapH_16,
-      backgroundColor: theme?.backgroundColor,
+      backgroundColor: theme?.tabBarBackgroundColor,
     },
     header: {
       ...layout.row,
