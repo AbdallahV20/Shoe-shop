@@ -12,9 +12,9 @@ export const styles = (
   StyleSheet.create({
     container: {
       backgroundColor: isDisabled
-        ? appColors.orange100
+        ? appColors.secondary
         : variant === 'main'
-        ? appColors.orange
+        ? appColors.primary
         : variant === 'transparent'
         ? 'transparent'
         : theme?.cardBackground,

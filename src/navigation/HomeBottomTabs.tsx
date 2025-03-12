@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home, Cart, Favourite, History, Profile} from '../screens';
+import {Home, Cart, Favourite, Profile} from '../screens';
 import {gutters, layout, Theme} from '../constants';
 import {useAppTheme} from '../theme';
 import {Icon} from '../components';
@@ -20,7 +20,7 @@ const HomeBottomTabs = () => {
         tabBarStyle: styles(theme).tabBarStyle,
         tabBarItemStyle: styles(theme).tabBarItemStyle,
         tabBarInactiveTintColor: appColors.gray100,
-        tabBarActiveTintColor: appColors.orange,
+        tabBarActiveTintColor: appColors.primary,
       }}>
       <Tab.Screen
         name="home"

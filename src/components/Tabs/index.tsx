@@ -33,7 +33,7 @@ const Tabs = ({tabs, activeTab, setActiveTab}: TabsProps) => {
     <Pressable onPress={() => handleOnPress(item, index)}>
       <Text
         fontWeight="semiBold"
-        color={activeTab === index ? appColors.orange : theme.primaryText}>
+        color={activeTab === index ? appColors.primary : theme.primaryText}>
         {item}
       </Text>
       {activeTab === index && <View style={styles.selectedTabBorder} />}

@@ -18,10 +18,13 @@ export default function Language() {
   const {theme} = useAppTheme();
   const {t} = useTranslation();
   const [value, setValue] = useState<string>(isArabic ? 'ar' : 'en');
-  const changeRadioIdHandler = useCallback((currentValue: string) => {
-    setValue(currentValue);
-    if (currentValue !== value) changeLanguage(isArabic ? 'en' : 'ar');
-  }, [value]);
+  const changeRadioIdHandler = useCallback(
+    (currentValue: string) => {
+      setValue(currentValue);
+      if (currentValue !== value) changeLanguage(isArabic ? 'en' : 'ar');
+    },
+    [value],
+  );
   return (
     <MainLayout
       header={
@@ -32,14 +35,22 @@ export default function Language() {
       }>
       <RadioButton.Group onValueChange={changeRadioIdHandler} value={value}>
         <View style={styles.optionContainer}>
-          <RadioButton value="en" color={theme.primaryText} />
+          <RadioButton
+            value="en"
+            color={theme.primaryText}
+            uncheckedColor={theme.secondaryText}
+          />
           <View style={styles.valueLanguage}>
             <Image source={AppImages.usa} style={styles.flag} />
             <Text>{t('english')}</Text>
           </View>
         </View>
         <View style={styles.optionContainer}>
-          <RadioButton value="ar" color={theme.primaryText} />
+          <RadioButton
+            value="ar"
+            color={theme.primaryText}
+            uncheckedColor={theme.secondaryText}
+          />
           <View style={styles.valueLanguage}>
             <Image source={AppImages.egypt} style={styles.flag} />
             <Text>{t('arabic')}</Text>

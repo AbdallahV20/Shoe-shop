@@ -14,7 +14,7 @@ const SectionHeader = ({sectionTitle, onViewAllPress}: SectionHeaderProps) => {
         {sectionTitle}
       </Text>
       <Pressable onPress={onViewAllPress}>
-        <Text fontSize={12} color={appColors.orange}>
+        <Text fontSize={12} color={appColors.primary}>
           View All
         </Text>
       </Pressable>

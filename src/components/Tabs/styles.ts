@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     ...layout.selfCenter,
     width: '90%',
     height: pxH(5),
-    backgroundColor: appColors.orange,
+    backgroundColor: appColors.primary,
     ...gutters.mt_4,
     ...gutters.radius_18,
   },

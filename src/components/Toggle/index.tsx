@@ -10,7 +10,7 @@ const Toggle = ({isOn, onToggle}: ToggleProps) => {
   return (
     <ToggleSwitch
       isOn={isOn}
-      onColor={appColors.orange}
+      onColor={appColors.primary}
       offColor={appColors.gray100}
       size="medium"
       onToggle={onToggle}

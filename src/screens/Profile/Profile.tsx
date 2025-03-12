@@ -73,7 +73,7 @@ const Profile = () => {
           name="camera-svgrepo-com-1"
           color={appColors.white}
           style={{
-            backgroundColor: appColors.orange,
+            backgroundColor: appColors.primary,
             position: 'absolute',
             bottom: 0,
             end: 0,

@@ -1,7 +1,7 @@
 export const appColors = {
   red: '#DC3535',
-  orange: '#C67C4E',
-  orange100: '#E0BFAF',
+  primary: '#5B9EE1',
+  secondary: '#C7E0F8',
   gray100: '#AEAEAE',
   gray200: '#52555A',
   gray300: '#252A32',
@@ -27,17 +27,17 @@ export const colorsLight = {
   cardBackground: appColors.white,
   infoBackground: appColors.white,
   infoBorder: '#aaa',
-  iconBackground:appColors.gray500,
+  iconBackground: appColors.gray500,
 };
 
 export const colorsDark = {
-  backgroundColor: appColors.navy,
+  backgroundColor: '#2D3B48',
   primaryText: '#E3E6EC',
   secondaryText: '#848A94',
-  tabBarBackgroundColor: appColors.navy100,
-  textInputBackground: appColors.navy100,
-  cardBackground: appColors.navy100,
-  infoBackground: appColors.navy,
-  infoBorder: appColors.orange,
-  iconBackground:appColors.navy100,
+  tabBarBackgroundColor: '#1F2A33',
+  textInputBackground: '#1F2A33',
+  cardBackground: '#1F2A33',
+  infoBackground: '#2D3B48',
+  infoBorder: appColors.primary,
+  iconBackground: appColors.navy100,
 };

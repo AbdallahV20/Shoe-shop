@@ -9,7 +9,7 @@ export const styles = (_theme: Theme) =>
     icon: {
       ...gutters.p_12,
       borderRadius: 100,
-      backgroundColor: appColors.orange,
+      backgroundColor: appColors.primary,
     },
   });
 

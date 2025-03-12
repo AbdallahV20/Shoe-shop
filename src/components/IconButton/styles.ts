@@ -14,7 +14,7 @@ export const styles = (
       ...layout.allCenter,
       padding: isBorder || backgroundColor ? px(10) : 0,
       borderWidth: isBorder ? px(2) : 0,
-      borderColor: appColors.orange,
+      borderColor: appColors.primary,
       borderRadius: isRounded ? moderateScale(100) : moderateScale(10),
       backgroundColor,
     },

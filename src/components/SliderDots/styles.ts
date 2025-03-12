@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   activeDot: {
     width: px(30),
     height: pxH(8),
-    backgroundColor: appColors.orange,
+    backgroundColor: appColors.primary,
     ...gutters.radius_16,
   },
   inActiveDot: {

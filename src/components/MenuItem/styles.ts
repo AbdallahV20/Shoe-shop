@@ -18,7 +18,7 @@ export const styles = (theme: Theme, screenName?: string) =>
       gap: 16,
     },
     iconContainer: {
-      backgroundColor: appColors.orange100,
+      backgroundColor: appColors.secondary,
       borderRadius: 50,
       justifyContent: 'center',
       alignItems: 'center',

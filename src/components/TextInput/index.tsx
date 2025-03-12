@@ -45,9 +45,9 @@ const TextInput = ({
             placeholder={placeholder}
             placeholderTextColor={appColors.gray400}
             style={styles(theme).textInput}
-            selectionColor={appColors.orange}
+            selectionColor={appColors.primary}
             value={value}
-            cursorColor={appColors.orange}
+            cursorColor={appColors.primary}
             onChangeText={onChangeHandler}
             numberOfLines={1}
           />

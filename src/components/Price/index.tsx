@@ -11,7 +11,7 @@ interface PriceProps {
 const Price = ({price, priceSize = 16}: PriceProps) => {
   return (
     <View style={styles.priceContainer}>
-      <Text fontSize={priceSize} color={appColors.orange} fontWeight="semiBold">
+      <Text fontSize={priceSize} color={appColors.primary} fontWeight="semiBold">
         $
       </Text>
       <Text fontSize={priceSize} fontWeight="semiBold">
