@@ -78,11 +78,12 @@ const ChangePicture = () => {
 
   const onDeletePress = () => {
     deleteData(MMKV_KEYS.PROFILE_IMAGE);
-    dispatch(addImageProfile(undefined));
+    dispatch(addImageProfile(''));
     SheetManager.hide('change-picture-sheet');
   };
   return (
     <AppBottomSheet
+      title="Change Profile Picture"
       sheetName={'change-picture-sheet'}
       leftComponent={
         <IconButton

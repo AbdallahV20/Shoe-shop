@@ -1,14 +1,10 @@
 import {View} from 'react-native';
 import React, {useCallback, useState} from 'react';
-import Button from '../Button';
-import Info from '../Info';
 import styles from './styles';
 import {appColors} from '../../theme/colors';
-import Icon from '../Icon';
-import {useAppTheme} from '../../theme';
-import {px} from '../../utils';
+import IconButton from '../IconButton';
+import Text from '../Text';
 const Counter = () => {
-  const {isDarkMode} = useAppTheme();
   const [counter, setCounter] = useState(1);
   const addButtonHandler = useCallback(() => {
     if (counter < 10) setCounter(prev => prev + 1);
@@ -19,16 +15,28 @@ const Counter = () => {
   }, [counter]);
   return (
     <View style={styles.counterConainer}>
-      <Button
-        icon={<Icon name="minus" color={appColors.white} size={px(12)} />}
-        isDisabled={counter === 0}
+      <IconButton
+        iconName="minus-svgrepo-com-1"
         onPress={removeButtonHandler}
+        isDisabled={counter === 0}
+        backgroundColor={appColors.white}
+        iconColor={appColors.black}
+        isRounded
+        iconSize="small"
       />
-      <Info title={counter} isBorder={isDarkMode} />
-      <Button
-        icon={<Icon name="add" color={appColors.white} size={px(12)} />}
-        isDisabled={counter === 10}
+      <View style={styles.counterText}>
+        <Text fontWeight="medium" textAlign="center">
+          {counter}
+        </Text>
+      </View>
+      <IconButton
+        iconName="plus-icon-2"
         onPress={addButtonHandler}
+        isDisabled={counter === 10}
+        isRounded
+        backgroundColor={appColors.primary}
+        iconColor={appColors.white}
+        iconSize="small"
       />
     </View>
   );

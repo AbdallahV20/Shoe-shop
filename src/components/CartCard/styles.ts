@@ -1,40 +1,24 @@
 import {Dimensions, StyleSheet} from 'react-native';
-import {gutters, layout, Theme} from '../../constants';
-import {appColors} from '../../theme/colors';
-import {pxH} from '../../utils';
+import {gutters, layout} from '../../constants';
 
 const {width} = Dimensions.get('window');
-export const styles = (theme: Theme, isDarkMode?: boolean) =>
-  StyleSheet.create({
-    container: {
-      backgroundColor: theme.cardBackground,
-      ...gutters.p_16,
-      ...layout.row,
-      ...gutters.gap_16,
-      ...gutters.radius_16,
-      shadowColor: isDarkMode ? 'transparent' : appColors.gray400,
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 8,
-    },
-    imageContainer: {
-      width: width * 0.35,
-      ...gutters.radius_16,
-    },
-    rightContainer: {
-      ...gutters.gapH_8,
-      ...layout.flex_1,
-    },
-    centerContainer: {
-      ...layout.row,
-      ...layout.itemsCenter,
-      ...layout.justifyBetween,
-    },
-    productName: {height: pxH(24)},
-  });
-
-export default styles;
+export default StyleSheet.create({
+  container: {
+    ...layout.row,
+    ...gutters.gap_16,
+  },
+  imageWrapper: {
+    ...gutters.radius_16,
+    ...layout.overflowHidden,
+  },
+  imageContainer: {
+    width: width * 0.25,
+    aspectRatio: 1 / 1,
+  },
+  gapSpace: {...gutters.gapH_4},
+  rightContainer: {
+    ...layout.justifyBetween,
+    ...layout.flex_1,
+  },
+  rowContainer: {...layout.row, ...layout.justifyBetween},
+});

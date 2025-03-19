@@ -1,5 +1,5 @@
 import {FlexAlignType, Pressable, ViewStyle} from 'react-native';
-import React from 'react';
+import React, {useMemo} from 'react';
 import styles from './styles';
 import Text from '../Text';
 import {useAppTheme} from '../../theme';
@@ -29,12 +29,15 @@ const Button = ({
   alignSelf = 'flex-start',
 }: ButtonProps) => {
   const {theme} = useAppTheme();
-  const dynamicSize = size === 'small' ? 12 : size === 'medium' ? 14 : 16;
+  const dynamicSize = useMemo(
+    () => (size === 'small' ? 12 : size === 'medium' ? 14 : 16),
+    [size],
+  );
   return (
     <Pressable
       onPress={onPress}
       style={[
-        styles(theme, size, isDisabled, variant, alignSelf).container,
+        styles(theme, size, variant, alignSelf, isDisabled).container,
         style,
       ]}
       disabled={isDisabled}>
@@ -43,7 +46,7 @@ const Button = ({
           fontWeight="semiBold"
           textAlign="center"
           fontSize={dynamicSize}
-          style={styles(theme, size, isDisabled, variant).text}>
+          style={styles(theme, size, variant).text}>
           {title}
         </Text>
       )}

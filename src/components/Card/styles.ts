@@ -6,11 +6,11 @@ const {width} = Dimensions.get('window');
 export const styles = (theme: Theme, isDarkMode?: boolean) =>
   StyleSheet.create({
     container: {
-      ...gutters.p_12,
-      ...gutters.gapH_8,
-      width: width * 0.38,
+      ...gutters.gapH_12,
+      width: width * 0.4,
       backgroundColor: theme.cardBackground,
-      ...gutters.radius_8,
+      ...gutters.radius_18,
+      ...layout.overflowHidden,
       shadowColor: isDarkMode ? 'transparent' : appColors.gray400,
       shadowOffset: {
         width: 0,
@@ -23,7 +23,6 @@ export const styles = (theme: Theme, isDarkMode?: boolean) =>
     imageContainer: {
       ...layout.fullWidth,
       aspectRatio: 1 / 1,
-      ...gutters.radius_16,
       ...layout.overflowHidden,
     },
     rateContainer: {
@@ -32,15 +31,21 @@ export const styles = (theme: Theme, isDarkMode?: boolean) =>
       ...gutters.gap_4,
       ...layout.selfEnd,
       backgroundColor: 'rgba(0,0,0,0.6)',
-      ...gutters.px_8,
+      ...gutters.px_12,
       borderBottomLeftRadius: moderateScale(18),
     },
-    productName: {height: pxH(24)},
-    starIcon: {...gutters.mb_2},
+    productName: {height: pxH(24), ...gutters.px_16},
     cardFooter: {
       ...layout.row,
       ...layout.justifyBetween,
       ...layout.itemsCenter,
+      ...gutters.ps_16,
+    },
+    addButton: {
+      borderTopEndRadius: 0,
+      borderTopStartRadius: moderateScale(16),
+      borderBottomStartRadius: 0,
+      ...gutters.p_12,
     },
   });
 export default styles;

@@ -1,4 +1,4 @@
-import {Pressable} from 'react-native';
+import {Pressable, ViewStyle} from 'react-native';
 import React from 'react';
 import styles from './styles';
 import {useAppTheme} from '../../theme';
@@ -8,35 +8,38 @@ import {moderateScale} from '../../utils';
 interface ButtonProps {
   onPress: () => void;
   iconName: string;
-  iconSize?: number;
+  iconSize?: 'medium' | 'small';
   isDisabled?: boolean;
   isBorder?: boolean;
   isRounded?: boolean;
   backgroundColor?: string;
   iconColor?: string;
+  style?: ViewStyle;
 }
 const IconButton = ({
   iconName,
-  iconSize = 16,
+  iconSize = 'medium',
   onPress,
   isDisabled,
   isBorder,
   isRounded,
   backgroundColor,
   iconColor,
+  style,
 }: ButtonProps) => {
   const {theme} = useAppTheme();
   return (
     <Pressable
       onPress={onPress}
-      style={styles(theme, isBorder, isRounded, backgroundColor).container}
+      style={[
+        styles(theme, isBorder, isRounded, backgroundColor, iconSize,isDisabled).container,
+        style,
+      ]}
       disabled={isDisabled}>
       <Icon
         name={iconName}
-        size={moderateScale(iconSize)}
-        color={
-          iconColor ?? (isDisabled ? theme.secondaryText : theme?.primaryText)
-        }
+        size={moderateScale(16)}
+        color={iconColor ?? theme?.primaryText}
       />
     </Pressable>
   );

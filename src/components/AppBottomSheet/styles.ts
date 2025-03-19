@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {gutters, layout, Theme} from '../../constants';
-import { px } from '../../utils';
+import {px} from '../../utils';
+import {appColors} from '../../theme/colors';
 
 export const styles = (theme?: Theme) =>
   StyleSheet.create({
@@ -9,13 +10,14 @@ export const styles = (theme?: Theme) =>
       ...gutters.px_24,
       ...gutters.pb_16,
       ...gutters.gapH_16,
-      backgroundColor:theme?.bottomSheetBackground,
+      backgroundColor: theme?.bottomSheetBackground,
     },
+    indicator: {backgroundColor: appColors.gray100},
     header: {
       ...layout.row,
       ...layout.justifyBetween,
       ...layout.itemsCenter,
       ...gutters.mb_24,
     },
-    placeholder: {width: px(16)},
+    placeholder: {width: px(18)},
   });

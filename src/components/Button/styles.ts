@@ -5,19 +5,18 @@ import {px} from '../../utils';
 export const styles = (
   theme?: Theme,
   size?: 'small' | 'medium' | 'large',
-  isDisabled?: boolean,
   variant?: 'transparent' | 'main' | 'theming',
   alignSelf?: FlexAlignType,
+  isDisabled?: boolean,
 ) =>
   StyleSheet.create({
     container: {
-      backgroundColor: isDisabled
-        ? appColors.secondary
-        : variant === 'main'
-        ? appColors.primary
-        : variant === 'transparent'
-        ? 'transparent'
-        : theme?.cardBackground,
+      backgroundColor:
+        variant === 'main'
+          ? appColors.primary
+          : variant === 'transparent'
+          ? 'transparent'
+          : theme?.cardBackground,
       ...gutters.radius_12,
       ...layout.row,
       ...layout.itemsCenter,
@@ -39,6 +38,7 @@ export const styles = (
           : size === 'medium'
           ? px(8)
           : px(12),
+      opacity: isDisabled ? 0.5 : 1,
     },
     text: {
       color: variant === 'main' ? appColors.white : theme?.primaryText,

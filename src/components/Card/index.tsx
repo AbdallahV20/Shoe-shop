@@ -3,14 +3,14 @@ import React from 'react';
 import {useAppTheme} from '../../theme';
 import styles from './styles';
 import Text from '../Text';
-import Button from '../Button';
 import Icon from '../Icon';
 import {appColors} from '../../theme/colors';
 import Price from '../Price';
-import {px} from '../../utils';
+import {moderateScale} from '../../utils';
 import {ProductDto} from '../../constants';
 import {add} from '../../store/slices/cart.slice';
 import {useDispatch} from 'react-redux';
+import IconButton from '../IconButton';
 
 const Card = ({product}: {product: ProductDto}) => {
   const {theme, isDarkMode} = useAppTheme();
@@ -25,12 +25,11 @@ const Card = ({product}: {product: ProductDto}) => {
         {rate && (
           <View style={styles(theme).rateContainer}>
             <Icon
-              name="star"
-              size={px(12)}
+              name="star-fill"
+              size={moderateScale(14)}
               color={appColors.yellow}
-              style={styles(theme).starIcon}
             />
-            <Text fontWeight="semiBold" fontSize={12} color="#fff">
+            <Text fontWeight="semiBold" fontSize={14} color="#fff">
               {rate.toString()}
             </Text>
           </View>
@@ -41,9 +40,12 @@ const Card = ({product}: {product: ProductDto}) => {
       </Text>
       <View style={styles(theme).cardFooter}>
         <Price price={price} priceSize={16} />
-        <Button
+        <IconButton
           onPress={() => dispatch(add(product))}
-          icon={<Icon name="add" size={px(12)} color={appColors.white} />}
+          iconName="add"
+          backgroundColor={appColors.primary}
+          iconColor={appColors.white}
+          style={styles(theme).addButton}
         />
       </View>
     </View>

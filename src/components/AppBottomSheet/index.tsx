@@ -1,22 +1,24 @@
 import React, {View} from 'react-native';
 import ActionSheet, {SheetManager, Sheets} from 'react-native-actions-sheet';
 import Text from '../Text';
-import {appColors} from '../../theme/colors';
 import {useAppTheme} from '../../theme';
 import IconButton from '../IconButton';
 import {ReactNode} from 'react';
 import {styles} from './styles';
+import {moderateScale} from '../../utils';
 
 interface AppBottomSheetProps {
   leftComponent?: ReactNode;
   sheetName: keyof Sheets;
   sheetContent: ReactNode;
+  title: string;
 }
 
 const AppBottomSheet = ({
   leftComponent,
   sheetName,
   sheetContent,
+  title,
 }: AppBottomSheetProps) => {
   const {theme} = useAppTheme();
   return (
@@ -24,13 +26,17 @@ const AppBottomSheet = ({
       keyboardHandlerEnabled={true}
       gestureEnabled={true}
       containerStyle={styles(theme).container}
-      indicatorStyle={{backgroundColor: appColors.gray100}}>
+      indicatorStyle={styles(theme).indicator}>
       <View style={styles(theme).header}>
-        {leftComponent ? leftComponent : <View style={styles().placeholder} />}
-        <Text>Profile Picture</Text>
-        <IconButton iconName="x" onPress={() => SheetManager.hide(sheetName)} />
+        {leftComponent ?? <View style={styles().placeholder} />}
+        <Text>{title}</Text>
+        <IconButton
+          iconName="x"
+          iconSize={moderateScale(18)}
+          onPress={() => SheetManager.hide(sheetName)}
+        />
       </View>
-      <View>{sheetContent && sheetContent}</View>
+      {sheetContent}
     </ActionSheet>
   );
 };

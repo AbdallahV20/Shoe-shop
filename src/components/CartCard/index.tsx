@@ -1,35 +1,40 @@
 import {View, ImageBackground} from 'react-native';
 import React from 'react';
 import styles from './styles';
-import {useAppTheme} from '../../theme';
 import Text from '../Text';
-import {appColors} from '../../theme/colors';
 import Price from '../Price';
 import Counter from '../Counter';
 import {ProductDto} from '../../constants';
+import IconButton from '../IconButton';
 const CardCart = ({product}: {product: ProductDto}) => {
-  const {theme, isDarkMode} = useAppTheme();
   const {name, image, price, average_rating: rate} = product;
   return (
-    <View style={styles(theme, isDarkMode).container}>
-      <ImageBackground
-        source={{uri: image}}
-        resizeMode="cover"
-        style={styles(theme).imageContainer}
-      />
-      <View style={styles(theme).rightContainer}>
-        <View>
-          <Text numberOfLines={1} style={styles(theme).productName}>
-            {name}
-          </Text>
-          <Text color={appColors.gray100} fontSize={12}>
-            {rate}
-          </Text>
-        </View>
-        <View style={styles(theme).centerContainer}>
+    <View style={styles.container}>
+      <View style={styles.imageWrapper}>
+        <ImageBackground
+          source={{uri: image}}
+          resizeMode="cover"
+          style={styles.imageContainer}
+        />
+      </View>
+      <View style={styles.rightContainer}>
+        <View style={styles.gapSpace}>
+          <View style={styles.rowContainer}>
+            <Text fontWeight="medium">{name}</Text>
+            <Text fontWeight="medium" fontSize={14}>
+              {rate}
+            </Text>
+          </View>
+
           <Price price={price} />
         </View>
-        <Counter />
+        <View style={{justifyContent: 'space-between', flexDirection: 'row'}}>
+          <Counter />
+          <IconButton
+            iconName="garbage-svgrepo-com"
+            onPress={() => console.log('Delete this item')}
+          />
+        </View>
       </View>
     </View>
   );

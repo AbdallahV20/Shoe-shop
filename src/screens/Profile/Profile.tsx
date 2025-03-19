@@ -1,9 +1,9 @@
 import {
   Dimensions,
   ImageBackground,
-  Pressable,
   ScrollView,
   StatusBar,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import React from 'react';
@@ -14,8 +14,7 @@ import {getStatusBarHeight} from 'react-native-status-bar-height';
 import AppImages from '../../assets/app_images';
 import {pxH} from '../../utils';
 import {SheetManager} from 'react-native-actions-sheet';
-import {useSelector} from 'react-redux';
-import {RootState} from '../../store/store';
+import { BOTTOM_TAB_HEIGHT } from '../../constants';
 const Profile = () => {
   const menuItem = [
     {id: 1, title: 'Dark Mode', icon: 'moon-1'},
@@ -31,12 +30,12 @@ const Profile = () => {
   ];
   const {theme} = useAppTheme();
   const {height} = Dimensions.get('window');
-  const user = useSelector((state: RootState) => state.user);
   const statusBarHeight = getStatusBarHeight();
   return (
     <ScrollView
       contentContainerStyle={{
-        paddingBottom: pxH(85),
+        flex: 1,
+        paddingBottom: pxH(BOTTOM_TAB_HEIGHT),
         backgroundColor: theme.backgroundColor,
       }}
       showsVerticalScrollIndicator={false}
@@ -51,24 +50,22 @@ const Profile = () => {
         }}>
         <Text
           color={appColors.white}
-          style={{marginTop: statusBarHeight + 8}}
+          style={{marginTop: statusBarHeight + 16}}
           fontSize={18}
           fontWeight="semiBold"
           textAlign="center">
           My Profile
         </Text>
       </ImageBackground>
-      <Pressable
+      <TouchableOpacity
+        activeOpacity={0.8}
         onPress={() => SheetManager.show('change-picture-sheet')}
         style={{
           position: 'absolute',
           top: height * 0.246,
           alignSelf: 'center',
         }}>
-        <Avatar
-          size="large"
-          pointerEvents="none"
-        />
+        <Avatar size="large" pointerEvents="none" />
         <Icon
           name="camera-svgrepo-com-1"
           color={appColors.white}
@@ -83,7 +80,7 @@ const Profile = () => {
             borderColor: theme.backgroundColor,
           }}
         />
-      </Pressable>
+      </TouchableOpacity>
       <View style={{marginTop: 40 + 16, alignSelf: 'center'}}>
         <Button title="Edit Profile" onPress={() => console.log('No')} />
       </View>

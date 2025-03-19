@@ -16,6 +16,7 @@ import {add, remove} from '../../store/slices/cart.slice';
 import EcommerceData from '../../data/EcommerceData.json';
 import {appColors} from '../../theme/colors';
 import {useAppTheme} from '../../theme';
+import {BOTTOM_TAB_HEIGHT} from '../../constants';
 const Cart = () => {
   const cartStore = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const Cart = () => {
     return acc + current.price;
   }, 0);
   return (
-    <View style={{flex: 1, paddingHorizontal: 24}}>
+    <MainLayout>
       <NavigationHeader
         title="Cart"
         startAction={<NavigationAction.Logo />}
@@ -47,7 +48,7 @@ const Cart = () => {
         style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
-          paddingBottom: 85,
+          paddingBottom: BOTTOM_TAB_HEIGHT,
           backgroundColor: theme.tabBarBackgroundColor,
           position: 'absolute',
           bottom: 0,
@@ -64,7 +65,7 @@ const Cart = () => {
           <Button title="Pay" onPress={() => console.log('Pay')} />
         </View>
       </View>
-    </View>
+    </MainLayout>
   );
 };
 

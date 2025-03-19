@@ -8,15 +8,23 @@ export const styles = (
   isBorder?: boolean,
   isRounded?: boolean,
   backgroundColor?: string,
+  iconSize?: string,
+  isDisabled?: boolean,
 ) =>
   StyleSheet.create({
     container: {
       ...layout.allCenter,
-      padding: isBorder || backgroundColor ? px(10) : 0,
+      padding:
+        isBorder || backgroundColor
+          ? iconSize === 'medium'
+            ? px(10)
+            : px(6)
+          : 0,
       borderWidth: isBorder ? px(2) : 0,
       borderColor: appColors.primary,
       borderRadius: isRounded ? moderateScale(100) : moderateScale(10),
       backgroundColor,
+      opacity: isDisabled ? 0.5 : 1,
     },
   });
 

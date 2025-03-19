@@ -1,13 +1,20 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {Dimensions, ImageProps, StyleSheet} from 'react-native';
 import {gutters, layout, Theme} from '../../constants';
-import {pxH} from '../../utils';
 const {width} = Dimensions.get('window');
 export const styles = (theme: Theme) =>
   StyleSheet.create({
-    image: {
-      width: width * 0.35,
+    container: {
+      ...layout.row,
+      ...gutters.p_16,
       ...gutters.radius_16,
+      ...gutters.gap_16,
+      backgroundColor: theme.cardBackground,
     },
-    productName: {height: pxH(24)},
+    image: {
+      width: width * 0.4,
+      ...gutters.radius_16,
+    } as ImageProps,
+    rightContainer: {...gutters.gapH_8, ...layout.flex_1},
+    buttonContainer: {...layout.selfEnd},
   });
 export default styles;

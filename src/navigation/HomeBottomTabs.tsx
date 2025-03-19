@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home, Cart, Favourite, Profile} from '../screens';
-import {gutters, layout, Theme} from '../constants';
+import {BOTTOM_TAB_HEIGHT, gutters, layout, Theme} from '../constants';
 import {useAppTheme} from '../theme';
 import {Icon} from '../components';
 import {appColors} from '../theme/colors';
@@ -74,7 +74,7 @@ const HomeBottomTabs = () => {
 const styles = (theme: Theme) =>
   StyleSheet.create({
     tabBarStyle: {
-      height: pxH(85),
+      height: pxH(BOTTOM_TAB_HEIGHT),
       elevation: 0,
       borderColor: 'transparent',
       shadowOpacity: 0,
@@ -86,7 +86,7 @@ const styles = (theme: Theme) =>
     },
     tabBarItemStyle: {
       backgroundColor: theme.tabBarBackgroundColor,
-      ...gutters.pt_18,
+      ...gutters.pt_12,
     },
   });
 
