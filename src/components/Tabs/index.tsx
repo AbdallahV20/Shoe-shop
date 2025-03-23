@@ -1,4 +1,4 @@
-import {View, FlatList, Pressable} from 'react-native';
+import {FlatList, Pressable} from 'react-native';
 import React, {useCallback, useRef} from 'react';
 import Text from '../Text';
 import {appColors} from '../../theme/colors';
@@ -32,11 +32,16 @@ const Tabs = ({tabs, activeTab, setActiveTab}: TabsProps) => {
   const tabItem = ({item, index}: tabProps) => (
     <Pressable onPress={() => handleOnPress(item, index)}>
       <Text
-        fontWeight="semiBold"
-        color={activeTab === index ? appColors.primary : theme.primaryText}>
+        style={[
+          styles(theme).tabContainer,
+          activeTab === index
+            ? styles(theme).activeTabContainer
+            : styles(theme).inactiveTabColor,
+        ]}
+        fontWeight="medium"
+        color={activeTab === index ? appColors.white : theme.primaryText}>
         {item}
       </Text>
-      {activeTab === index && <View style={styles.selectedTabBorder} />}
     </Pressable>
   );
   return (
@@ -44,7 +49,7 @@ const Tabs = ({tabs, activeTab, setActiveTab}: TabsProps) => {
       ref={tabsRef}
       horizontal
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={styles.tabsContainer}
+      contentContainerStyle={styles(theme).tabsContainer}
       data={tabs}
       keyExtractor={item => item}
       renderItem={tabItem}

@@ -4,6 +4,7 @@ import {Image} from 'react-native';
 import {AppImages} from '../../assets/app_images';
 import SliderDots from '../SliderDots';
 import styles from './styles';
+import {px} from '../../utils';
 const OffersSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
@@ -26,28 +27,36 @@ const OffersSlider = () => {
         viewPosition: 0.5,
         animated: true,
       });
-
-      // setActiveIndex(prev => (prev + 1) % promoImages.length);
     }, 3000);
 
     return () => clearInterval(promotionInterval);
   }, [activeIndex, promoImages.length]);
   return (
-    <View>
+    <View style={styles().container}>
       <FlatList
         ref={flatListRef}
         showsHorizontalScrollIndicator={false}
         data={promoImages}
         onViewableItemsChanged={onViewableItemsChanged}
         horizontal
+        viewabilityConfig={{itemVisiblePercentThreshold: 50}}
         keyExtractor={item => item.id}
-        renderItem={({item}) => (
-          <Image style={styles.image} source={item.image} />
+        renderItem={({item, index}) => (
+          <View
+            style={{
+              marginStart: index === 0 ? 0 : px(10),
+            }}>
+            <Image
+              style={styles(index, promoImages.length - 1).image}
+              source={item.image}
+            />
+          </View>
         )}
         pagingEnabled
       />
-
-      <SliderDots dotsNumber={promoImages.length} activeIndex={activeIndex} />
+      <View style={styles().slider}>
+        <SliderDots dotsNumber={promoImages.length} activeIndex={activeIndex} />
+      </View>
     </View>
   );
 };

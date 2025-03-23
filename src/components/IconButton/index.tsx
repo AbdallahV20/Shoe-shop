@@ -8,7 +8,7 @@ import {moderateScale} from '../../utils';
 interface ButtonProps {
   onPress: () => void;
   iconName: string;
-  iconSize?: 'medium' | 'small';
+  iconSize?: 'large' | 'medium' | 'small';
   isDisabled?: boolean;
   isBorder?: boolean;
   isRounded?: boolean;
@@ -32,7 +32,14 @@ const IconButton = ({
     <Pressable
       onPress={onPress}
       style={[
-        styles(theme, isBorder, isRounded, backgroundColor, iconSize,isDisabled).container,
+        styles(
+          theme,
+          isBorder,
+          isRounded,
+          backgroundColor,
+          iconSize,
+          isDisabled,
+        ).container,
         style,
       ]}
       disabled={isDisabled}>

@@ -1,5 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {gutters, layout} from '../../constants';
+import { px } from '../../utils';
 
 const {width} = Dimensions.get('window');
 export default StyleSheet.create({
@@ -21,4 +22,5 @@ export default StyleSheet.create({
     ...layout.flex_1,
   },
   rowContainer: {...layout.row, ...layout.justifyBetween},
+  textWidth: {width:px(150)},
 });

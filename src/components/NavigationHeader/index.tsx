@@ -5,7 +5,7 @@ import styles from './styles';
 import {useAppTheme} from '../../theme';
 interface NavigationHeaderProps {
   startAction?: React.ReactNode;
-  title: string;
+  title?: string;
   endAction?: React.ReactNode;
 }
 const NavigationHeader = ({
@@ -17,7 +17,7 @@ const NavigationHeader = ({
   return (
     <View style={styles(theme).container}>
       <View>{startAction}</View>
-      <Text fontSize={18} textAlign="center" fontWeight="semiBold">
+      <Text fontSize={16} textAlign="center" fontWeight="semiBold">
         {title}
       </Text>
       <View>{endAction}</View>

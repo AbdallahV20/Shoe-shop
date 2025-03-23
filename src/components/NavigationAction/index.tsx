@@ -30,10 +30,10 @@ const BackButton = () => {
   );
 };
 
-const WelcomeComponent = () => (
-  <View style={{flexDirection: 'row', gap: 12, alignItems: 'center'}}>
+const WelcomeComponent = ({name}: {name: string}) => (
+  <View style={styles.welcome}>
     <Avatar size="small" />
-    <Text>Hi, Khaled</Text>
+    <Text>{`Hi, ${name}`}</Text>
   </View>
 );
 
@@ -56,7 +56,6 @@ const NofificationsButton = () => {
     <IconButton
       iconColor={theme.primaryText}
       backgroundColor={theme.iconBackground}
-      isRounded
       iconName="notification-2"
       onPress={() => console.log('notificaitons')}
     />

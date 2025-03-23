@@ -38,7 +38,7 @@ const TextInput = ({
         <View style={styles(theme).textInputContainer}>
           {isSearchBar && (
             <View style={styles(theme).searchIconContainer}>
-              <Icon name="search" size={px(18)} color={appColors.gray400} />
+              <Icon name="search-1" size={px(18)} color={theme.primaryText} />
             </View>
           )}
           <TextInputBase

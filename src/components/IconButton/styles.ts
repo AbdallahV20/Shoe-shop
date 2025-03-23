@@ -18,11 +18,13 @@ export const styles = (
         isBorder || backgroundColor
           ? iconSize === 'medium'
             ? px(10)
-            : px(6)
-          : 0,
+            : iconSize === 'small'
+            ? px(6)
+            : px(16)
+          : px(10),
       borderWidth: isBorder ? px(2) : 0,
       borderColor: appColors.primary,
-      borderRadius: isRounded ? moderateScale(100) : moderateScale(10),
+      borderRadius: isRounded ? moderateScale(100) : moderateScale(12),
       backgroundColor,
       opacity: isDisabled ? 0.5 : 1,
     },

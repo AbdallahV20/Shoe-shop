@@ -1,4 +1,4 @@
-import {ViewStyle} from 'react-native';
+import {StyleProp, TextStyle} from 'react-native';
 import {Text as ReactNativeText} from 'react-native';
 import React from 'react';
 import appFonts from '../../assets/fonts';
@@ -19,7 +19,7 @@ interface TextProps {
   textAlign?: 'left' | 'center' | 'right';
   color?: string;
   children?: string | number;
-  style?: ViewStyle;
+  style?: StyleProp<TextStyle>;
   icon?: React.ReactNode;
   numberOfLines?: number;
   lineHeight?: number;

@@ -1,11 +1,12 @@
 import {StyleSheet} from 'react-native';
-import {layout} from '../../constants';
+import {gutters, layout} from '../../constants';
 
 export const styles = StyleSheet.create({
   container: {
     ...layout.justifyBetween,
     ...layout.itemsCenter,
     ...layout.row,
+    ...gutters.mb_16,
   },
 });
 

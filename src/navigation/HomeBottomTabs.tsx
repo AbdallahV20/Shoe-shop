@@ -12,7 +12,6 @@ const HomeBottomTabs = () => {
   const {theme} = useAppTheme();
   return (
     <Tab.Navigator
-      initialRouteName="profile"
       screenOptions={{
         headerShown: false,
         tabBarHideOnKeyboard: true,

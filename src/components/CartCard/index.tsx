@@ -7,12 +7,12 @@ import Counter from '../Counter';
 import {ProductDto} from '../../constants';
 import IconButton from '../IconButton';
 const CardCart = ({product}: {product: ProductDto}) => {
-  const {name, image, price, average_rating: rate} = product;
+  const {name, imageURL, price, average_rating: rate} = product;
   return (
     <View style={styles.container}>
       <View style={styles.imageWrapper}>
         <ImageBackground
-          source={{uri: image}}
+          source={{uri: imageURL}}
           resizeMode="cover"
           style={styles.imageContainer}
         />
@@ -20,7 +20,12 @@ const CardCart = ({product}: {product: ProductDto}) => {
       <View style={styles.rightContainer}>
         <View style={styles.gapSpace}>
           <View style={styles.rowContainer}>
-            <Text fontWeight="medium">{name}</Text>
+            <Text
+              fontWeight="medium"
+              numberOfLines={1}
+              style={styles.textWidth}>
+              {name}
+            </Text>
             <Text fontWeight="medium" fontSize={14}>
               {rate}
             </Text>

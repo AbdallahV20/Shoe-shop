@@ -1,17 +1,25 @@
 import {StyleSheet} from 'react-native';
-import {gutters, layout} from '../../constants';
+import {gutters, Theme} from '../../constants';
 import {appColors} from '../../theme/colors';
-import {pxH} from '../../utils';
+import {px} from '../../utils';
 
-export const styles = StyleSheet.create({
-  tabsContainer: {...gutters.gap_18},
-  selectedTabBorder: {
-    ...layout.selfCenter,
-    width: '90%',
-    height: pxH(5),
-    backgroundColor: appColors.primary,
-    ...gutters.mt_4,
-    ...gutters.radius_18,
-  },
-});
+export const styles = (theme: Theme) =>
+  StyleSheet.create({
+    tabsContainer: {...gutters.gap_16, ...gutters.mb_16},
+    tabContainer: {
+      ...gutters.px_12,
+      ...gutters.py_2,
+      ...gutters.radius_24,
+    },
+    activeTabContainer: {
+      backgroundColor: appColors.primary,
+      borderWidth: px(1),
+      borderColor: appColors.primary,
+    },
+    inactiveTabColor: {
+      backgroundColor: theme.backgroundColor,
+      borderWidth: px(1),
+      borderColor: appColors.gray500,
+    },
+  });
 export default styles;

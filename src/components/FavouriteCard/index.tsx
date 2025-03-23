@@ -28,14 +28,14 @@ const StarRating = ({rating = 1, size = 18, color = appColors.yellow}) => {
   return <View style={{flexDirection: 'row'}}>{stars}</View>;
 };
 const FavouriteCard = ({product}: {product: ProductDto}) => {
-  const {name, image, price, average_rating: rate, description} = product;
+  const {name, imageURL, price, average_rating: rate, description} = product;
   const {theme} = useAppTheme();
   const dispatch = useDispatch();
   return (
     <View style={styles(theme).container}>
       <Image
         style={styles(theme).image}
-        source={{uri: image}}
+        source={{uri: imageURL}}
         resizeMode="cover"
       />
       <View style={styles(theme).rightContainer}>

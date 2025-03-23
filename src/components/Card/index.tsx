@@ -14,12 +14,12 @@ import IconButton from '../IconButton';
 
 const Card = ({product}: {product: ProductDto}) => {
   const {theme, isDarkMode} = useAppTheme();
-  const {name, image, price, average_rating: rate} = product;
+  const {name, imageURL, price, average_rating: rate} = product;
   const dispatch = useDispatch();
   return (
     <View style={styles(theme, isDarkMode).container}>
       <ImageBackground
-        source={{uri: image}}
+        source={{uri: imageURL}}
         resizeMode="cover"
         style={styles(theme).imageContainer}>
         {rate && (

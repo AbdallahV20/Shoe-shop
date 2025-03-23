@@ -312,7 +312,8 @@
     "slug": "ss-hl-0136",
     "average_rating": 4.3,
     "average_counts": 50,
-    "quantity": 4
+    "quantity": 4,
+    "discount": "20%"
   },
   "21": {
     "id": 22,
@@ -357,7 +358,8 @@
     "slug": "ss-ms-0075",
     "average_rating": 4.1,
     "average_counts": 40,
-    "quantity": 4
+    "quantity": 4,
+    "discount": "35%"
   },
   "24": {
     "id": 25,
@@ -372,7 +374,8 @@
     "slug": "ss-pm-0093",
     "average_rating": 4.2,
     "average_counts": 35,
-    "quantity": 3
+    "quantity": 3,
+    "discount": "15%"
   },
   "25": {
     "id": 26,
@@ -402,7 +405,8 @@
     "slug": "x_plr",
     "average_rating": 4.4,
     "average_counts": 90,
-    "quantity": 5
+    "quantity": 5,
+    "discount": "40%"
   },
   "27": {
     "id": 28,
@@ -447,7 +451,8 @@
     "slug": "nmd_r1-flash-red",
     "average_rating": 4.8,
     "average_counts": 180,
-    "quantity": 5
+    "quantity": 5,
+    "discount": "20%"
   },
   "30": {
     "id": 31,

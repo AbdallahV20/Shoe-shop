@@ -6,14 +6,15 @@ interface MainLayoutProps {
   children: React.ReactNode;
   header?: React.ReactNode;
   footer?: React.ReactNode;
-  variant?: 'normal' | 'scroll';
   isHeaderFixed?: boolean;
+  isScrollable?: boolean;
 }
 
 const MainLayout = ({
   children,
   header,
   isHeaderFixed = false,
+  isScrollable,
 }: MainLayoutProps) => {
   const {theme, isDarkMode} = useAppTheme();
   return (
@@ -23,18 +24,31 @@ const MainLayout = ({
         backgroundColor={isHeaderFixed ? 'transparent' : theme.backgroundColor}
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
       />
-
-      {!isHeaderFixed ? (
+      {!isHeaderFixed && isScrollable && (
         <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
           {header && header}
           <View style={styles(theme).contentContainer}>{children}</View>
         </ScrollView>
-      ) : (
+      )}
+      {isHeaderFixed && isScrollable && (
         <>
           {header && header}
           <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
             <View style={styles(theme).contentContainer}>{children}</View>
           </ScrollView>
+        </>
+      )}
+
+      {!isHeaderFixed && !isScrollable && (
+        <>
+          {header && header}
+          <View style={styles(theme).contentContainer}>{children}</View>
+        </>
+      )}
+      {isHeaderFixed && !isScrollable && (
+        <>
+          {header && header}
+          <View style={styles(theme).contentContainer}>{children}</View>
         </>
       )}
     </SafeAreaView>

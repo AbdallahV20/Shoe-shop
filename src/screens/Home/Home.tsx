@@ -10,103 +10,85 @@ import {
   Tabs,
   Text,
 } from '../../components';
-import {FlatList, View} from 'react-native';
-import {appColors} from '../../theme/colors';
+import {FlatList, ScrollView, View} from 'react-native';
 import OffersSlider from '../../components/OffersSlider';
-import CoffeeData from '../../data/CoffeeData';
-import EcommerceData from '../../data/EcommerceData.json';
+import ShoesData from '../../data/ShoesData.json';
+import NewBalance from '../../components/Logos/NewBalance';
+import Puma from '../../components/Logos/Puma';
+import Adidas from '../../components/Logos/Adidas';
+import Nike from '../../components/Logos/Nike';
 const Home = () => {
   const [search, setSearch] = useState('');
   const [activeTab, setActiveTab] = useState(0);
-  const categories = ['All', ...new Set(CoffeeData.map(item => item.name))];
-  // const filterDataByCategory = CoffeeData.filter(
-  //   item => activeTab === 0 || item.name === categories[activeTab],
-  // ).filter(item => item.prices[0].price.includes(search));
-
-  const EcommerceProducts = EcommerceData.categories
-    .map(category => category.products)
-    .flat();
-
-  console.log(EcommerceProducts);
+  const data = Object.values(ShoesData);
+  const categories = [
+    'All',
+    ...new Set(
+      data.map(
+        item =>
+          item.gender[0].toUpperCase() + item.gender.slice(1).toLowerCase(),
+      ),
+    ),
+  ];
+  const filterDataByCategory = data.filter(
+    item =>
+      activeTab === 0 ||
+      categories[activeTab] ===
+        item.gender[0].toUpperCase() + item.gender.slice(1).toLowerCase(),
+  );
   return (
     <MainLayout
+      isHeaderFixed
+      isScrollable
       header={
         <NavigationHeader
-          startAction={<NavigationAction.Logo />}
-          title="Home"
-          endAction={<NavigationAction.ProfilePiture />}
+          startAction={<NavigationAction.WelcomeComponent name="Mohamed" />}
+          endAction={<NavigationAction.NofificationsButton />}
         />
       }>
       <View style={{gap: 24}}>
+        <SearchBar value={search} setValue={setSearch} />
         <View>
-          <Text fontSize={16} color={appColors.gray100}>
-            Welcome
-          </Text>
-          <Text fontWeight="bold" fontSize={24}>
-            Abdallah Ahmed
-          </Text>
+          <SectionHeader sectionTitle="Special For You" noViewAll />
           <OffersSlider />
         </View>
+
         <View>
-          <SearchBar value={search} setValue={setSearch} />
-        </View>
-        <View>
+          <SectionHeader
+            sectionTitle="Recommended For You"
+            onViewAllPress={() => console.log('Go To All')}
+          />
           <Tabs
             tabs={categories}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
           />
+          <FlatList
+            data={filterDataByCategory}
+            renderItem={({item}) => <Card product={item} />}
+            contentContainerStyle={{
+              gap: 16,
+            }}
+            keyExtractor={item => item.id.toString()}
+            horizontal
+            ListEmptyComponent={() => (
+              <Text textAlign="center">No Data Found</Text>
+            )}
+            showsHorizontalScrollIndicator={false}
+          />
         </View>
         <View>
-          <SectionHeader
-            sectionTitle="Categories"
-            onViewAllPress={() => console.log('No')}
-          />
-          <FlatList
-            data={EcommerceProducts}
-            renderItem={({item}) => <Card product={item} />}
-            contentContainerStyle={{
-              gap: 16,
-              padding: 10,
-            }}
-            keyExtractor={item => item.id.toString()}
-            horizontal
-            ListEmptyComponent={() => (
-              <Text textAlign="center">No Data Found</Text>
-            )}
+          <SectionHeader sectionTitle="Search By Brand" noViewAll />
+          <ScrollView
             showsHorizontalScrollIndicator={false}
-          />
-          <FlatList
-            data={EcommerceProducts}
-            renderItem={({item}) => <Card product={item} />}
-            contentContainerStyle={{
-              gap: 16,
-            }}
-            keyExtractor={item => item.id.toString()}
             horizontal
-            ListEmptyComponent={() => (
-              <Text textAlign="center">No Data Found</Text>
-            )}
-            showsHorizontalScrollIndicator={false}
-          />
+            contentContainerStyle={{gap: 16, marginBottom: 24}}>
+            <Puma />
+            <NewBalance />
+            <Adidas />
+            <Nike />
+          </ScrollView>
         </View>
-        {/* <Text fontSize={24} fontWeight="bold">
-          Coffee Beans
-        </Text>
-        <FlatList
-          data={EcommerceProducts}
-          renderItem={({item}) => (
-            <Card
-              name={item.name}
-              imageSource={item.image}
-              price={item.price}
-              subTitle={item.description}
-              rate={item.average_rating}
-            />
-          )}
-          keyExtractor={item => item.id.toString()}
-          horizontal
-        /> */}
       </View>
     </MainLayout>
   );

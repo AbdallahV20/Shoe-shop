@@ -31,7 +31,11 @@ const MenuItem = ({title, iconName, screenName}: MenuItemProps) => {
       style={styles(theme, screenName).container}>
       <View style={styles(theme).rowContainer}>
         <View style={styles(theme).iconContainer}>
-          <Icon name={iconName} size={18} color={appColors.primary} />
+          <Icon
+            name={iconName}
+            size={moderateScale(18)}
+            color={appColors.primary}
+          />
         </View>
         <Text>{title}</Text>
       </View>
