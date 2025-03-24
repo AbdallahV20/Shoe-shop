@@ -4,15 +4,19 @@ import styles from './styles';
 import {appColors} from '../../theme/colors';
 import IconButton from '../IconButton';
 import Text from '../Text';
-const Counter = () => {
+import {useDispatch} from 'react-redux';
+import {remove} from '../../store/slices/cart.slice';
+const Counter = ({id}: {id: number}) => {
   const [counter, setCounter] = useState(1);
+  const dispatch = useDispatch();
   const addButtonHandler = useCallback(() => {
     if (counter < 10) setCounter(prev => prev + 1);
   }, [counter]);
 
   const removeButtonHandler = useCallback(() => {
+    if (counter === 1) dispatch(remove(id));
     if (counter > 0) setCounter(prev => prev - 1);
-  }, [counter]);
+  }, [counter, dispatch, id]);
   return (
     <View style={styles.counterConainer}>
       <IconButton

@@ -14,7 +14,7 @@ import {getStatusBarHeight} from 'react-native-status-bar-height';
 import AppImages from '../../assets/app_images';
 import {pxH} from '../../utils';
 import {SheetManager} from 'react-native-actions-sheet';
-import { BOTTOM_TAB_HEIGHT } from '../../constants';
+import {BOTTOM_TAB_HEIGHT} from '../../constants';
 const Profile = () => {
   const menuItem = [
     {id: 1, title: 'Dark Mode', icon: 'moon-1'},
@@ -44,7 +44,7 @@ const Profile = () => {
       <ImageBackground
         source={AppImages.profile_background}
         style={{
-          height: height * 0.3,
+          height: height * 0.25,
           width: '100%',
           backgroundColor: appColors.gray100,
         }}>
@@ -62,7 +62,7 @@ const Profile = () => {
         onPress={() => SheetManager.show('change-picture-sheet')}
         style={{
           position: 'absolute',
-          top: height * 0.246,
+          top: height * 0.196,
           alignSelf: 'center',
         }}>
         <Avatar size="large" pointerEvents="none" />

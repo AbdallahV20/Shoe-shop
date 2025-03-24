@@ -29,10 +29,11 @@ const MainLayout = ({
       {!isHeaderFixed && isScrollable && (
         <>
           {header && header}
-          <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
-            <View style={styles(theme, !!footer).contentContainer}>
-              {children}
-            </View>
+          <ScrollView
+            bounces={false}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles(theme, !!footer).contentContainer}>
+            {children}
           </ScrollView>
           {footer && footer}
         </>
@@ -40,10 +41,11 @@ const MainLayout = ({
       {isHeaderFixed && isScrollable && (
         <>
           {header && header}
-          <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
-            <View style={styles(theme, !!footer).contentContainer}>
-              {children}
-            </View>
+          <ScrollView
+            bounces={false}
+            contentContainerStyle={styles(theme, !!footer).contentContainer}
+            showsVerticalScrollIndicator={false}>
+            {children}
           </ScrollView>
           {footer && footer}
         </>

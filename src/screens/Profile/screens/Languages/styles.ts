@@ -7,6 +7,7 @@ export default StyleSheet.create({
     ...layout.row,
     ...layout.itemsCenter,
     ...gutters.gap_16,
+    ...gutters.px_24,
   },
   flag: {
     width: px(16),

@@ -14,15 +14,60 @@ import {RootState} from '../../store/store';
 import {useAppTheme} from '../../theme';
 import styles from './styles';
 import AppImages from '../../assets/app_images';
-import {Dimensions} from 'react-native';
-import {BOTTOM_TAB_HEIGHT} from '../../constants';
+import {useNavigation} from '@react-navigation/native';
 const Cart = () => {
   const cartStore = useSelector((state: RootState) => state.cart);
+  const navigation = useNavigation();
   const {theme} = useAppTheme();
-  const SCREEN_HEIGHT = Dimensions.get('window').height;
   const totalPrice = cartStore.reduce((acc, current) => {
     return acc + current.price;
   }, 0);
+  const EmptyCartComponent = () => (
+    <View style={styles(theme).emptyListContainer}>
+      <Image
+        source={AppImages.empty_cart}
+        resizeMode="contain"
+        style={styles(theme).emptyListImage}
+      />
+      <View style={styles(theme).emptyTextContainer}>
+        <Text fontSize={21} fontWeight="semiBold" textAlign="center">
+          Your cart is empty
+        </Text>
+        <Button
+          title="Start Shopping"
+          alignSelf="stretch"
+          size="large"
+          onPress={() => navigation.navigate('home' as never)}
+        />
+      </View>
+    </View>
+  );
+
+  const FooterComponent = () => (
+    <View style={styles(theme).footerContainer}>
+      <View style={styles(theme).textStyle}>
+        <Text>SubTotal</Text>
+        <Price price={totalPrice} />
+      </View>
+      <View style={styles(theme).textStyle}>
+        <Text>Shopping</Text>
+        <Price price={50} />
+      </View>
+      <View style={styles(theme).dashedLine} />
+      <View style={styles(theme).textStyle}>
+        <Text fontSize={18} fontWeight="semiBold">
+          Total Cost
+        </Text>
+        <Price price={totalPrice + 50} priceSize={18} />
+      </View>
+      <Button
+        alignSelf="stretch"
+        size="large"
+        title="Checkout"
+        onPress={() => console.log('Checkout')}
+      />
+    </View>
+  );
   return (
     <MainLayout
       isHeaderFixed
@@ -34,66 +79,14 @@ const Cart = () => {
           endAction={<NavigationAction.NofificationsButton />}
         />
       }
-      footer={
-        !!totalPrice && (
-          <View style={styles(theme).footerContainer}>
-            <View style={styles(theme).textStyle}>
-              <Text>SubTotal</Text>
-              <Price price={totalPrice} />
-            </View>
-            <View style={styles(theme).textStyle}>
-              <Text>Shopping</Text>
-              <Price price={50} />
-            </View>
-            <View style={styles(theme).dashedLine} />
-            <View style={styles(theme).textStyle}>
-              <Text fontSize={18} fontWeight="semiBold">
-                Total Cost
-              </Text>
-              <Price price={totalPrice + 50} priceSize={18} />
-            </View>
-            <Button
-              alignSelf="stretch"
-              size="large"
-              title="Checkout"
-              onPress={() => console.log('Checkout')}
-            />
-          </View>
-        )
-      }>
+      footer={!!totalPrice && <FooterComponent />}>
       <FlatList
         data={cartStore}
         keyExtractor={item => item.id.toString()}
         contentContainerStyle={styles(theme).cartContainer}
         renderItem={({item}) => <CardCart key={item.id} product={item} />}
         showsVerticalScrollIndicator={false}
-        ListEmptyComponent={
-          <View
-            style={{
-              flex: 1,
-            }}>
-            <View
-              style={{
-                flex: 1,
-                width: 200,
-                height: 200,
-                backgroundColor: 'blue',
-              }}>
-              <Image
-                source={AppImages.empty_cart}
-                resizeMode="cover"
-                width={1}
-                height={1}
-                style={{width: 200, height: 200}}
-              />
-            </View>
-            <Button
-              title="Start Shopping"
-              alignSelf="center"
-              onPress={() => console.log('No')}
-            />
-          </View>
-        }
+        ListEmptyComponent={<EmptyCartComponent />}
       />
     </MainLayout>
   );

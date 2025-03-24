@@ -39,7 +39,7 @@ const CardCart = ({product}: {product: ProductDto}) => {
           <Price price={price} />
         </View>
         <View style={styles.rowContainer}>
-          <Counter />
+          <Counter id={id}/>
           <IconButton
             iconName="garbage-svgrepo-com"
             onPress={() => {

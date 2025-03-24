@@ -35,6 +35,12 @@ const styles = (theme: Theme, isDarkMode?: boolean) =>
       ...gutters.px_24,
       flexGrow: 1,
     },
+    emptyListContainer: {
+      ...layout.flex_1,
+      ...layout.allCenter,
+    },
+    emptyListImage: {width: '80%', height: '50%'},
+    emptyTextContainer: {...layout.fullWidth, ...gutters.gapH_16},
   });
 
 export default styles;
