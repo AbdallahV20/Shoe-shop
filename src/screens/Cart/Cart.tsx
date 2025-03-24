@@ -1,8 +1,7 @@
-import {Dimensions, FlatList, View} from 'react-native';
+import {FlatList, Image, View} from 'react-native';
 import React from 'react';
 import {
   Button,
-  Card,
   CardCart,
   MainLayout,
   NavigationAction,
@@ -10,61 +9,92 @@ import {
   Price,
   Text,
 } from '../../components';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {RootState} from '../../store/store';
-import {add, remove} from '../../store/slices/cart.slice';
-import EcommerceData from '../../data/EcommerceData.json';
-import {appColors} from '../../theme/colors';
 import {useAppTheme} from '../../theme';
+import styles from './styles';
+import AppImages from '../../assets/app_images';
+import {Dimensions} from 'react-native';
 import {BOTTOM_TAB_HEIGHT} from '../../constants';
 const Cart = () => {
   const cartStore = useSelector((state: RootState) => state.cart);
-  const dispatch = useDispatch();
   const {theme} = useAppTheme();
-  const {width} = Dimensions.get('window');
+  const SCREEN_HEIGHT = Dimensions.get('window').height;
   const totalPrice = cartStore.reduce((acc, current) => {
     return acc + current.price;
   }, 0);
   return (
-    <MainLayout>
-      <NavigationHeader
-        title="Cart"
-        startAction={<NavigationAction.Logo />}
-        endAction={<NavigationAction.ProfilePiture />}
-      />
+    <MainLayout
+      isHeaderFixed
+      isScrollable
+      header={
+        <NavigationHeader
+          title="Cart"
+          startAction={<NavigationAction.BackButton />}
+          endAction={<NavigationAction.NofificationsButton />}
+        />
+      }
+      footer={
+        !!totalPrice && (
+          <View style={styles(theme).footerContainer}>
+            <View style={styles(theme).textStyle}>
+              <Text>SubTotal</Text>
+              <Price price={totalPrice} />
+            </View>
+            <View style={styles(theme).textStyle}>
+              <Text>Shopping</Text>
+              <Price price={50} />
+            </View>
+            <View style={styles(theme).dashedLine} />
+            <View style={styles(theme).textStyle}>
+              <Text fontSize={18} fontWeight="semiBold">
+                Total Cost
+              </Text>
+              <Price price={totalPrice + 50} priceSize={18} />
+            </View>
+            <Button
+              alignSelf="stretch"
+              size="large"
+              title="Checkout"
+              onPress={() => console.log('Checkout')}
+            />
+          </View>
+        )
+      }>
       <FlatList
         data={cartStore}
         keyExtractor={item => item.id.toString()}
-        contentContainerStyle={{
-          gap: 16,
-          paddingHorizontal: 5,
-          paddingVertical: 24,
-          marginBottom: 180,
-        }}
+        contentContainerStyle={styles(theme).cartContainer}
         renderItem={({item}) => <CardCart key={item.id} product={item} />}
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={
+          <View
+            style={{
+              flex: 1,
+            }}>
+            <View
+              style={{
+                flex: 1,
+                width: 200,
+                height: 200,
+                backgroundColor: 'blue',
+              }}>
+              <Image
+                source={AppImages.empty_cart}
+                resizeMode="cover"
+                width={1}
+                height={1}
+                style={{width: 200, height: 200}}
+              />
+            </View>
+            <Button
+              title="Start Shopping"
+              alignSelf="center"
+              onPress={() => console.log('No')}
+            />
+          </View>
+        }
       />
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          paddingBottom: BOTTOM_TAB_HEIGHT,
-          backgroundColor: theme.tabBarBackgroundColor,
-          position: 'absolute',
-          bottom: 0,
-          width: width,
-          height: 180,
-          paddingHorizontal: 24,
-          paddingVertical: 16,
-        }}>
-        <View style={{flex: 0.3}}>
-          <Text color={appColors.gray100}>Total Price</Text>
-          <Price price={totalPrice} priceSize={18} />
-        </View>
-        <View style={{flex: 0.7}}>
-          <Button title="Pay" onPress={() => console.log('Pay')} />
-        </View>
-      </View>
     </MainLayout>
   );
 };

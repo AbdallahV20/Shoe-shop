@@ -9,7 +9,7 @@ import {moderateScale} from '../../utils';
 
 interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
-  onPress?: () => void;
+  onPress: () => void;
   title?: string;
   iconName?: string;
   isDisabled?: boolean;
@@ -44,7 +44,6 @@ const Button = ({
       {title && (
         <Text
           fontWeight="semiBold"
-          textAlign="center"
           fontSize={dynamicSize}
           style={styles(theme, size, variant).text}>
           {title}

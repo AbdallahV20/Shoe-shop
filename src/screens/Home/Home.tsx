@@ -17,6 +17,7 @@ import NewBalance from '../../components/Logos/NewBalance';
 import Puma from '../../components/Logos/Puma';
 import Adidas from '../../components/Logos/Adidas';
 import Nike from '../../components/Logos/Nike';
+import styles from './styles';
 const Home = () => {
   const [search, setSearch] = useState('');
   const [activeTab, setActiveTab] = useState(0);
@@ -46,7 +47,7 @@ const Home = () => {
           endAction={<NavigationAction.NofificationsButton />}
         />
       }>
-      <View style={{gap: 24}}>
+      <View style={styles().screenContainer}>
         <SearchBar value={search} setValue={setSearch} />
         <View>
           <SectionHeader sectionTitle="Special For You" noViewAll />
@@ -66,9 +67,7 @@ const Home = () => {
           <FlatList
             data={filterDataByCategory}
             renderItem={({item}) => <Card product={item} />}
-            contentContainerStyle={{
-              gap: 16,
-            }}
+            contentContainerStyle={styles().productsContainer}
             keyExtractor={item => item.id.toString()}
             horizontal
             ListEmptyComponent={() => (
@@ -82,7 +81,7 @@ const Home = () => {
           <ScrollView
             showsHorizontalScrollIndicator={false}
             horizontal
-            contentContainerStyle={{gap: 16, marginBottom: 24}}>
+            contentContainerStyle={styles().brands}>
             <Puma />
             <NewBalance />
             <Adidas />

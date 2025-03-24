@@ -8,12 +8,14 @@ interface MainLayoutProps {
   footer?: React.ReactNode;
   isHeaderFixed?: boolean;
   isScrollable?: boolean;
+  hideBottomTab?: boolean;
 }
 
 const MainLayout = ({
   children,
   header,
-  isHeaderFixed = false,
+  footer,
+  isHeaderFixed,
   isScrollable,
 }: MainLayoutProps) => {
   const {theme, isDarkMode} = useAppTheme();
@@ -25,30 +27,44 @@ const MainLayout = ({
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
       />
       {!isHeaderFixed && isScrollable && (
-        <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
+        <>
           {header && header}
-          <View style={styles(theme).contentContainer}>{children}</View>
-        </ScrollView>
+          <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
+            <View style={styles(theme, !!footer).contentContainer}>
+              {children}
+            </View>
+          </ScrollView>
+          {footer && footer}
+        </>
       )}
       {isHeaderFixed && isScrollable && (
         <>
           {header && header}
           <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
-            <View style={styles(theme).contentContainer}>{children}</View>
+            <View style={styles(theme, !!footer).contentContainer}>
+              {children}
+            </View>
           </ScrollView>
+          {footer && footer}
         </>
       )}
 
       {!isHeaderFixed && !isScrollable && (
         <>
           {header && header}
-          <View style={styles(theme).contentContainer}>{children}</View>
+          <View style={styles(theme, !!footer).contentContainer}>
+            {children}
+          </View>
+          {footer && footer}
         </>
       )}
       {isHeaderFixed && !isScrollable && (
         <>
           {header && header}
-          <View style={styles(theme).contentContainer}>{children}</View>
+          <View style={styles(theme, !!footer).contentContainer}>
+            {children}
+          </View>
+          {footer && footer}
         </>
       )}
     </SafeAreaView>

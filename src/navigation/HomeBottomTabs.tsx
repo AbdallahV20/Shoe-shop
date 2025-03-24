@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Pressable, StyleSheet} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home, Cart, Favourite, Profile} from '../screens';
@@ -13,6 +13,9 @@ const HomeBottomTabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        tabBarButton: props => (
+          <Pressable {...props} android_ripple={{color: 'transparent'}} />
+        ),
         headerShown: false,
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: false,

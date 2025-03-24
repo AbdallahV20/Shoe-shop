@@ -5,7 +5,7 @@ import {px} from '../../utils';
 
 export const styles = (theme: Theme) =>
   StyleSheet.create({
-    tabsContainer: {...gutters.gap_16, ...gutters.mb_16},
+    tabsContainer: {...gutters.gap_8, ...gutters.mb_16},
     tabContainer: {
       ...gutters.px_12,
       ...gutters.py_2,

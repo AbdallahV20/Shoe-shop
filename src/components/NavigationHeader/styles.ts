@@ -10,6 +10,7 @@ export const styles = (theme: Theme) =>
       ...layout.row,
       ...layout.justifyBetween,
       ...layout.itemsCenter,
+      ...gutters.px_24,
       paddingTop: statusBarHeight + pxH(16),
       ...gutters.pb_16,
       backgroundColor: theme.backgroundColor,

@@ -6,6 +6,11 @@ import {Provider} from 'react-redux';
 import {store} from './src/store/store';
 import './sheets.tsx';
 import {SheetProvider} from 'react-native-actions-sheet';
+// if (__DEV__) {
+console.log = () => {};
+console.warn = () => {};
+console.error = () => {};
+// }
 const App = () => (
   <Provider store={store}>
     <ThemeProvider>

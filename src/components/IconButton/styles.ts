@@ -14,6 +14,7 @@ export const styles = (
   StyleSheet.create({
     container: {
       ...layout.allCenter,
+
       padding:
         isBorder || backgroundColor
           ? iconSize === 'medium'
@@ -21,7 +22,7 @@ export const styles = (
             : iconSize === 'small'
             ? px(6)
             : px(16)
-          : px(10),
+          : px(0),
       borderWidth: isBorder ? px(2) : 0,
       borderColor: appColors.primary,
       borderRadius: isRounded ? moderateScale(100) : moderateScale(12),

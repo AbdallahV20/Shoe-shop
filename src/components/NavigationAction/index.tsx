@@ -23,7 +23,6 @@ const BackButton = () => {
     <IconButton
       iconColor={theme.primaryText}
       backgroundColor={theme.iconBackground}
-      isRounded
       iconName={isArabic ? 'arrow-right-2' : 'arrow-left-2'}
       onPress={() => navigation.goBack()}
     />
@@ -32,7 +31,7 @@ const BackButton = () => {
 
 const WelcomeComponent = ({name}: {name: string}) => (
   <View style={styles.welcome}>
-    <Avatar size="small" />
+    <Avatar size="small" isSquare/>
     <Text>{`Hi, ${name}`}</Text>
   </View>
 );

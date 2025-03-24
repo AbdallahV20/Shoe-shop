@@ -6,8 +6,13 @@ import Price from '../Price';
 import Counter from '../Counter';
 import {ProductDto} from '../../constants';
 import IconButton from '../IconButton';
+import {useDispatch, useSelector} from 'react-redux';
+import {remove} from '../../store/slices/cart.slice';
+import {RootState} from '../../store/store';
 const CardCart = ({product}: {product: ProductDto}) => {
-  const {name, imageURL, price, average_rating: rate} = product;
+  const {name, imageURL, price, average_rating: rate, id} = product;
+  const dispatch = useDispatch();
+  const cartStore = useSelector((state: RootState) => state.cart);
   return (
     <View style={styles.container}>
       <View style={styles.imageWrapper}>
@@ -33,11 +38,14 @@ const CardCart = ({product}: {product: ProductDto}) => {
 
           <Price price={price} />
         </View>
-        <View style={{justifyContent: 'space-between', flexDirection: 'row'}}>
+        <View style={styles.rowContainer}>
           <Counter />
           <IconButton
             iconName="garbage-svgrepo-com"
-            onPress={() => console.log('Delete this item')}
+            onPress={() => {
+              dispatch(remove(id));
+              console.log({cartStore, id});
+            }}
           />
         </View>
       </View>

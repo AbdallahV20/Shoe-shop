@@ -12,6 +12,7 @@ export const AppImages = {
   profile_background: require('./profile_background.jpg'),
   egypt: require('./egypt.png'),
   usa: require('./usa.png'),
+  empty_cart: require('./empty.png'),
 };
 
 export default AppImages;

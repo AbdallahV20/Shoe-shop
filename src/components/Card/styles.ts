@@ -1,7 +1,7 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {gutters, layout, Theme} from '../../constants';
-import {appColors} from '../../theme/colors';
 import {moderateScale, pxH} from '../../utils';
+import { appColors } from '../../theme/colors';
 const {width} = Dimensions.get('window');
 export const styles = (theme: Theme, isDarkMode?: boolean) =>
   StyleSheet.create({
@@ -11,14 +11,11 @@ export const styles = (theme: Theme, isDarkMode?: boolean) =>
       backgroundColor: theme.cardBackground,
       ...gutters.radius_18,
       ...layout.overflowHidden,
-      shadowColor: isDarkMode ? 'transparent' : appColors.gray400,
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
+      shadowColor: isDarkMode ? 'transparent' : appColors.gray500,
+      shadowOffset: {width: 0, height: 4}, // iOS shadow direction
+      shadowOpacity: 0.2, // iOS shadow intensity
+      shadowRadius: 6, // iOS shadow blur
+      elevation: 5, // Android shadow
     },
     imageContainer: {
       ...layout.fullWidth,
