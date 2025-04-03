@@ -1,4 +1,4 @@
-import {Dimensions, ImageProps, StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import {gutters, layout, Theme} from '../../constants';
 const {width} = Dimensions.get('window');
 export const styles = (theme: Theme) =>
@@ -13,7 +13,10 @@ export const styles = (theme: Theme) =>
     image: {
       width: width * 0.4,
       ...gutters.radius_16,
-    } as ImageProps,
+      padding:5,
+      overflow: 'hidden',
+      alignItems: 'flex-end',
+    },
     rightContainer: {...gutters.gapH_8, ...layout.flex_1},
     buttonContainer: {...layout.selfEnd},
   });

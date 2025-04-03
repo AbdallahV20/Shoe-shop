@@ -31,15 +31,15 @@ const styles = (theme: Theme, isDarkMode?: boolean) =>
     },
     cartContainer: {
       ...gutters.gapH_16,
-      ...gutters.mb_24,
+      ...gutters.pb_24,
       ...gutters.px_24,
-      flexGrow: 1,
+      ...layout.flexGrow_1, //this is for the empty component to take the whole vertical space
     },
     emptyListContainer: {
       ...layout.flex_1,
       ...layout.allCenter,
     },
-    emptyListImage: {width: '80%', height: '50%'},
+    emptyListImage: {width: '70%', height: '40%'},
     emptyTextContainer: {...layout.fullWidth, ...gutters.gapH_16},
   });
 

@@ -41,7 +41,7 @@ const CardCart = ({product}: {product: ProductDto}) => {
         <View style={styles.rowContainer}>
           <Counter id={id}/>
           <IconButton
-            iconName="garbage-svgrepo-com"
+            iconName="garbage-trash-svgrepo-com"
             onPress={() => {
               dispatch(remove(id));
               console.log({cartStore, id});

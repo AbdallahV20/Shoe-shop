@@ -1,4 +1,4 @@
-import {View, Image} from 'react-native';
+import {View, ImageBackground} from 'react-native';
 import React from 'react';
 import {ProductDto} from '../../constants';
 import {useAppTheme} from '../../theme';
@@ -10,6 +10,8 @@ import Icon from '../Icon';
 import {add} from '../../store/slices/cart.slice';
 import {useDispatch} from 'react-redux';
 import IconButton from '../IconButton';
+import NavigationAction from '../NavigationAction';
+import {removeFromFav} from '../../store/slices/favourite.slice';
 const StarRating = ({rating = 1, size = 18, color = appColors.yellow}) => {
   const stars = [];
 
@@ -28,16 +30,28 @@ const StarRating = ({rating = 1, size = 18, color = appColors.yellow}) => {
   return <View style={{flexDirection: 'row'}}>{stars}</View>;
 };
 const FavouriteCard = ({product}: {product: ProductDto}) => {
-  const {name, imageURL, price, average_rating: rate, description} = product;
+  const {
+    name,
+    imageURL,
+    price,
+    average_rating: rate,
+    description,
+    id,
+  } = product;
   const {theme} = useAppTheme();
   const dispatch = useDispatch();
   return (
     <View style={styles(theme).container}>
-      <Image
+      <ImageBackground
         style={styles(theme).image}
         source={{uri: imageURL}}
-        resizeMode="cover"
-      />
+        resizeMode="cover">
+        <NavigationAction.LoveButton
+          handleOnLikePressed={() => dispatch(removeFromFav(id))}
+          active
+          iconSize="small"
+        />
+      </ImageBackground>
       <View style={styles(theme).rightContainer}>
         <View>
           <Text numberOfLines={1}>{name}</Text>

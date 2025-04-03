@@ -11,6 +11,7 @@ import {ProductDto} from '../../constants';
 import {add} from '../../store/slices/cart.slice';
 import {useDispatch} from 'react-redux';
 import IconButton from '../IconButton';
+import {addToFav} from '../../store/slices/favourite.slice';
 
 const Card = ({product}: {product: ProductDto}) => {
   const {theme, isDarkMode} = useAppTheme();
@@ -41,8 +42,11 @@ const Card = ({product}: {product: ProductDto}) => {
       <View style={styles(theme).cardFooter}>
         <Price price={price} priceSize={16} />
         <IconButton
-          onPress={() => dispatch(add(product))}
-          iconName="add"
+          onPress={() => {
+            dispatch(add(product));
+            dispatch(addToFav(product));
+          }}
+          iconName="plus-icon-2"
           backgroundColor={appColors.primary}
           iconColor={appColors.white}
           style={styles(theme).addButton}

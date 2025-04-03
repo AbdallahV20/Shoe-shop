@@ -38,7 +38,7 @@ const HomeBottomTabs = () => {
         component={Cart}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Icon name="cart-1-svgrepo-com" size={size} color={color} />
+            <Icon name="cart-basket-ui-5-svgrepo-com" size={size} color={color} />
           ),
         }}
       />

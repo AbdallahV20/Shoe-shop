@@ -8,7 +8,7 @@ export const styles = (theme: Theme, hideBottomTab?: boolean) =>
       ...layout.flex_1,
     },
     contentContainer: {
-      ...gutters.mt_16,
+      ...gutters.pt_16,
       paddingBottom: hideBottomTab ? 0 : pxH(BOTTOM_TAB_HEIGHT),
       ...layout.flexGrow_1,
     },

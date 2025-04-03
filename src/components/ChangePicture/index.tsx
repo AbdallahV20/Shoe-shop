@@ -88,7 +88,7 @@ const ChangePicture = () => {
       leftComponent={
         <IconButton
           isDisabled={!userData.imageProfile}
-          iconName="garbage-svgrepo-com"
+          iconName="garbage-trash-svgrepo-com"
           onPress={onDeletePress}
         />
       }
@@ -109,7 +109,7 @@ const ChangePicture = () => {
             style={styles(theme).optionContainer}
             onPress={onGalleryPress}>
             <Icon
-              name="picture-photo-image-svgrepo-com"
+              name="gallery-svgrepo-com"
               color={appColors.white}
               style={styles(theme).icon}
               size={moderateScale(21)}

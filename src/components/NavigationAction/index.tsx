@@ -31,7 +31,7 @@ const BackButton = () => {
 
 const WelcomeComponent = ({name}: {name: string}) => (
   <View style={styles.welcome}>
-    <Avatar size="small" isSquare/>
+    <Avatar size="small" isSquare />
     <Text>{`Hi, ${name}`}</Text>
   </View>
 );
@@ -55,7 +55,7 @@ const NofificationsButton = () => {
     <IconButton
       iconColor={theme.primaryText}
       backgroundColor={theme.iconBackground}
-      iconName="notification-2"
+      iconName="notification-6"
       onPress={() => console.log('notificaitons')}
     />
   );
@@ -72,10 +72,15 @@ const ProfilePiture = () => {
 
 const LoveButton = ({
   handleOnLikePressed,
+  iconSize,
+  active,
 }: {
   handleOnLikePressed: () => void;
+  iconSize?: 'large' | 'medium' | 'small';
+  active?: boolean;
+  noBackground?:boolean
 }) => {
-  const [like, setLike] = useState(false);
+  const [like, setLike] = useState(active ?? false);
   const {theme} = useAppTheme();
   const handleOnPress = useCallback(() => {
     setLike(prev => !prev);
@@ -85,6 +90,7 @@ const LoveButton = ({
     <IconButton
       iconColor={like ? appColors.red : appColors.gray100}
       backgroundColor={theme.iconBackground}
+      iconSize={iconSize ?? 'medium'}
       isRounded
       iconName={like ? 'love' : 'love2'}
       onPress={handleOnPress}
