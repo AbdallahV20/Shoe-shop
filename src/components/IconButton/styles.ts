@@ -21,7 +21,7 @@ export const styles = (
             ? px(10)
             : iconSize === 'small'
             ? px(6)
-            : px(16)
+            : px(14)
           : px(0),
       borderWidth: isBorder ? px(2) : 0,
       borderColor: appColors.primary,

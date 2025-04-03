@@ -13,9 +13,9 @@ export const styles = (theme: Theme) =>
     image: {
       width: width * 0.4,
       ...gutters.radius_16,
-      padding:8,
-      overflow: 'hidden',
-      alignItems: 'flex-end',
+      ...gutters.p_8,
+      ...layout.overflowHidden,
+      ...layout.itemsEnd,
     },
     rightContainer: {...gutters.gapH_8, ...layout.flex_1},
     buttonContainer: {...layout.selfEnd},

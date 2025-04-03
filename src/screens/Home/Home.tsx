@@ -18,9 +18,11 @@ import Puma from '../../components/Logos/Puma';
 import Adidas from '../../components/Logos/Adidas';
 import Nike from '../../components/Logos/Nike';
 import styles from './styles';
+import {useNavigation} from '@react-navigation/native';
 const Home = () => {
   const [search, setSearch] = useState('');
   const [activeTab, setActiveTab] = useState(0);
+  const navigaiton = useNavigation();
   const data = Object.values(ShoesData);
   const categories = [
     'All',
@@ -32,10 +34,7 @@ const Home = () => {
     ),
   ];
   const filterDataByCategory = data.filter(
-    item =>
-      activeTab === 0 ||
-      categories[activeTab] ===
-        item.gender[0].toUpperCase() + item.gender.slice(1).toLowerCase(),
+    item => activeTab === 0 || categories[activeTab] === item.gender,
   );
   return (
     <MainLayout
@@ -57,7 +56,11 @@ const Home = () => {
         <View>
           <SectionHeader
             sectionTitle="Recommended For You"
-            onViewAllPress={() => console.log('Go To All')}
+            onViewAllPress={() =>
+              navigaiton.navigate('ViewAllProducts', {
+                currentCategory: categories[activeTab],
+              })
+            }
           />
           <Tabs
             tabs={categories}

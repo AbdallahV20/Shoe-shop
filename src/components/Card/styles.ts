@@ -1,13 +1,17 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {gutters, layout, Theme} from '../../constants';
 import {moderateScale, pxH} from '../../utils';
-import { appColors } from '../../theme/colors';
+import {appColors} from '../../theme/colors';
 const {width} = Dimensions.get('window');
-export const styles = (theme: Theme, isDarkMode?: boolean) =>
+export const styles = (
+  theme: Theme,
+  isDarkMode?: boolean,
+  isFullWidth?: boolean,
+) =>
   StyleSheet.create({
     container: {
       ...gutters.gapH_12,
-      width: width * 0.4,
+      width: isFullWidth ? '100%' : width * 0.4,
       backgroundColor: theme.cardBackground,
       ...gutters.radius_18,
       ...layout.overflowHidden,
@@ -22,6 +26,10 @@ export const styles = (theme: Theme, isDarkMode?: boolean) =>
       aspectRatio: 1 / 1,
       ...layout.overflowHidden,
     },
+    loveContainer: {
+      ...layout.selfEnd,
+      ...gutters.p_12,
+    },
     rateContainer: {
       ...layout.row,
       ...layout.itemsCenter,
@@ -31,7 +39,8 @@ export const styles = (theme: Theme, isDarkMode?: boolean) =>
       ...gutters.px_12,
       borderBottomLeftRadius: moderateScale(18),
     },
-    productName: {height: pxH(24), ...gutters.px_16},
+    nameAndDescription: {...gutters.px_16},
+    productName: {height: pxH(24)},
     cardFooter: {
       ...layout.row,
       ...layout.justifyBetween,

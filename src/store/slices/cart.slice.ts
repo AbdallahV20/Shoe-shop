@@ -13,8 +13,7 @@ export const cartSlice = createSlice({
       );
       if (!isItemExist) state.push(action.payload);
     },
-    remove: (state, action) =>
-      (state = state.filter(item => item.id !== action.payload)),
+    remove: (state, action) => state.filter(item => item.id !== action.payload),
   },
 });
 

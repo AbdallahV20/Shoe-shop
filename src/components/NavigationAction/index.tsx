@@ -92,7 +92,6 @@ const LoveButton = ({
       iconColor={like ? appColors.red : appColors.gray100}
       backgroundColor={noBackground ? undefined : theme.iconBackground}
       iconSize={iconSize ?? 'medium'}
-      isRounded
       iconName={like ? 'love' : 'love2'}
       onPress={handleOnPress}
     />

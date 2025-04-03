@@ -45,7 +45,7 @@ const IconButton = ({
       disabled={isDisabled}>
       <Icon
         name={iconName}
-        size={iconSize === 'large' ? moderateScale(21) : moderateScale(16)}
+        size={iconSize === 'large' ? moderateScale(24) : moderateScale(16)}
         color={iconColor ?? theme?.primaryText}
       />
     </Pressable>
