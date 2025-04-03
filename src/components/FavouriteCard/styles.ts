@@ -13,7 +13,7 @@ export const styles = (theme: Theme) =>
     image: {
       width: width * 0.4,
       ...gutters.radius_16,
-      padding:5,
+      padding:8,
       overflow: 'hidden',
       alignItems: 'flex-end',
     },

@@ -74,11 +74,12 @@ const LoveButton = ({
   handleOnLikePressed,
   iconSize,
   active,
+  noBackground,
 }: {
   handleOnLikePressed: () => void;
   iconSize?: 'large' | 'medium' | 'small';
   active?: boolean;
-  noBackground?:boolean
+  noBackground?: boolean;
 }) => {
   const [like, setLike] = useState(active ?? false);
   const {theme} = useAppTheme();
@@ -89,7 +90,7 @@ const LoveButton = ({
   return (
     <IconButton
       iconColor={like ? appColors.red : appColors.gray100}
-      backgroundColor={theme.iconBackground}
+      backgroundColor={noBackground ? undefined : theme.iconBackground}
       iconSize={iconSize ?? 'medium'}
       isRounded
       iconName={like ? 'love' : 'love2'}

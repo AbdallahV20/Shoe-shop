@@ -49,7 +49,8 @@ const FavouriteCard = ({product}: {product: ProductDto}) => {
         <NavigationAction.LoveButton
           handleOnLikePressed={() => dispatch(removeFromFav(id))}
           active
-          iconSize="small"
+          noBackground
+          iconSize="large"
         />
       </ImageBackground>
       <View style={styles(theme).rightContainer}>
