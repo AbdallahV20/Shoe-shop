@@ -10,7 +10,7 @@ import {
   Tabs,
   Text,
 } from '../../components';
-import {FlatList, ScrollView, View} from 'react-native';
+import {FlatList, Pressable, ScrollView, View} from 'react-native';
 import OffersSlider from '../../components/OffersSlider';
 import ShoesData from '../../data/ShoesData.json';
 import NewBalance from '../../components/Logos/NewBalance';
@@ -85,10 +85,38 @@ const Home = () => {
             showsHorizontalScrollIndicator={false}
             horizontal
             contentContainerStyle={styles().brands}>
-            <Puma />
-            <NewBalance />
-            <Adidas />
-            <Nike />
+            <Pressable
+              onPress={() =>
+                navigaiton.navigate('ViewAllProducts', {
+                  currentCategory: 'Puma',
+                })
+              }>
+              <Puma />
+            </Pressable>
+            <Pressable
+              onPress={() =>
+                navigaiton.navigate('ViewAllProducts', {
+                  currentCategory: 'New Balance',
+                })
+              }>
+              <NewBalance />
+            </Pressable>
+            <Pressable
+              onPress={() =>
+                navigaiton.navigate('ViewAllProducts', {
+                  currentCategory: 'Nike',
+                })
+              }>
+              <Nike />
+            </Pressable>
+            <Pressable
+              onPress={() =>
+                navigaiton.navigate('ViewAllProducts', {
+                  currentCategory: 'Adidas',
+                })
+              }>
+              <Adidas />
+            </Pressable>
           </ScrollView>
         </View>
       </View>

@@ -15,8 +15,8 @@ const MainLayout = ({
   children,
   header,
   footer,
-  isHeaderFixed,
-  isScrollable,
+  isHeaderFixed = false,
+  isScrollable = false,
 }: MainLayoutProps) => {
   const {theme, isDarkMode} = useAppTheme();
   return (

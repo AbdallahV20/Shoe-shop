@@ -15,7 +15,7 @@ export const styles = (theme: Theme, screenName?: string) =>
     rowContainer: {
       ...layout.row,
       ...layout.itemsCenter,
-      ...gutters.gap_16,
+      ...gutters.gap_12,
     },
     iconContainer: {
       backgroundColor: appColors.secondary,

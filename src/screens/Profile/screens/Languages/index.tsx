@@ -32,7 +32,8 @@ export default function Language() {
           startAction={<NavigationAction.BackButton />}
           title={t('language')}
         />
-      }>
+      }
+      isHeaderFixed>
       <RadioButton.Group onValueChange={changeRadioIdHandler} value={value}>
         <View style={styles.optionContainer}>
           <RadioButton

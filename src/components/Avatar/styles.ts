@@ -9,7 +9,7 @@ export const styles = (
 ) =>
   StyleSheet.create({
     container: {
-      width: size === 'small' ? px(40) : size === 'medium' ? px(60) : px(80),
+      width: size === 'small' ? px(40) : size === 'medium' ? px(60) : px(100),
       aspectRatio: 1 / 1,
       borderRadius: isSquare ? moderateScale(12) : moderateScale(200),
       ...layout.overflowHidden,

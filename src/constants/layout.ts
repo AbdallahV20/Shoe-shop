@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {pxH} from '../utils';
 
-export const BOTTOM_TAB_HEIGHT = pxH(60);
+export const BOTTOM_TAB_HEIGHT = pxH(70);
 
 export const layout = StyleSheet.create({
   col: {

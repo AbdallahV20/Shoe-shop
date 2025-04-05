@@ -19,13 +19,12 @@ const ViewAllProducts = ({route}) => {
         <NavigationHeader
           startAction={<NavigationAction.BackButton />}
           title={currentCategory}
-          endAction={<NavigationAction.NofificationsButton />}
         />
       }>
       <FlatList
         data={data.filter(
           product =>
-            currentCategory === 'All' || product.gender === currentCategory,
+            currentCategory === 'All' || product.gender === currentCategory || product.brand === currentCategory,
         )}
         renderItem={({item}) => <Card isShowDetails product={item} />}
         keyExtractor={item => item.id.toString()}

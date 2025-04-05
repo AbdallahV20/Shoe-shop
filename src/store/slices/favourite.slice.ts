@@ -8,15 +8,13 @@ export const favouriteSlice = createSlice({
   initialState,
   reducers: {
     addToFav: (state, action) => {
-      const isItemExist = state.find(
+      const index = state.findIndex(
         product => product.id === action.payload.id,
       );
-      if (!isItemExist) {
-        state.push(action.payload);
-        console.log('Yes A');
+      if (index === -1) {
+        state.push(action.payload); // Add item if it doesn't exist
       } else {
-        state.filter(item => item.id !== action.payload.id);
-        console.log('No A');
+        state.splice(index, 1); // Remove item if it exists
       }
     },
     removeFromFav: (state, action) =>

@@ -2,7 +2,7 @@
   "0": {
     "id": 1,
     "name": "Nike React Infinity Run Flyknit",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Men",
     "category": "RUNNING",
     "price": 160,
@@ -17,7 +17,7 @@
   "1": {
     "id": 2,
     "name": "Nike React Miler",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Men",
     "category": "RUNNING",
     "price": 130,
@@ -32,7 +32,7 @@
   "2": {
     "id": 3,
     "name": "Nike Air Zoom Pegasus 37",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Women",
     "category": "RUNNING",
     "price": 120,
@@ -47,7 +47,7 @@
   "3": {
     "id": 4,
     "name": "Nike Joyride Run Flyknit",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Women",
     "category": "RUNNING",
     "price": 180,
@@ -62,7 +62,7 @@
   "4": {
     "id": 5,
     "name": "Nike Mercurial Vapor 13 Elite FG",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Women",
     "category": "FOOTBALL",
     "price": 250,
@@ -77,7 +77,7 @@
   "5": {
     "id": 6,
     "name": "Nike Phantom Vision Elite Dynamic Fit FG",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Women",
     "category": "FOOTBALL",
     "price": 150,
@@ -92,7 +92,7 @@
   "6": {
     "id": 7,
     "name": "Nike Phantom Venom Academy FG",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Women",
     "category": "FOOTBALL",
     "price": 80,
@@ -107,7 +107,7 @@
   "7": {
     "id": 8,
     "name": "Nike Mercurial Vapor 13 Elite Tech Craft FG",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Men",
     "category": "FOOTBALL",
     "price": 145,
@@ -122,7 +122,7 @@
   "8": {
     "id": 9,
     "name": "Nike Mercurial Superfly 7 Pro MDS FG",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Men",
     "category": "FOOTBALL",
     "price": 137,
@@ -137,7 +137,7 @@
   "9": {
     "id": 10,
     "name": "Nike Air Force 1",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Kids",
     "category": "CASUAL",
     "price": 90,
@@ -152,7 +152,7 @@
   "10": {
     "id": 11,
     "name": "Nike Air Max 90",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Kids",
     "category": "CASUAL",
     "price": 100,
@@ -167,7 +167,7 @@
   "11": {
     "id": 12,
     "name": "Nike Air Max 90 LTR",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Kids",
     "category": "CASUAL",
     "price": 110,
@@ -182,7 +182,7 @@
   "12": {
     "id": 13,
     "name": "Nike Joyride Dual Run",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Kids",
     "category": "RUNNING",
     "price": 110,
@@ -197,7 +197,7 @@
   "13": {
     "id": 14,
     "name": "Nike Renew Run",
-    "brand": "NIKE",
+    "brand": "Nike",
     "gender": "Kids",
     "category": "RUNNING",
     "price": 80,
@@ -212,7 +212,7 @@
   "14": {
     "id": 16,
     "name": "Bridgport Advice",
-    "brand": "HUSHPUPPIES",
+    "brand": "Puma",
     "gender": "Men",
     "category": "FORMAL",
     "price": 30,
@@ -227,7 +227,7 @@
   "15": {
     "id": 15,
     "name": "Beck",
-    "brand": "HUSHPUPPIES",
+    "brand": "Puma",
     "gender": "Men",
     "category": "FORMAL",
     "price": 80,
@@ -242,7 +242,7 @@
   "16": {
     "id": 17,
     "name": "Fester",
-    "brand": "HUSHPUPPIES",
+    "brand": "Puma",
     "gender": "Men",
     "category": "FORMAL",
     "price": 70,
@@ -257,7 +257,7 @@
   "17": {
     "id": 18,
     "name": "Pixel",
-    "brand": "HUSHPUPPIES",
+    "brand": "Puma",
     "gender": "Men",
     "category": "FORMAL",
     "price": 75,
@@ -272,7 +272,7 @@
   "18": {
     "id": 19,
     "name": "Austin",
-    "brand": "HUSHPUPPIES",
+    "brand": "Puma",
     "gender": "Men",
     "category": "FORMAL",
     "price": 75,
@@ -287,7 +287,7 @@
   "19": {
     "id": 20,
     "name": "SS-HL-0135",
-    "brand": "HUSHPUPPIES",
+    "brand": "Puma",
     "gender": "Women",
     "category": "FORMAL",
     "price": 30,
@@ -302,7 +302,7 @@
   "20": {
     "id": 21,
     "name": "SS-HL-0136",
-    "brand": "HUSHPUPPIES",
+    "brand": "Puma",
     "gender": "Women",
     "category": "FORMAL",
     "price": 50,
@@ -318,7 +318,7 @@
   "21": {
     "id": 22,
     "name": "SS-HL-0128",
-    "brand": "HUSHPUPPIES",
+    "brand": "Puma",
     "gender": "Women",
     "category": "FORMAL",
     "price": 35,
@@ -333,7 +333,7 @@
   "22": {
     "id": 23,
     "name": "SS-MS-0075",
-    "brand": "HUSHPUPPIES",
+    "brand": "Puma",
     "gender": "Women",
     "category": "CASUAL",
     "price": 25,
@@ -348,7 +348,7 @@
   "23": {
     "id": 24,
     "name": "SS-MS-0075",
-    "brand": "HUSHPUPPIES",
+    "brand": "Puma",
     "gender": "Women",
     "category": "CASUAL",
     "price": 35,
@@ -364,7 +364,7 @@
   "24": {
     "id": 25,
     "name": "SS-PM-0093",
-    "brand": "HUSHPUPPIES",
+    "brand": "Puma",
     "gender": "Women",
     "category": "CASUAL",
     "price": 30,
@@ -380,7 +380,7 @@
   "25": {
     "id": 26,
     "name": "Nizza X Disney",
-    "brand": "ADIDAS",
+    "brand": "Adidas",
     "gender": "Kids",
     "category": "CASUAL",
     "price": 55,
@@ -395,7 +395,7 @@
   "26": {
     "id": 27,
     "name": "X_PLR",
-    "brand": "ADIDAS",
+    "brand": "Adidas",
     "gender": "Kids",
     "category": "CASUAL",
     "price": 65,
@@ -411,7 +411,7 @@
   "27": {
     "id": 28,
     "name": "Stan Smith",
-    "brand": "ADIDAS",
+    "brand": "Adidas",
     "gender": "Kids",
     "category": "CASUAL",
     "price": 55,
@@ -426,7 +426,7 @@
   "28": {
     "id": 29,
     "name": "NMD_R1",
-    "brand": "ADIDAS",
+    "brand": "Adidas",
     "gender": "Kids",
     "category": "RUNNING",
     "price": 120,
@@ -441,7 +441,7 @@
   "29": {
     "id": 30,
     "name": "NMD_R1 Flash Red",
-    "brand": "ADIDAS",
+    "brand": "Adidas",
     "gender": "Women",
     "category": "CASUAL",
     "price": 140,
@@ -457,7 +457,7 @@
   "30": {
     "id": 31,
     "name": "Superstar",
-    "brand": "ADIDAS",
+    "brand": "Adidas",
     "gender": "Women",
     "category": "CASUAL",
     "price": 90,
@@ -472,7 +472,7 @@
   "31": {
     "id": 32,
     "name": "Club C Revenge Mens",
-    "brand": "Reebok",
+    "brand": "New Balance",
     "gender": "Men",
     "category": "CASUAL",
     "price": 70,
@@ -487,7 +487,7 @@
   "32": {
     "id": 33,
     "name": "SK80-Low",
-    "brand": "Vans",
+    "brand": "New Balance",
     "gender": "Men",
     "category": "CASUAL",
     "price": 60,
@@ -502,7 +502,7 @@
   "33": {
     "id": 34,
     "name": "Michael Feburary SK8-Hi",
-    "brand": "Vans",
+    "brand": "New Balance",
     "gender": "Men",
     "category": "CASUAL",
     "price": 72,
