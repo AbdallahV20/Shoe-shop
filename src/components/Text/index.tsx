@@ -47,7 +47,8 @@ const Text = ({
         },
         style,
       ]}
-      numberOfLines={numberOfLines}>
+      numberOfLines={numberOfLines}
+      ellipsizeMode="tail">
       {children}
     </ReactNativeText>
   );

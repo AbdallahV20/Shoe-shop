@@ -1,4 +1,4 @@
-import {View, ImageBackground} from 'react-native';
+import {View, ImageBackground, Pressable} from 'react-native';
 import React from 'react';
 import {useAppTheme} from '../../theme';
 import styles from './styles';
@@ -7,25 +7,31 @@ import Icon from '../Icon';
 import {appColors} from '../../theme/colors';
 import Price from '../Price';
 import {moderateScale} from '../../utils';
-import {ProductDto} from '../../constants';
+import {ProductDto, RootStackParamList} from '../../constants';
 import {add} from '../../store/slices/cart.slice';
 import {useDispatch} from 'react-redux';
 import IconButton from '../IconButton';
 import {addToFav} from '../../store/slices/favourite.slice';
 import NavigationAction from '../NavigationAction';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const Card = ({
   product,
   isShowDetails,
 }: {
   product: ProductDto;
-  isShowDetails: boolean;
+  isShowDetails?: boolean;
 }) => {
   const {theme, isDarkMode} = useAppTheme();
   const {name, imageURL, price, average_rating: rate, slug} = product;
   const dispatch = useDispatch();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
-    <View style={styles(theme, isDarkMode, isShowDetails).container}>
+    <Pressable
+      style={styles(theme, isDarkMode, isShowDetails).container}
+      onPress={() => navigation.push('productDetails', {product})}>
       <ImageBackground
         source={{uri: imageURL}}
         resizeMode="cover"
@@ -82,7 +88,7 @@ const Card = ({
           iconSize={isShowDetails ? 'large' : 'medium'}
         />
       </View>
-    </View>
+    </Pressable>
   );
 };
 

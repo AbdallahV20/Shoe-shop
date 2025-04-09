@@ -19,10 +19,13 @@ import Adidas from '../../components/Logos/Adidas';
 import Nike from '../../components/Logos/Nike';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../constants';
 const Home = () => {
   const [search, setSearch] = useState('');
   const [activeTab, setActiveTab] = useState(0);
-  const navigaiton = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const data = Object.values(ShoesData);
   const categories = [
     'All',
@@ -57,7 +60,7 @@ const Home = () => {
           <SectionHeader
             sectionTitle="Recommended For You"
             onViewAllPress={() =>
-              navigaiton.navigate('ViewAllProducts', {
+              navigation.navigate('viewAllProducts', {
                 currentCategory: categories[activeTab],
               })
             }
@@ -87,7 +90,7 @@ const Home = () => {
             contentContainerStyle={styles().brands}>
             <Pressable
               onPress={() =>
-                navigaiton.navigate('ViewAllProducts', {
+                navigation.navigate('viewAllProducts', {
                   currentCategory: 'Puma',
                 })
               }>
@@ -95,7 +98,7 @@ const Home = () => {
             </Pressable>
             <Pressable
               onPress={() =>
-                navigaiton.navigate('ViewAllProducts', {
+                navigation.navigate('viewAllProducts', {
                   currentCategory: 'New Balance',
                 })
               }>
@@ -103,7 +106,7 @@ const Home = () => {
             </Pressable>
             <Pressable
               onPress={() =>
-                navigaiton.navigate('ViewAllProducts', {
+                navigation.navigate('viewAllProducts', {
                   currentCategory: 'Nike',
                 })
               }>
@@ -111,7 +114,7 @@ const Home = () => {
             </Pressable>
             <Pressable
               onPress={() =>
-                navigaiton.navigate('ViewAllProducts', {
+                navigation.navigate('viewAllProducts', {
                   currentCategory: 'Adidas',
                 })
               }>

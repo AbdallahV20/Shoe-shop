@@ -4,7 +4,7 @@ import {gutters, layout, Theme} from '../../constants';
 import {pxH} from '../../utils';
 
 const statusBarHeight = getStatusBarHeight();
-export const styles = (theme: Theme) =>
+export const styles = (theme: Theme, isTransparent?: boolean) =>
   StyleSheet.create({
     container: {
       ...layout.row,
@@ -13,7 +13,7 @@ export const styles = (theme: Theme) =>
       ...gutters.px_24,
       paddingTop: statusBarHeight + pxH(16),
       ...gutters.pb_16,
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: !isTransparent ? theme.backgroundColor : 'transparent',
     },
   });
 

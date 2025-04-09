@@ -40,7 +40,7 @@ const styles = (theme: Theme, isDarkMode?: boolean) =>
       ...layout.allCenter,
     },
     emptyListImage: {width: '70%', height: '40%'},
-    emptyTextContainer: {...layout.fullWidth, ...gutters.gapH_16},
+    emptyTextContainer: {...layout.flex_1, ...gutters.gapH_16},
   });
 
 export default styles;

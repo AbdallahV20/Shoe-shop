@@ -1,7 +1,7 @@
 import {StyleSheet, ViewStyle} from 'react-native';
 import {moderateScale, px, pxH} from '../utils';
 
-type SpacingValues = 2 | 4 | 6 | 8 | 10 | 12 | 16 | 18 | 24 | 28 | 32 | 40;
+type SpacingValues = 1 | 2 | 4 | 6 | 8 | 10 | 12 | 16 | 18 | 24 | 28 | 32 | 40;
 
 type SpacingPrefix =
   | 'm'

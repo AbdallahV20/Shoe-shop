@@ -8,15 +8,17 @@ interface NavigationHeaderProps {
   startAction?: React.ReactNode;
   title?: string;
   endAction?: React.ReactNode;
+  isTransparent?: boolean;
 }
 const NavigationHeader = ({
   startAction,
   title,
   endAction,
+  isTransparent,
 }: NavigationHeaderProps) => {
   const {theme} = useAppTheme();
   return (
-    <View style={styles(theme).container}>
+    <View style={styles(theme,isTransparent).container}>
       <View style={{width: startAction ? undefined : px(36)}}>
         {startAction}
       </View>
