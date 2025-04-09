@@ -1,21 +1,17 @@
 import {StyleSheet} from 'react-native';
-import {gutters, Theme} from '../../constants';
+import {gutters, layout} from '../../constants';
 import {px} from '../../utils';
+import {appColors} from '../../theme/colors';
 
-export const styles = (
-  theme: Theme,
-  icon: React.ReactNode,
-  iBorder?: boolean,
-  size?: 'medium' | 'large',
-) =>
+export const styles = () =>
   StyleSheet.create({
     container: {
-      backgroundColor: theme.infoBackground,
-      borderWidth: iBorder ? px(1) : 0,
-      borderColor: theme.infoBorder,
-      ...gutters.radius_10,
-      width: size === 'medium' ? px(45) : px(65),
-      ...gutters.py_4,
+      backgroundColor: appColors.secondary,
+      borderWidth: px(1),
+      borderColor: appColors.primary,
+      ...gutters.radius_8,
+      ...layout.selfStart,
+      ...gutters.px_8,
     },
   });
 export default styles;

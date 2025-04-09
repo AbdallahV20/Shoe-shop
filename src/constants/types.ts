@@ -15,6 +15,7 @@ export interface ProductDto {
   id: number;
   name: string;
   description?: string;
+  category: string;
   imageURL: string;
   price: number;
   average_rating: number;

@@ -16,6 +16,7 @@ import {
   Price,
   Button,
   Tabs,
+  Info,
 } from '../../components';
 import {moderateScale} from '../../utils';
 import {appColors} from '../../theme/colors';
@@ -33,7 +34,7 @@ const ProductDetails = () => {
   const route = useRoute<RouteProp<RootStackParamList, 'productDetails'>>();
   const {product} = route.params;
   const {theme} = useAppTheme();
-  const {brand, name, price} = product;
+  const {brand, name, price, category} = product;
   const {height} = useWindowDimensions();
 
   return (
@@ -64,7 +65,7 @@ const ProductDetails = () => {
       }>
       <ImageBackground
         source={{uri: product.imageURL}}
-        style={{width: '100%', height: height * 0.5,borderRadius:50}}
+        style={{width: '100%', height: height * 0.5, borderRadius: 50}}
         resizeMode="cover">
         <NavigationHeader
           isTransparent
@@ -77,30 +78,36 @@ const ProductDetails = () => {
         />
       </ImageBackground>
       <View style={{paddingHorizontal: 24, marginTop: 24, gap: 24}}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
-          <Text fontSize={18} fontWeight="semiBold">
-            {product.name}
-          </Text>
+        <View>
+          <View style={{flexDirection: 'row', gap: 12,marginBottom:12}}>
+            <Info title={brand} />
+            <Info title={category} />
+          </View>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              gap: 4,
+              justifyContent: 'space-between',
             }}>
-            <Icon
-              name="star-fill"
-              color={appColors.yellow}
-              size={moderateScale(18)}
-            />
-            <Text fontSize={14}>{product.average_rating}</Text>
+            <Text fontSize={18} fontWeight="semiBold">
+              {product.name}
+            </Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 4,
+              }}>
+              <Icon
+                name="star-fill"
+                color={appColors.yellow}
+                size={moderateScale(18)}
+              />
+              <Text fontSize={14}>{product.average_rating}</Text>
+            </View>
           </View>
         </View>
-        <View style={{gap: 10}}>
+        <View style={{gap: 12}}>
           <Text fontWeight="semiBold">Sizes</Text>
           <Tabs
             tabs={['30', '32', '34', '36', '38', '40', '42', '44', '46']}
@@ -108,7 +115,7 @@ const ProductDetails = () => {
             setActiveTab={setActiveTab}
           />
         </View>
-        <View style={{gap: 10}}>
+        <View style={{gap: 12}}>
           <Text fontWeight="semiBold">Product Details</Text>
           <Text numberOfLines={2} fontSize={14} color={appColors.gray400}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
@@ -117,7 +124,7 @@ const ProductDetails = () => {
             consectetur reiciendis eos?
           </Text>
         </View>
-        <View style={{gap: 10}}>
+        <View style={{gap: 12}}>
           <SectionHeader
             sectionTitle="Similiar Products"
             onViewAllPress={() =>
