@@ -9,7 +9,9 @@ const styles = () =>
       ...gutters.p_4,
       ...gutters.mt_16,
     },
-    brands: {...gutters.gap_16, ...gutters.mb_24},
+    brands: {...gutters.gap_16},
+    discounts: {...gutters.mb_24},
+    discountsContainer: {...gutters.gap_16, ...gutters.p_4},
   });
 
 export default styles;

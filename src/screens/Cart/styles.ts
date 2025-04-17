@@ -36,11 +36,16 @@ const styles = (theme: Theme, isDarkMode?: boolean) =>
       ...layout.flexGrow_1, //this is for the empty component to take the whole vertical space
     },
     emptyListContainer: {
-      ...layout.flex_1,
-      ...layout.allCenter,
+      flex: 1,
+      ...gutters.gapH_24,
     },
-    emptyListImage: {width: '70%', height: '40%'},
-    emptyTextContainer: {...layout.flex_1, ...gutters.gapH_16},
+    emptyListImage: {width: '100%', height: pxH(200)},
+    emptyTextContainer: {...gutters.gapH_16},
+    productsContainer: {
+      ...gutters.gap_16,
+      ...gutters.p_4,
+      ...gutters.mt_16,
+    },
   });
 
 export default styles;

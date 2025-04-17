@@ -14,18 +14,17 @@ export interface Theme {
 export interface ProductDto {
   id: number;
   name: string;
-  description?: string;
+  description: string;
   category: string;
   imageURL: string;
   price: number;
   average_rating: number;
   average_counts: number;
-  quantity: number;
-  slug: string;
   items_left: number;
-  is_in_inventory: boolean;
   gender: string;
   brand: string;
+  available_sizes: string[];
+  discount?: string;
 }
 
 export type RootStackParamList = {

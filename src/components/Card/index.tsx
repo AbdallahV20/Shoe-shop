@@ -24,7 +24,16 @@ const Card = ({
   isShowDetails?: boolean;
 }) => {
   const {theme, isDarkMode} = useAppTheme();
-  const {name, imageURL, price, average_rating: rate, slug} = product;
+  const {
+    name,
+    imageURL,
+    price,
+    average_rating: rate,
+    discount,
+    description,
+  } = product;
+  const priceAfterDiscount =
+    price - price * (parseInt(discount ?? '', 10) / 100);
   const dispatch = useDispatch();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -69,14 +78,27 @@ const Card = ({
           <Text
             color={appColors.gray100}
             fontSize={isShowDetails ? 14 : 12}
-            numberOfLines={1}>
-            {slug}
+            numberOfLines={2}>
+            {description}
           </Text>
         )}
       </View>
 
       <View style={styles(theme).cardFooter}>
-        <Price price={price} priceSize={isShowDetails ? 21 : 16} />
+        <View style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>
+          <Price
+            price={discount ? priceAfterDiscount : price}
+            priceSize={isShowDetails ? 21 : 16}
+          />
+          {discount && (
+            <Text
+              style={{textDecorationLine: 'line-through'}}
+              color={appColors.gray100}
+              fontSize={isShowDetails ? 21 : 16}>
+              {price}
+            </Text>
+          )}
+        </View>
         <IconButton
           onPress={() => {
             dispatch(add(product));

@@ -34,7 +34,8 @@ const ProductDetails = () => {
   const route = useRoute<RouteProp<RootStackParamList, 'productDetails'>>();
   const {product} = route.params;
   const {theme} = useAppTheme();
-  const {brand, name, price, category} = product;
+  const {brand, name, price, category, gender, description, available_sizes} =
+    product;
   const {height} = useWindowDimensions();
 
   return (
@@ -78,11 +79,11 @@ const ProductDetails = () => {
         />
       </ImageBackground>
       <View style={{paddingHorizontal: 24, marginTop: 24, gap: 24}}>
-        <View>
-          <View style={{flexDirection: 'row', gap: 12,marginBottom:12}}>
-            <Info title={brand} />
-            <Info title={category} />
-          </View>
+        <View style={{flexDirection: 'row', gap: 12, marginBottom: 12}}>
+          <Info title={gender} />
+          <Info title={category} />
+        </View>
+        <View style={{gap: 12}}>
           <View
             style={{
               flexDirection: 'row',
@@ -106,23 +107,17 @@ const ProductDetails = () => {
               <Text fontSize={14}>{product.average_rating}</Text>
             </View>
           </View>
+          <Text numberOfLines={3} fontSize={14} color={appColors.gray400}>
+            {description}
+          </Text>
         </View>
         <View style={{gap: 12}}>
           <Text fontWeight="semiBold">Sizes</Text>
           <Tabs
-            tabs={['30', '32', '34', '36', '38', '40', '42', '44', '46']}
+            tabs={available_sizes}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
           />
-        </View>
-        <View style={{gap: 12}}>
-          <Text fontWeight="semiBold">Product Details</Text>
-          <Text numberOfLines={2} fontSize={14} color={appColors.gray400}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-            officiis sint numquam fugit commodi nesciunt maiores, est quos
-            laborum ipsam tempora nemo dolore delectus ipsum veniam dolor
-            consectetur reiciendis eos?
-          </Text>
         </View>
         <View style={{gap: 12}}>
           <SectionHeader

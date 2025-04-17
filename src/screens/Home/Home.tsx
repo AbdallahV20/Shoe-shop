@@ -71,7 +71,7 @@ const Home = () => {
             setActiveTab={setActiveTab}
           />
           <FlatList
-            data={filterDataByCategory}
+            data={filterDataByCategory.slice(0,8)}
             renderItem={({item}) => <Card product={item} />}
             contentContainerStyle={styles().productsContainer}
             keyExtractor={item => item.id.toString()}
@@ -121,6 +121,20 @@ const Home = () => {
               <Adidas />
             </Pressable>
           </ScrollView>
+        </View>
+        <View style={styles().discounts}>
+          <SectionHeader sectionTitle="Discounts" noViewAll />
+          <FlatList
+            data={data.filter(item => item.discount)}
+            renderItem={({item}) => <Card product={item} />}
+            contentContainerStyle={styles().discountsContainer}
+            keyExtractor={item => item.id.toString()}
+            horizontal
+            ListEmptyComponent={() => (
+              <Text textAlign="center">No Data Found</Text>
+            )}
+            showsHorizontalScrollIndicator={false}
+          />
         </View>
       </View>
     </MainLayout>

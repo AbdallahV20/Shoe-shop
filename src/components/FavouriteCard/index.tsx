@@ -30,7 +30,7 @@ const StarRating = ({rating = 1, size = 18, color = appColors.yellow}) => {
   return <View style={{flexDirection: 'row'}}>{stars}</View>;
 };
 const FavouriteCard = ({product}: {product: ProductDto}) => {
-  const {name, imageURL, price, average_rating: rate, id, slug} = product;
+  const {name, imageURL, price, average_rating: rate, id, category} = product;
   const {theme} = useAppTheme();
   const dispatch = useDispatch();
   return (
@@ -49,8 +49,8 @@ const FavouriteCard = ({product}: {product: ProductDto}) => {
       <View style={styles(theme).rightContainer}>
         <View>
           <Text numberOfLines={1}>{name}</Text>
-          <Text color={appColors.gray100} fontSize={12} numberOfLines={1}>
-            {slug}
+          <Text color={appColors.gray100} fontSize={12} numberOfLines={2}>
+            {category}
           </Text>
         </View>
         <Price price={price} />
