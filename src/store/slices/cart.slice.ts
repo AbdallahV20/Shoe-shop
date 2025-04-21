@@ -9,11 +9,19 @@ export const cartSlice = createSlice({
   reducers: {
     add: (state, action) => {
       const isItemExist = state.find(
-        product => product.id === action.payload.id,
+        product =>
+          product.id === action.payload.id &&
+          product.selected_size === action.payload.selected_size,
       );
       if (!isItemExist) state.push(action.payload);
     },
-    remove: (state, action) => state.filter(item => item.id !== action.payload),
+    remove: (state, action) => {
+      return state.filter(
+        item =>
+          item.id !== action.payload.id ||
+          item.selected_size !== action.payload.selected_size,
+      );
+    },
   },
 });
 

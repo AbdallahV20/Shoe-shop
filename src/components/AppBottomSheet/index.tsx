@@ -32,7 +32,7 @@ const AppBottomSheet = ({
         <Text>{title}</Text>
         <IconButton
           iconName="x"
-          iconSize={moderateScale(18)}
+          iconSize="medium"
           onPress={() => SheetManager.hide(sheetName)}
         />
       </View>

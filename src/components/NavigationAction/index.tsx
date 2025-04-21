@@ -9,7 +9,10 @@ import IconButton from '../IconButton';
 import {useAppTheme} from '../../theme';
 import Text from '../Text';
 import {isArabic} from '../../localization/i18next';
-
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../store/store';
+import {ProductDto} from '../../constants';
+import {addToFav} from '../../store/slices/favourite.slice';
 const Logo = () => {
   return (
     <Image style={styles.logo} resizeMode="contain" source={AppImages.logo} />
@@ -71,22 +74,23 @@ const ProfilePiture = () => {
 };
 
 const LoveButton = ({
-  handleOnLikePressed,
+  product,
   iconSize,
-  active,
   noBackground,
 }: {
-  handleOnLikePressed: () => void;
+  product: ProductDto;
   iconSize?: 'large' | 'medium' | 'small';
-  active?: boolean;
   noBackground?: boolean;
 }) => {
-  const [like, setLike] = useState(active ?? false);
+  const favouriteProducts = useSelector((state: RootState) => state.favourite);
+  const dispatch = useDispatch();
+  const isProductExist = favouriteProducts.some(item => item.id === product.id);
+  const [like, setLike] = useState(isProductExist);
   const {theme} = useAppTheme();
   const handleOnPress = useCallback(() => {
+    dispatch(addToFav(product));
     setLike(prev => !prev);
-    handleOnLikePressed();
-  }, [handleOnLikePressed]);
+  }, [dispatch, product]);
   return (
     <IconButton
       iconColor={like ? appColors.red : appColors.gray100}

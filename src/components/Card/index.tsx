@@ -8,13 +8,11 @@ import {appColors} from '../../theme/colors';
 import Price from '../Price';
 import {moderateScale} from '../../utils';
 import {ProductDto, RootStackParamList} from '../../constants';
-import {add} from '../../store/slices/cart.slice';
-import {useDispatch} from 'react-redux';
 import IconButton from '../IconButton';
-import {addToFav} from '../../store/slices/favourite.slice';
 import NavigationAction from '../NavigationAction';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {SheetManager} from 'react-native-actions-sheet';
 
 const Card = ({
   product,
@@ -34,7 +32,6 @@ const Card = ({
   } = product;
   const priceAfterDiscount =
     price - price * (parseInt(discount ?? '', 10) / 100);
-  const dispatch = useDispatch();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
@@ -54,13 +51,13 @@ const Card = ({
                 color={appColors.yellow}
               />
               <Text fontWeight="semiBold" fontSize={14} color="#fff">
-                {rate.toString()}
+                {rate}
               </Text>
             </View>
           ) : (
             <View style={styles(theme).loveContainer}>
               <NavigationAction.LoveButton
-                handleOnLikePressed={() => dispatch(addToFav(product))}
+                product={product}
                 noBackground
                 iconSize="large"
               />
@@ -101,7 +98,9 @@ const Card = ({
         </View>
         <IconButton
           onPress={() => {
-            dispatch(add(product));
+            SheetManager.show('add-to-cart-sheet', {
+              payload: {product},
+            });
           }}
           iconName="plus-icon-2"
           backgroundColor={appColors.primary}

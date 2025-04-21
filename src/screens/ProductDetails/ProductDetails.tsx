@@ -71,11 +71,7 @@ const ProductDetails = () => {
         <NavigationHeader
           isTransparent
           startAction={<NavigationAction.BackButton />}
-          endAction={
-            <NavigationAction.LoveButton
-              handleOnLikePressed={() => console.log('Bo')}
-            />
-          }
+          endAction={<NavigationAction.LoveButton product={product}/>}
         />
       </ImageBackground>
       <View style={{paddingHorizontal: 24, marginTop: 24, gap: 24}}>

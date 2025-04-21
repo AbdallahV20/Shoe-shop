@@ -14,7 +14,7 @@ const styles = () =>
       ...layout.allCenter,
       ...gutters.gapH_16,
     },
-    emptyListImage: {width: '70%', height: '40%'},
+    emptyListImage: {width: '100%', height: '50%'},
     emptyTextContainer: {
       ...layout.fullWidth,
       ...gutters.gapH_8,

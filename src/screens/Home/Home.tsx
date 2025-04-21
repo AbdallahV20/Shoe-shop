@@ -20,7 +20,7 @@ import Nike from '../../components/Logos/Nike';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../constants';
+import {ProductDto, RootStackParamList} from '../../constants';
 const Home = () => {
   const [search, setSearch] = useState('');
   const [activeTab, setActiveTab] = useState(0);
@@ -71,7 +71,7 @@ const Home = () => {
             setActiveTab={setActiveTab}
           />
           <FlatList
-            data={filterDataByCategory.slice(0,8)}
+            data={filterDataByCategory.slice(0, 8)}
             renderItem={({item}) => <Card product={item} />}
             contentContainerStyle={styles().productsContainer}
             keyExtractor={item => item.id.toString()}
@@ -125,7 +125,7 @@ const Home = () => {
         <View style={styles().discounts}>
           <SectionHeader sectionTitle="Discounts" noViewAll />
           <FlatList
-            data={data.filter(item => item.discount)}
+            data={data.filter((item: ProductDto) => item?.discount)}
             renderItem={({item}) => <Card product={item} />}
             contentContainerStyle={styles().discountsContainer}
             keyExtractor={item => item.id.toString()}

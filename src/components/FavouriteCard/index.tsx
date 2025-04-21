@@ -11,7 +11,6 @@ import {add} from '../../store/slices/cart.slice';
 import {useDispatch} from 'react-redux';
 import IconButton from '../IconButton';
 import NavigationAction from '../NavigationAction';
-import {removeFromFav} from '../../store/slices/favourite.slice';
 const StarRating = ({rating = 1, size = 18, color = appColors.yellow}) => {
   const stars = [];
 
@@ -30,7 +29,7 @@ const StarRating = ({rating = 1, size = 18, color = appColors.yellow}) => {
   return <View style={{flexDirection: 'row'}}>{stars}</View>;
 };
 const FavouriteCard = ({product}: {product: ProductDto}) => {
-  const {name, imageURL, price, average_rating: rate, id, category} = product;
+  const {name, imageURL, price, average_rating: rate, category} = product;
   const {theme} = useAppTheme();
   const dispatch = useDispatch();
   return (
@@ -40,8 +39,7 @@ const FavouriteCard = ({product}: {product: ProductDto}) => {
         source={{uri: imageURL}}
         resizeMode="cover">
         <NavigationAction.LoveButton
-          handleOnLikePressed={() => dispatch(removeFromFav(id))}
-          active
+          product={product}
           noBackground
           iconSize="large"
         />

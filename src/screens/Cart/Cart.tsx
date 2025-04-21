@@ -1,4 +1,4 @@
-import {FlatList, Image, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import React from 'react';
 import {
   Button,
@@ -20,6 +20,7 @@ import {useNavigation} from '@react-navigation/native';
 import ShoesData from '../../data/ShoesData.json';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../constants';
+import LottieView from 'lottie-react-native';
 const Cart = () => {
   const cartStore = useSelector((state: RootState) => state.cart);
   const data = Object.values(ShoesData);
@@ -32,34 +33,35 @@ const Cart = () => {
   const EmptyCartComponent = () => (
     <View style={styles(theme).emptyListContainer}>
       <View>
-        <Image
-          source={AppImages.empty_cart}
-          resizeMode="contain"
+        <LottieView
+          source={AppImages.empry_cart_animatino}
+          autoPlay
+          loop
           style={styles(theme).emptyListImage}
         />
         <View style={styles(theme).emptyTextContainer}>
-          <Text fontSize={21} fontWeight="semiBold" textAlign="center">
+          <Text fontSize={18} fontWeight="semiBold" textAlign="center">
             Your cart is empty
           </Text>
           <Button
             title="Start Shopping"
             alignSelf="center"
-            size="large"
+            size="small"
             onPress={() => navigation.navigate('home')}
           />
         </View>
       </View>
       <View>
         <SectionHeader
-          sectionTitle="Recommended For You"
+          sectionTitle="Featured Products"
           onViewAllPress={() =>
             navigation.navigate('viewAllProducts', {
-              currentCategory: 'all',
+              currentCategory: 'All',
             })
           }
         />
         <FlatList
-          data={data.slice(0, 8)}
+          data={data.slice(6, 14)}
           renderItem={({item}) => <Card product={item} />}
           contentContainerStyle={styles(theme).productsContainer}
           keyExtractor={item => item.id.toString()}
@@ -112,7 +114,7 @@ const Cart = () => {
       footer={!!totalPrice && <FooterComponent />}>
       <FlatList
         data={cartStore}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={item => item.name.toString()}
         contentContainerStyle={styles(theme).cartContainer}
         renderItem={({item}) => <CardCart key={item.id} product={item} />}
         showsVerticalScrollIndicator={false}

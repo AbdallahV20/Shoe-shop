@@ -17,10 +17,8 @@ export const favouriteSlice = createSlice({
         state.splice(index, 1); // Remove item if it exists
       }
     },
-    removeFromFav: (state, action) =>
-      state.filter(item => item.id !== action.payload),
   },
 });
 
-export const {addToFav, removeFromFav} = favouriteSlice.actions;
+export const {addToFav} = favouriteSlice.actions;
 export default favouriteSlice.reducer;

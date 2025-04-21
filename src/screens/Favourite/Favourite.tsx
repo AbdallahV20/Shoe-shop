@@ -1,4 +1,4 @@
-import {FlatList, Image, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import React from 'react';
 import {
   Button,
@@ -14,14 +14,16 @@ import styles from './styles';
 import AppImages from '../../assets/app_images';
 import {appColors} from '../../theme/colors';
 import {useNavigation} from '@react-navigation/native';
+import LottieView from 'lottie-react-native';
 const Favourite = () => {
   const favouriteProducts = useSelector((state: RootState) => state.favourite);
   const navigation = useNavigation();
   const EmptyCartComponent = () => (
     <View style={styles().emptyListContainer}>
-      <Image
-        source={AppImages.empty_fav}
-        resizeMode="contain"
+      <LottieView
+        source={AppImages.empry_fav_animatino}
+        loop
+        autoPlay
         style={styles().emptyListImage}
       />
       <View style={styles().emptyTextContainer}>

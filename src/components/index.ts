@@ -22,3 +22,5 @@ export {default as ChangePicture} from './ChangePicture';
 export {default as AppBottomSheet} from './AppBottomSheet';
 export {default as IconButton} from './IconButton';
 export {default as Toggle} from './Toggle';
+export {default as AddToCart} from './AddToCart';
+export {default as DropDownMenu} from './DropDownMenu';

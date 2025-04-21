@@ -17,7 +17,7 @@ export const styles = (
           : variant === 'transparent'
           ? 'transparent'
           : theme?.cardBackground,
-      borderRadius: size === 'large' ? moderateScale(25) : moderateScale(12),
+      borderRadius: size === 'large' ? moderateScale(25) : moderateScale(10),
       ...layout.row,
       ...layout.allCenter,
       ...gutters.gap_8,
@@ -31,13 +31,7 @@ export const styles = (
           ? px(6)
           : px(14),
       paddingHorizontal:
-        variant === 'transparent'
-          ? 0
-          : size === 'small'
-          ? px(6)
-          : size === 'medium'
-          ? px(8)
-          : px(18),
+        variant === 'transparent' ? 0 : size === 'large' ? px(18) : px(12),
       opacity: isDisabled ? 0.5 : 1,
     },
     text: {

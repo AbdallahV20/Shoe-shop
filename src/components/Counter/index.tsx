@@ -20,7 +20,7 @@ const Counter = ({id}: {id: number}) => {
   return (
     <View style={styles.counterConainer}>
       <IconButton
-        iconName="minus-svgrepo-com-1"
+        iconName={counter === 1 ? 'garbage-trash-svgrepo-com' : 'minus-svgrepo-com-1'}
         onPress={removeButtonHandler}
         isDisabled={counter === 0}
         backgroundColor={appColors.white}
