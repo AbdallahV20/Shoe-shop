@@ -5,10 +5,10 @@ import {useAppTheme} from '../../theme';
 import Icon from '../Icon';
 import {moderateScale} from '../../utils';
 
-interface ButtonProps {
+interface IconButtonProps {
   onPress: () => void;
   iconName: string;
-  iconSize?: 'large' | 'medium' | 'small';
+  iconSize?: 'large' | 'intermediate' | 'medium' | 'small';
   isDisabled?: boolean;
   isBorder?: boolean;
   isRounded?: boolean;
@@ -26,7 +26,7 @@ const IconButton = ({
   backgroundColor,
   iconColor,
   style,
-}: ButtonProps) => {
+}: IconButtonProps) => {
   const {theme} = useAppTheme();
   return (
     <Pressable
@@ -45,11 +45,17 @@ const IconButton = ({
       disabled={isDisabled}>
       <Icon
         name={iconName}
-        size={iconSize === 'large' ? moderateScale(24) : moderateScale(16)}
+        size={
+          iconSize === 'large'
+            ? moderateScale(24)
+            : iconSize === 'intermediate'
+            ? moderateScale(18)
+            : moderateScale(16)
+        }
         color={iconColor ?? theme?.primaryText}
       />
     </Pressable>
   );
 };
 
-export default IconButton;
+export default React.memo(IconButton);

@@ -24,3 +24,4 @@ export {default as IconButton} from './IconButton';
 export {default as Toggle} from './Toggle';
 export {default as AddToCart} from './AddToCart';
 export {default as DropDownMenu} from './DropDownMenu';
+export {default as StarRating} from './StarRating';

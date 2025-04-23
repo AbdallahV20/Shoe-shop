@@ -29,7 +29,7 @@ const ChangePicture = () => {
   const requestGalleryPermission = async (): Promise<boolean> => {
     const permission =
       Platform.OS === 'android'
-        ? Platform.Version > 33
+        ? Platform.Version >= 33
           ? PERMISSIONS.ANDROID.READ_MEDIA_IMAGES
           : PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE
         : PERMISSIONS.IOS.PHOTO_LIBRARY;

@@ -21,7 +21,7 @@ const Favourite = () => {
   const EmptyCartComponent = () => (
     <View style={styles().emptyListContainer}>
       <LottieView
-        source={AppImages.empry_fav_animatino}
+        source={AppImages.empry_fav_animation}
         loop
         autoPlay
         style={styles().emptyListImage}

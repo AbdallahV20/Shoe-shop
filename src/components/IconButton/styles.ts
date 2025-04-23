@@ -19,9 +19,9 @@ export const styles = (
         isBorder || backgroundColor
           ? iconSize === 'medium'
             ? px(10)
-            : iconSize === 'small'
-            ? px(6)
-            : px(14)
+            : iconSize === 'intermediate'
+            ? px(12)
+            : px(6)
           : px(0),
       borderWidth: isBorder ? px(2) : 0,
       borderColor: appColors.primary,

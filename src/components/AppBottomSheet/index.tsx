@@ -5,13 +5,12 @@ import {useAppTheme} from '../../theme';
 import IconButton from '../IconButton';
 import {ReactNode} from 'react';
 import {styles} from './styles';
-import {moderateScale} from '../../utils';
 
 interface AppBottomSheetProps {
-  leftComponent?: ReactNode;
   sheetName: keyof Sheets;
   sheetContent: ReactNode;
   title: string;
+  leftComponent?: ReactNode;
 }
 
 const AppBottomSheet = ({
@@ -23,8 +22,8 @@ const AppBottomSheet = ({
   const {theme} = useAppTheme();
   return (
     <ActionSheet
-      keyboardHandlerEnabled={true}
-      gestureEnabled={true}
+      keyboardHandlerEnabled
+      gestureEnabled
       containerStyle={styles(theme).container}
       indicatorStyle={styles(theme).indicator}>
       <View style={styles(theme).header}>

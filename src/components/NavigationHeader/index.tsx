@@ -18,7 +18,7 @@ const NavigationHeader = ({
 }: NavigationHeaderProps) => {
   const {theme} = useAppTheme();
   return (
-    <View style={styles(theme,isTransparent).container}>
+    <View style={styles(theme, isTransparent).container}>
       <View style={{width: startAction ? undefined : px(36)}}>
         {startAction}
       </View>
@@ -30,4 +30,4 @@ const NavigationHeader = ({
   );
 };
 
-export default NavigationHeader;
+export default React.memo(NavigationHeader);

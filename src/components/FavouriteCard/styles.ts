@@ -1,6 +1,5 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {gutters, layout, Theme} from '../../constants';
-const {width} = Dimensions.get('window');
 export const styles = (theme: Theme) =>
   StyleSheet.create({
     container: {
@@ -11,13 +10,14 @@ export const styles = (theme: Theme) =>
       backgroundColor: theme.cardBackground,
     },
     image: {
-      width: width * 0.4,
+      ...layout.flex_1,
       ...gutters.radius_16,
       ...gutters.p_8,
       ...layout.overflowHidden,
       ...layout.itemsEnd,
     },
     rightContainer: {...gutters.gapH_8, ...layout.flex_1},
+    rateContainer: {...layout.row, ...gutters.gap_8, ...layout.itemsCenter},
     buttonContainer: {...layout.selfEnd},
   });
 export default styles;

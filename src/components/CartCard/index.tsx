@@ -1,5 +1,6 @@
-import {View, ImageBackground} from 'react-native';
-import React from 'react';
+//the text may streched out 
+import {View, Image} from 'react-native';
+import React, {useCallback} from 'react';
 import styles from './styles';
 import Text from '../Text';
 import Price from '../Price';
@@ -8,18 +9,24 @@ import {ProductDto} from '../../constants';
 import IconButton from '../IconButton';
 import {useDispatch} from 'react-redux';
 import {remove} from '../../store/slices/cart.slice';
-const CardCart = ({product}: {product: ProductDto}) => {
+
+type CartCardProps = {
+  product: ProductDto;
+};
+
+const CardCart = ({product}: CartCardProps) => {
   const {name, imageURL, price, id, selected_size} = product;
   const dispatch = useDispatch();
+  const handleRemoveProduct = useCallback(() => {
+    dispatch(remove({id, selected_size}));
+  }, [dispatch, id, selected_size]);
   return (
     <View style={styles.container}>
-      <View style={styles.imageWrapper}>
-        <ImageBackground
-          source={{uri: imageURL}}
-          resizeMode="cover"
-          style={styles.imageContainer}
-        />
-      </View>
+      <Image
+        source={{uri: imageURL}}
+        resizeMode="cover"
+        style={styles.imageContainer}
+      />
       <View style={styles.rightContainer}>
         <View style={styles.gapSpace}>
           <View style={styles.rowContainer}>
@@ -29,20 +36,18 @@ const CardCart = ({product}: {product: ProductDto}) => {
               style={styles.textWidth}>
               {name}
             </Text>
-            <Text fontWeight="medium" fontSize={14}>
-              {selected_size}
-            </Text>
-          </View>
 
-          <Price price={price} />
+            <Price price={price} />
+          </View>
+          <Text fontWeight="medium" fontSize={14}>
+            {` Size: ${selected_size}`}
+          </Text>
         </View>
         <View style={styles.rowContainer}>
-          <Counter id={id} />
+          <Counter id={id} selectedSize={selected_size} />
           <IconButton
             iconName="garbage-trash-svgrepo-com"
-            onPress={() => {
-              dispatch(remove({...product}));
-            }}
+            onPress={handleRemoveProduct}
           />
         </View>
       </View>

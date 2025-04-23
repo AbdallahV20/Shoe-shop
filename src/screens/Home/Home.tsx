@@ -13,10 +13,10 @@ import {
 import {FlatList, Pressable, ScrollView, View} from 'react-native';
 import OffersSlider from '../../components/OffersSlider';
 import ShoesData from '../../data/ShoesData.json';
-import NewBalance from '../../components/Logos/NewBalance';
-import Puma from '../../components/Logos/Puma';
-import Adidas from '../../components/Logos/Adidas';
-import Nike from '../../components/Logos/Nike';
+import NewBalance from '../../assets/Logos/NewBalance';
+import Puma from '../../assets/Logos/Puma';
+import Adidas from '../../assets/Logos/Adidas';
+import Nike from '../../assets/Logos/Nike';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -55,7 +55,6 @@ const Home = () => {
           <SectionHeader sectionTitle="Special For You" noViewAll />
           <OffersSlider />
         </View>
-
         <View>
           <SectionHeader
             sectionTitle="Recommended For You"
@@ -123,7 +122,7 @@ const Home = () => {
           </ScrollView>
         </View>
         <View style={styles().discounts}>
-          <SectionHeader sectionTitle="Discounts" noViewAll />
+          <SectionHeader sectionTitle="Special Deals" noViewAll />
           <FlatList
             data={data.filter((item: ProductDto) => item?.discount)}
             renderItem={({item}) => <Card product={item} />}

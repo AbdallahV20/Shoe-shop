@@ -1,26 +1,24 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {ImageStyle, StyleSheet} from 'react-native';
 import {gutters, layout} from '../../constants';
-import { px } from '../../utils';
-
-const {width} = Dimensions.get('window');
 export default StyleSheet.create({
   container: {
     ...layout.row,
     ...gutters.gap_16,
   },
-  imageWrapper: {
-    ...gutters.radius_16,
-    ...layout.overflowHidden,
-  },
   imageContainer: {
-    width: width * 0.25,
+    ...gutters.radius_16,
+    flex: 0.5,
     aspectRatio: 1 / 1,
-  },
-  gapSpace: {...gutters.gapH_4},
+  } as ImageStyle,
+  gapSpace: {...gutters.gapH_8},
   rightContainer: {
     ...layout.justifyBetween,
     ...layout.flex_1,
   },
-  rowContainer: {...layout.row, ...layout.justifyBetween},
-  textWidth: {width:px(150)},
+  rowContainer: {
+    ...layout.row,
+    ...layout.justifyBetween,
+    ...gutters.gap_12,
+  },
+  textWidth: {...layout.flex_1},
 });

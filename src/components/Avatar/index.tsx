@@ -1,3 +1,5 @@
+// Memoize imageSource so it's only recalculated if dependencies change
+// descturcing values from the redux direct instead of using user.imageProfile
 import {Image, Pressable} from 'react-native';
 import React, {useMemo} from 'react';
 import styles from './styles';
@@ -10,26 +12,24 @@ interface AvatarProps {
   localImage?: string;
   imageUrl?: string;
   onPress?: () => void;
-  isGirl?: boolean;
   pointerEvents?: 'none' | 'auto';
 }
 const Avatar = ({
   size = 'medium',
-  isSquare,
+  isSquare = false,
   localImage,
   imageUrl,
   onPress,
-  isGirl,
   pointerEvents = 'auto',
 }: AvatarProps) => {
-  const user = useSelector((state: RootState) => state.user);
-  // Memoize imageSource so it's only recalculated if dependencies change
+  const {imageProfile} = useSelector((state: RootState) => state.user);
+
   const imageSource = useMemo(() => {
     if (imageUrl) return {uri: imageUrl};
     if (localImage) return localImage;
-    if (user.imageProfile) return {uri: user.imageProfile};
-    return isGirl ? AppImages.girl : AppImages.boy;
-  }, [imageUrl, localImage, user.imageProfile, isGirl]);
+    if (imageProfile) return {uri: imageProfile};
+    return AppImages.avatar;
+  }, [imageUrl, localImage, imageProfile]);
   return (
     <Pressable
       style={styles(size, isSquare).container}
@@ -40,4 +40,4 @@ const Avatar = ({
   );
 };
 
-export default Avatar;
+export default React.memo(Avatar);

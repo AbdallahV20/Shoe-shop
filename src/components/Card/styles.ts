@@ -1,12 +1,12 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {gutters, layout, Theme} from '../../constants';
-import {moderateScale, pxH} from '../../utils';
+import {moderateScale, px, pxH} from '../../utils';
 import {appColors} from '../../theme/colors';
 const {width} = Dimensions.get('window');
 export const styles = (
   theme: Theme,
-  isDarkMode?: boolean,
   isFullWidth?: boolean,
+  isDarkMode?: boolean,
 ) =>
   StyleSheet.create({
     container: {
@@ -39,13 +39,15 @@ export const styles = (
       ...gutters.px_12,
       borderBottomLeftRadius: moderateScale(18),
     },
-    nameAndDescription: {...gutters.px_16},
+    nameAndDescription: {paddingHorizontal: isFullWidth ? px(16) : px(8)},
     productName: {height: pxH(24)},
     cardFooter: {
       ...layout.row,
       ...layout.justifyBetween,
       ...layout.itemsCenter,
-      ...gutters.ps_16,
+
+      ...gutters.gap_4,
+      paddingStart: isFullWidth ? px(16) : px(8),
     },
     addButton: {
       borderTopEndRadius: 0,

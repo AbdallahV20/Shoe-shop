@@ -1,6 +1,7 @@
 import React from 'react';
-import ToggleSwitch from 'toggle-switch-react-native';
 import {appColors} from '../../theme/colors';
+import {Switch} from 'react-native-switch';
+import {px} from '../../utils';
 
 interface ToggleProps {
   isOn: boolean;
@@ -8,13 +9,16 @@ interface ToggleProps {
 }
 const Toggle = ({isOn, onToggle}: ToggleProps) => {
   return (
-    <ToggleSwitch
-      isOn={isOn}
-      onColor={appColors.primary}
-      offColor={appColors.gray500}
-      size="medium"
-      onToggle={onToggle}
-      animationSpeed={200}
+    <Switch
+      value={isOn}
+      onValueChange={onToggle}
+      renderActiveText={false}
+      renderInActiveText={false}
+      circleBorderWidth={px(2)}
+      circleBorderActiveColor={appColors.primary}
+      circleBorderInactiveColor={appColors.gray500}
+      backgroundActive={appColors.primary}
+      backgroundInactive={appColors.gray500}
     />
   );
 };

@@ -52,4 +52,4 @@ const MenuItem = ({title, iconName, screenName}: MenuItemProps) => {
   );
 };
 
-export default MenuItem;
+export default React.memo(MenuItem);

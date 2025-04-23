@@ -1,72 +1,75 @@
 import React, {Dispatch, SetStateAction, useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
 import appFonts from '../../assets/fonts';
 import {appColors} from '../../theme/colors';
+import {useAppTheme} from '../../theme';
+import {gutters, Theme} from '../../constants';
+import {moderateScale, pxH} from '../../utils';
 
-const DropdownMenu = ({
-  data,
-  value,
-  setValue,
-}: {
+type DropdownProps = {
   data: any;
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
-}) => {
-  const [isFocus, setIsFocus] = useState(false);
+};
 
+const DropdownMenu = ({data, value, setValue}: DropdownProps) => {
+  const [isFocus, setIsFocus] = useState(false);
+  const {theme} = useAppTheme();
   return (
-    <View style={styles.container}>
-      <Dropdown
-        style={[styles.dropdown, isFocus && {borderColor: appColors.primary}]}
-        placeholderStyle={styles.placeholderStyle}
-        selectedTextStyle={styles.selectedTextStyle}
-        mode="modal"
-        data={data}
-        fontFamily={appFonts.regular}
-        maxHeight={300}
-        labelField="label"
-        valueField="value"
-        placeholder={!isFocus ? 'Select Size' : '...'}
-        value={value}
-        showsVerticalScrollIndicator={false}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
-        onChange={item => {
-          setValue(item.value);
-          setIsFocus(false);
-        }}
-      />
-    </View>
+    <Dropdown
+      style={[
+        styles(theme).dropdown,
+        isFocus && {borderColor: appColors.primary},
+      ]}
+      placeholderStyle={styles(theme).placeholderStyle}
+      selectedTextStyle={styles(theme).selectedTextStyle}
+      dropdownPosition="top"
+      containerStyle={styles(theme).container}
+      activeColor={theme.activeDropDown}
+      itemTextStyle={styles(theme).itemText}
+      data={data}
+      fontFamily={appFonts.regular}
+      maxHeight={pxH(300)}
+      labelField="label"
+      valueField="value"
+      placeholder={!isFocus ? 'Select Size' : '...'}
+      value={value}
+      showsVerticalScrollIndicator={false}
+      onFocus={() => setIsFocus(true)}
+      onBlur={() => setIsFocus(false)}
+      onChange={item => {
+        setValue(item.value);
+        setIsFocus(false);
+      }}
+    />
   );
 };
 
 export default DropdownMenu;
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-  },
-  dropdown: {
-    height: 50,
-    borderColor: 'gray',
-    borderWidth: 0.5,
-    borderRadius: 8,
-    paddingHorizontal: 8,
-  },
-  label: {
-    position: 'absolute',
-    backgroundColor: 'white',
-    left: 22,
-    top: 8,
-    zIndex: 999,
-    paddingHorizontal: 8,
-    fontSize: 14,
-  },
-  placeholderStyle: {
-    fontSize: 16,
-  },
-  selectedTextStyle: {
-    fontSize: 16,
-  },
-});
+const styles = (theme?: Theme) =>
+  StyleSheet.create({
+    dropdown: {
+      height: pxH(50),
+      backgroundColor: theme?.dropdownBackgroundColor,
+      borderColor: theme?.infoBorder,
+      borderWidth: 0.5,
+      ...gutters.radius_8,
+      ...gutters.px_8,
+    },
+    container: {
+      ...gutters.radius_8,
+      backgroundColor: theme?.dropdownBackgroundColor,
+      borderColor: theme?.infoBorder,
+    },
+    placeholderStyle: {
+      fontSize: moderateScale(16),
+      color: theme?.primaryText,
+    },
+    selectedTextStyle: {
+      fontSize: moderateScale(16),
+      color: theme?.primaryText,
+    },
+    itemText: {color: theme?.primaryText},
+  });

@@ -1,37 +1,28 @@
 import {View, ImageBackground} from 'react-native';
-import React from 'react';
+import React, {useCallback} from 'react';
 import {ProductDto} from '../../constants';
 import {useAppTheme} from '../../theme';
 import {appColors} from '../../theme/colors';
 import styles from './styles';
 import Text from '../Text';
 import Price from '../Price';
-import Icon from '../Icon';
-import {add} from '../../store/slices/cart.slice';
-import {useDispatch} from 'react-redux';
 import IconButton from '../IconButton';
 import NavigationAction from '../NavigationAction';
-const StarRating = ({rating = 1, size = 18, color = appColors.yellow}) => {
-  const stars = [];
+import StarRating from '../StarRating';
+import {SheetManager} from 'react-native-actions-sheet';
 
-  for (let i = 1; i <= 5; i++) {
-    if (rating >= i) {
-      stars.push(<Icon key={i} name="star-fill" size={size} color={color} />);
-    } else if (rating >= i - 0.5) {
-      stars.push(
-        <Icon key={i} name="star-half-filled" size={size} color={color} />, //half-star here
-      );
-    } else {
-      stars.push(<Icon key={i} name="star" size={size} color={color} />); //gray star here
-    }
-  }
+type FavouriteCardProps = {product: ProductDto};
 
-  return <View style={{flexDirection: 'row'}}>{stars}</View>;
-};
-const FavouriteCard = ({product}: {product: ProductDto}) => {
-  const {name, imageURL, price, average_rating: rate, category} = product;
+const FavouriteCard = ({product}: FavouriteCardProps) => {
+  const {name, imageURL, price, average_rating, category} = product;
   const {theme} = useAppTheme();
-  const dispatch = useDispatch();
+
+  const handleAddToCart = useCallback(() => {
+    SheetManager.show('add-to-cart-sheet', {
+      payload: {product},
+    });
+  }, [product]);
+
   return (
     <View style={styles(theme).container}>
       <ImageBackground
@@ -53,10 +44,10 @@ const FavouriteCard = ({product}: {product: ProductDto}) => {
         </View>
         <Price price={price} />
         <View>
-          <View style={{flexDirection: 'row', gap: 8, alignItems: 'center'}}>
-            <StarRating rating={rate} />
+          <View style={styles(theme).rateContainer}>
+            <StarRating rating={average_rating} />
             <Text fontSize={12} fontWeight="semiBold">
-              {rate}
+              {average_rating}
             </Text>
           </View>
         </View>
@@ -65,7 +56,7 @@ const FavouriteCard = ({product}: {product: ProductDto}) => {
             iconName="plus-icon-2"
             iconColor={appColors.white}
             backgroundColor={appColors.primary}
-            onPress={() => dispatch(add(product))}
+            onPress={handleAddToCart}
             isRounded
           />
         </View>

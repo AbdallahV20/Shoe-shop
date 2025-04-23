@@ -29,6 +29,8 @@ export const colorsLight = {
   infoBorder: '#aaa',
   iconBackground: appColors.gray500,
   bottomSheetBackground: appColors.white,
+  dropdownBackgroundColor: appColors.white,
+  activeDropDown: appColors.gray500,
 };
 
 export const colorsDark = {
@@ -42,4 +44,6 @@ export const colorsDark = {
   infoBorder: appColors.primary,
   iconBackground: '#1F2A33',
   bottomSheetBackground: '#3F4D5A',
+  dropdownBackgroundColor: '#2D3B48',
+  activeDropDown: '#3F4D5A',
 };

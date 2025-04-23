@@ -11,11 +11,15 @@ interface InfoProps {
 const Info = ({title = 'medium'}: InfoProps) => {
   return (
     <View style={styles().container}>
-      <Text fontSize={14} color={appColors.primary} textAlign="center" fontWeight="medium">
+      <Text
+        fontSize={14}
+        color={appColors.primary}
+        textAlign="center"
+        fontWeight="medium">
         {title}
       </Text>
     </View>
   );
 };
 
-export default Info;
+export default React.memo(Info);

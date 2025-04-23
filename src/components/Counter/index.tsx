@@ -6,7 +6,10 @@ import IconButton from '../IconButton';
 import Text from '../Text';
 import {useDispatch} from 'react-redux';
 import {remove} from '../../store/slices/cart.slice';
-const Counter = ({id}: {id: number}) => {
+
+type CounterProps = {id: number; selectedSize?: string};
+
+const Counter = ({id, selectedSize}: CounterProps) => {
   const [counter, setCounter] = useState(1);
   const dispatch = useDispatch();
   const addButtonHandler = useCallback(() => {
@@ -14,13 +17,16 @@ const Counter = ({id}: {id: number}) => {
   }, [counter]);
 
   const removeButtonHandler = useCallback(() => {
-    if (counter === 1) dispatch(remove(id));
+    if (counter === 1) dispatch(remove({id, selectedSize}));
     if (counter > 0) setCounter(prev => prev - 1);
-  }, [counter, dispatch, id]);
+  }, [counter, dispatch, id, selectedSize]);
+
+  const removeOrDecreaseIcon =
+    counter === 1 ? 'garbage-trash-svgrepo-com' : 'minus-svgrepo-com-1';
   return (
     <View style={styles.counterConainer}>
       <IconButton
-        iconName={counter === 1 ? 'garbage-trash-svgrepo-com' : 'minus-svgrepo-com-1'}
+        iconName={removeOrDecreaseIcon}
         onPress={removeButtonHandler}
         isDisabled={counter === 0}
         backgroundColor={appColors.white}
@@ -46,4 +52,4 @@ const Counter = ({id}: {id: number}) => {
   );
 };
 
-export default Counter;
+export default React.memo(Counter);

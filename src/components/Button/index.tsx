@@ -1,3 +1,5 @@
+//it's better to pass the styles to any compoent using useMemo , <Button style={()=>useMemo(()=>memoziedStyles)}
+//with the usage of React.memo(Button)
 import {FlexAlignType, Pressable, ViewStyle} from 'react-native';
 import React, {useMemo} from 'react';
 import styles from './styles';
@@ -33,6 +35,7 @@ const Button = ({
     () => (size === 'small' ? 12 : size === 'medium' ? 14 : 16),
     [size],
   );
+  const iconVariant = variant === 'main' ? appColors.white : theme?.primaryText;
   return (
     <Pressable
       onPress={onPress}
@@ -53,11 +56,11 @@ const Button = ({
         <Icon
           name={iconName}
           size={moderateScale(dynamicSize)}
-          color={variant === 'main' ? appColors.white : theme?.primaryText}
+          color={iconVariant}
         />
       )}
     </Pressable>
   );
 };
 
-export default Button;
+export default React.memo(Button);

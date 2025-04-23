@@ -24,4 +24,4 @@ const Price = ({price, priceSize = 16}: PriceProps) => {
   );
 };
 
-export default Price;
+export default React.memo(Price);

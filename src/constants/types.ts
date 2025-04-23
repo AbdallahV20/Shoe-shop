@@ -9,6 +9,8 @@ export interface Theme {
   infoBorder: string;
   iconBackground: string;
   bottomSheetBackground: string;
+  dropdownBackgroundColor: string;
+  activeDropDown: string;
 }
 
 export interface ProductDto {

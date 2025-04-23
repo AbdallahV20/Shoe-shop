@@ -1,26 +1,26 @@
+//using react.memo with the rendering item of a flatList is good
 import {View, ImageBackground, Pressable} from 'react-native';
-import React from 'react';
+import React, {useCallback} from 'react';
 import {useAppTheme} from '../../theme';
 import styles from './styles';
 import Text from '../Text';
 import Icon from '../Icon';
 import {appColors} from '../../theme/colors';
 import Price from '../Price';
-import {moderateScale} from '../../utils';
 import {ProductDto, RootStackParamList} from '../../constants';
 import IconButton from '../IconButton';
 import NavigationAction from '../NavigationAction';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {SheetManager} from 'react-native-actions-sheet';
+import {applyDiscount, moderateScale} from '../../utils';
 
-const Card = ({
-  product,
-  isShowDetails,
-}: {
+type CardProps = {
   product: ProductDto;
   isShowDetails?: boolean;
-}) => {
+};
+
+const Card = ({product, isShowDetails}: CardProps) => {
   const {theme, isDarkMode} = useAppTheme();
   const {
     name,
@@ -30,13 +30,18 @@ const Card = ({
     discount,
     description,
   } = product;
-  const priceAfterDiscount =
-    price - price * (parseInt(discount ?? '', 10) / 100);
+
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const handleAddToCart = useCallback(() => {
+    SheetManager.show('add-to-cart-sheet', {
+      payload: {product},
+    });
+  }, [product]);
+
   return (
     <Pressable
-      style={styles(theme, isDarkMode, isShowDetails).container}
+      style={styles(theme, isShowDetails, isDarkMode).container}
       onPress={() => navigation.push('productDetails', {product})}>
       <ImageBackground
         source={{uri: imageURL}}
@@ -64,7 +69,7 @@ const Card = ({
             </View>
           ))}
       </ImageBackground>
-      <View style={styles(theme).nameAndDescription}>
+      <View style={styles(theme, isShowDetails).nameAndDescription}>
         <Text
           fontSize={isShowDetails ? 18 : 16}
           numberOfLines={1}
@@ -81,10 +86,10 @@ const Card = ({
         )}
       </View>
 
-      <View style={styles(theme).cardFooter}>
+      <View style={styles(theme, isShowDetails).cardFooter}>
         <View style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>
           <Price
-            price={discount ? priceAfterDiscount : price}
+            price={discount ? applyDiscount(price, discount) : price}
             priceSize={isShowDetails ? 21 : 16}
           />
           {discount && (
@@ -97,11 +102,7 @@ const Card = ({
           )}
         </View>
         <IconButton
-          onPress={() => {
-            SheetManager.show('add-to-cart-sheet', {
-              payload: {product},
-            });
-          }}
+          onPress={handleAddToCart}
           iconName="plus-icon-2"
           backgroundColor={appColors.primary}
           iconColor={appColors.white}

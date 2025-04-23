@@ -11,7 +11,7 @@ export const styles = (theme: Theme) =>
     searchIconContainer: {...layout.selfCenter, ...gutters.me_12},
     textInputContainer: {
       backgroundColor: theme.textInputBackground,
-      ...gutters.py_4,
+      ...gutters.py_2,
       ...gutters.px_12,
       ...gutters.radius_12,
       ...layout.row,

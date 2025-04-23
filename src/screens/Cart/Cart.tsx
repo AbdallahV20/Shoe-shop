@@ -34,7 +34,7 @@ const Cart = () => {
     <View style={styles(theme).emptyListContainer}>
       <View>
         <LottieView
-          source={AppImages.empry_cart_animatino}
+          source={AppImages.empry_cart_animation}
           autoPlay
           loop
           style={styles(theme).emptyListImage}

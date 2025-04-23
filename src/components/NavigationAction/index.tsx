@@ -95,7 +95,7 @@ const LoveButton = ({
     <IconButton
       iconColor={like ? appColors.red : appColors.gray100}
       backgroundColor={noBackground ? undefined : theme.iconBackground}
-      iconSize={iconSize ?? 'medium'}
+      iconSize={iconSize ?? 'large'}
       iconName={like ? 'love' : 'love2'}
       onPress={handleOnPress}
     />
