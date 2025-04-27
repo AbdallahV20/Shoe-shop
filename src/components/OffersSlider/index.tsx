@@ -1,64 +1,60 @@
-import {View, FlatList, ViewToken} from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
-import {Image} from 'react-native';
-import {AppImages} from '../../assets/app_images';
-import SliderDots from '../SliderDots';
+import * as React from 'react';
+import {Dimensions, Image, View} from 'react-native';
+import {useSharedValue} from 'react-native-reanimated';
+import Carousel, {
+  ICarouselInstance,
+  Pagination,
+} from 'react-native-reanimated-carousel';
+import AppImages from '../../assets/app_images';
 import styles from './styles';
 import {px} from '../../utils';
-const OffersSlider = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const flatListRef = useRef<FlatList>(null);
-  const promoImages = [
-    {id: 1, image: AppImages.promo1},
-    {id: 2, image: AppImages.promo2},
-  ];
-  const onViewableItemsChanged = ({
-    viewableItems,
-  }: {
-    viewableItems: ViewToken[];
-  }) => {
-    const currentIndex = viewableItems[0]?.index as number;
-    setActiveIndex(() => currentIndex);
-  };
-  useEffect(() => {
-    const promotionInterval = setInterval(() => {
-      flatListRef?.current?.scrollToIndex({
-        index: (activeIndex + 1) % promoImages.length,
-        viewPosition: 0.5,
-        animated: true,
-      });
-    }, 3000);
 
-    return () => clearInterval(promotionInterval);
-  }, [activeIndex, promoImages.length]);
+const promoBackgorunds = [
+  AppImages.promo_background_1,
+  AppImages.promo_background_2,
+];
+
+const width = Dimensions.get('window').width - px(48);
+
+function OffersSlider() {
+  const ref = React.useRef<ICarouselInstance>(null);
+  const progress = useSharedValue<number>(0);
+
+  const onPressPagination = (index: number) => {
+    ref.current?.scrollTo({
+      count: index - progress.value,
+      animated: true,
+    });
+  };
+
   return (
-    <View style={styles().container}>
-      <FlatList
-        ref={flatListRef}
-        showsHorizontalScrollIndicator={false}
-        data={promoImages}
-        onViewableItemsChanged={onViewableItemsChanged}
-        horizontal
-        viewabilityConfig={{itemVisiblePercentThreshold: 50}}
-        keyExtractor={item => item.id}
-        renderItem={({item, index}) => (
-          <View
-            style={{
-              marginStart: index === 0 ? 0 : px(10),
-            }}>
-            <Image
-              style={styles(index, promoImages.length - 1).image}
-              source={item.image}
-            />
+    <>
+      <Carousel
+        ref={ref}
+        autoPlay
+        autoPlayInterval={2000}
+        scrollAnimationDuration={1000}
+        width={width}
+        height={width / 2}
+        data={promoBackgorunds}
+        onProgressChange={progress}
+        renderItem={({index}) => (
+          <View style={styles.imageWrapper}>
+            <Image source={promoBackgorunds[index]} style={styles.image} />
           </View>
         )}
-        pagingEnabled
       />
-      <View style={styles().slider}>
-        <SliderDots dotsNumber={promoImages.length} activeIndex={activeIndex} />
-      </View>
-    </View>
+
+      <Pagination.Basic
+        progress={progress}
+        activeDotStyle={styles.activeDot}
+        data={promoBackgorunds}
+        dotStyle={styles.dotStyle}
+        containerStyle={styles.dotContainer}
+        onPress={onPressPagination}
+      />
+    </>
   );
-};
+}
 
 export default OffersSlider;

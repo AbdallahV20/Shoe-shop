@@ -1,9 +1,7 @@
 export const AppImages = {
   avatar: require('./boy.png'),
-  logo: require('./logo.png'),
-  promo1: require('./promo1.png'),
-  promo2: require('./promo2.png'),
-  profile_background: require('./profile_background.jpg'),
+  promo_background_1: require('./promo_background_1.jpg'),
+  promo_background_2: require('./promo_background_2.jpg'),
   egypt: require('./egypt.png'),
   usa: require('./usa.png'),
   empry_cart_animation: require('../animations/empty_cart_animation.json'),

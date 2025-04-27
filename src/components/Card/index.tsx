@@ -22,14 +22,8 @@ type CardProps = {
 
 const Card = ({product, isShowDetails}: CardProps) => {
   const {theme, isDarkMode} = useAppTheme();
-  const {
-    name,
-    imageURL,
-    price,
-    average_rating: rate,
-    discount,
-    description,
-  } = product;
+  const {name, imageURL, price, average_rating, discount, description} =
+    product;
 
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -47,7 +41,7 @@ const Card = ({product, isShowDetails}: CardProps) => {
         source={{uri: imageURL}}
         resizeMode="cover"
         style={styles(theme).imageContainer}>
-        {rate &&
+        {average_rating &&
           (!isShowDetails ? (
             <View style={styles(theme).rateContainer}>
               <Icon
@@ -56,7 +50,7 @@ const Card = ({product, isShowDetails}: CardProps) => {
                 color={appColors.yellow}
               />
               <Text fontWeight="semiBold" fontSize={14} color="#fff">
-                {rate}
+                {average_rating.toFixed(1)}
               </Text>
             </View>
           ) : (

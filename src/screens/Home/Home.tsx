@@ -82,7 +82,7 @@ const Home = () => {
           />
         </View>
         <View>
-          <SectionHeader sectionTitle="Search By Brand" noViewAll />
+          <SectionHeader sectionTitle="Featured Brands" noViewAll />
           <ScrollView
             showsHorizontalScrollIndicator={false}
             horizontal

@@ -6,6 +6,7 @@ import {Provider} from 'react-redux';
 import {store} from './src/store/store';
 import './sheets.tsx';
 import {SheetProvider} from 'react-native-actions-sheet';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 // if (__DEV__) {
 console.log = () => {};
 console.warn = () => {};
@@ -15,7 +16,9 @@ const App = () => (
   <Provider store={store}>
     <ThemeProvider>
       <SheetProvider>
-        <MainStack />
+        <GestureHandlerRootView>
+          <MainStack />
+        </GestureHandlerRootView>
       </SheetProvider>
     </ThemeProvider>
   </Provider>
