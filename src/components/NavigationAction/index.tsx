@@ -35,7 +35,7 @@ const BackButton = () => {
 const WelcomeComponent = ({name}: {name: string}) => (
   <View style={styles.welcome}>
     <Avatar size="small" isSquare />
-    <Text>{`Hi, ${name}`}</Text>
+    <Text fontWeight="medium">{`Hi, ${name}`}</Text>
   </View>
 );
 

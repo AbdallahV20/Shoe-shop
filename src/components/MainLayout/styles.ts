@@ -6,6 +6,7 @@ export const styles = (theme: Theme, hideBottomTab?: boolean) =>
     container: {
       backgroundColor: theme.backgroundColor,
       ...layout.flex_1,
+      ...gutters.mb_24,
     },
     contentContainer: {
       ...gutters.pt_16,

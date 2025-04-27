@@ -28,7 +28,7 @@ function OffersSlider() {
   };
 
   return (
-    <>
+    <View style={styles.container}>
       <Carousel
         ref={ref}
         autoPlay
@@ -53,7 +53,7 @@ function OffersSlider() {
         containerStyle={styles.dotContainer}
         onPress={onPressPagination}
       />
-    </>
+    </View>
   );
 }
 

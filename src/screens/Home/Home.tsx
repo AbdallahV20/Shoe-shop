@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-
 import {
   Card,
   MainLayout,
@@ -13,31 +12,19 @@ import {
 import {FlatList, Pressable, ScrollView, View} from 'react-native';
 import OffersSlider from '../../components/OffersSlider';
 import ShoesData from '../../data/ShoesData.json';
-import NewBalance from '../../assets/Logos/NewBalance';
-import Puma from '../../assets/Logos/Puma';
-import Adidas from '../../assets/Logos/Adidas';
-import Nike from '../../assets/Logos/Nike';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ProductDto, RootStackParamList} from '../../constants';
+import {brands, categoriesTabs} from '../../constants/data';
 const Home = () => {
-  const [search, setSearch] = useState('');
+  const data = Object.values(ShoesData);
   const [activeTab, setActiveTab] = useState(0);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const data = Object.values(ShoesData);
-  const categories = [
-    'All',
-    ...new Set(
-      data.map(
-        item =>
-          item.gender[0].toUpperCase() + item.gender.slice(1).toLowerCase(),
-      ),
-    ),
-  ];
+
   const filterDataByCategory = data.filter(
-    item => activeTab === 0 || categories[activeTab] === item.gender,
+    item => activeTab === 0 || categoriesTabs[activeTab] === item.gender,
   );
   return (
     <MainLayout
@@ -45,12 +32,12 @@ const Home = () => {
       isScrollable
       header={
         <NavigationHeader
-          startAction={<NavigationAction.WelcomeComponent name="Mohamed" />}
+          startAction={<NavigationAction.WelcomeComponent name="Abdallah" />}
           endAction={<NavigationAction.NofificationsButton />}
         />
       }>
-      <View style={styles().screenContainer}>
-        <SearchBar value={search} setValue={setSearch} />
+      <View style={styles.screenContainer}>
+        <SearchBar />
         <View>
           <SectionHeader sectionTitle="Special For You" noViewAll />
           <OffersSlider />
@@ -60,20 +47,22 @@ const Home = () => {
             sectionTitle="Recommended For You"
             onViewAllPress={() =>
               navigation.navigate('viewAllProducts', {
-                currentCategory: categories[activeTab],
+                currentCategory: categoriesTabs[activeTab],
               })
             }
           />
-          <Tabs
-            tabs={categories}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
+          <View style={styles.tabsWrapper}>
+            <Tabs
+              tabs={categoriesTabs}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+            />
+          </View>
           <FlatList
             data={filterDataByCategory.slice(0, 8)}
-            renderItem={({item}) => <Card product={item} />}
-            contentContainerStyle={styles().productsContainer}
             keyExtractor={item => item.id.toString()}
+            renderItem={({item}) => <Card product={item} />}
+            contentContainerStyle={styles.productsContainer}
             horizontal
             ListEmptyComponent={() => (
               <Text textAlign="center">No Data Found</Text>
@@ -86,47 +75,25 @@ const Home = () => {
           <ScrollView
             showsHorizontalScrollIndicator={false}
             horizontal
-            contentContainerStyle={styles().brands}>
-            <Pressable
-              onPress={() =>
-                navigation.navigate('viewAllProducts', {
-                  currentCategory: 'Puma',
-                })
-              }>
-              <Puma />
-            </Pressable>
-            <Pressable
-              onPress={() =>
-                navigation.navigate('viewAllProducts', {
-                  currentCategory: 'New Balance',
-                })
-              }>
-              <NewBalance />
-            </Pressable>
-            <Pressable
-              onPress={() =>
-                navigation.navigate('viewAllProducts', {
-                  currentCategory: 'Nike',
-                })
-              }>
-              <Nike />
-            </Pressable>
-            <Pressable
-              onPress={() =>
-                navigation.navigate('viewAllProducts', {
-                  currentCategory: 'Adidas',
-                })
-              }>
-              <Adidas />
-            </Pressable>
+            contentContainerStyle={styles.brands}>
+            {brands.map(brand => (
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('viewAllProducts', {
+                    currentCategory: brand.name,
+                  })
+                }>
+                <brand.Component />
+              </Pressable>
+            ))}
           </ScrollView>
         </View>
-        <View style={styles().discounts}>
+        <View>
           <SectionHeader sectionTitle="Special Deals" noViewAll />
           <FlatList
             data={data.filter((item: ProductDto) => item?.discount)}
             renderItem={({item}) => <Card product={item} />}
-            contentContainerStyle={styles().discountsContainer}
+            contentContainerStyle={styles.discountsContainer}
             keyExtractor={item => item.id.toString()}
             horizontal
             ListEmptyComponent={() => (

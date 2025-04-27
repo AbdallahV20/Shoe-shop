@@ -1,22 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TextInput from '../TextInput';
 import IconButton from '../IconButton';
 import {useAppTheme} from '../../theme';
 import {StyleSheet, View} from 'react-native';
 import {gutters, layout} from '../../constants';
 
-interface SearchBarProps {
-  value: string;
-  setValue: (val: string) => void;
-}
-export const SearchBar = ({value, setValue}: SearchBarProps) => {
+export const SearchBar = () => {
   const {theme} = useAppTheme();
+  const [search, setSearch] = useState('');
   return (
     <View style={styles.container}>
       <View style={styles.textInput}>
         <TextInput
-          value={value}
-          setValue={setValue}
+          value={search}
+          setValue={setSearch}
           isSearchBar
           placeholder="Search"
         />
@@ -37,9 +34,10 @@ const styles = StyleSheet.create({
     ...layout.row,
     ...layout.itemsCenter,
     ...gutters.gap_8,
+    ...gutters.px_24,
   },
   textInput: {
     ...layout.flex_1,
   },
 });
-export default SearchBar;
+export default React.memo(SearchBar);

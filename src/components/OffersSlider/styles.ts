@@ -2,8 +2,8 @@ import {ImageStyle, StyleSheet} from 'react-native';
 import {gutters, layout} from '../../constants';
 import {appColors} from '../../theme/colors';
 export default StyleSheet.create({
+  container: {...gutters.px_24},
   imageWrapper: {
-    ...layout.flex_1,
     borderWidth: 3,
     borderColor: appColors.white,
     ...layout.justifyCenter,

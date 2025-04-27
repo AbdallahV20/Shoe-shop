@@ -1,4 +1,5 @@
-import {TextInput as TextInputBase, View} from 'react-native';
+//extend any props for a general component
+import {TextInput as TextInputBase, TextInputProps, View} from 'react-native';
 import React, {useCallback} from 'react';
 import styles from './styles';
 import {useAppTheme} from '../../theme';
@@ -7,13 +8,12 @@ import {appColors} from '../../theme/colors';
 import Icon from '../Icon';
 import {px} from '../../utils';
 
-interface textInputProps {
+interface textInputProps extends TextInputProps {
   value: string;
   setValue: (val: string) => void;
   isSearchBar?: boolean;
   label?: string;
   errorMessage?: string;
-  placeholder: string;
 }
 
 const TextInput = ({
@@ -22,7 +22,7 @@ const TextInput = ({
   isSearchBar,
   label,
   errorMessage,
-  placeholder,
+  ...otherProps
 }: textInputProps) => {
   const {theme} = useAppTheme();
   const onChangeHandler = useCallback(
@@ -42,7 +42,6 @@ const TextInput = ({
             </View>
           )}
           <TextInputBase
-            placeholder={placeholder}
             placeholderTextColor={appColors.gray400}
             style={styles(theme).textInput}
             selectionColor={appColors.primary}
@@ -50,6 +49,7 @@ const TextInput = ({
             cursorColor={appColors.primary}
             onChangeText={onChangeHandler}
             numberOfLines={1}
+            {...otherProps}
           />
         </View>
         {errorMessage && (

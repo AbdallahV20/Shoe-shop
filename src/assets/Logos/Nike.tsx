@@ -1,10 +1,17 @@
 import * as React from 'react';
 import {View} from 'react-native';
 import Svg, {G, Path} from 'react-native-svg';
+import {moderateScale, px} from '../../utils';
+import {appColors} from '../../theme/colors';
 
 function Nike(props: any) {
   return (
-    <View style={{padding: 10, backgroundColor: 'white', borderRadius: 20}}>
+    <View
+      style={{
+        padding: px(10),
+        backgroundColor: appColors.white,
+        borderRadius: moderateScale(20),
+      }}>
       <Svg
         width="100px"
         height="100px"

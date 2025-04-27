@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
     ...layout.itemsCenter,
     ...layout.row,
     ...gutters.mb_16,
+    ...gutters.px_24,
   },
 });
 
