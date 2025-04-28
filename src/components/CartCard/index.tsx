@@ -1,4 +1,4 @@
-//the text may streched out 
+//the text may streched out
 import {View, Image} from 'react-native';
 import React, {useCallback} from 'react';
 import styles from './styles';

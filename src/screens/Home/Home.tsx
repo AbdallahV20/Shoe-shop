@@ -10,7 +10,6 @@ import {
   Text,
 } from '../../components';
 import {FlatList, Pressable, ScrollView, View} from 'react-native';
-import OffersSlider from '../../components/OffersSlider';
 import ShoesData from '../../data/ShoesData.json';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
@@ -38,10 +37,10 @@ const Home = () => {
       }>
       <View style={styles.screenContainer}>
         <SearchBar />
-        <View>
+        {/* <View>
           <SectionHeader sectionTitle="Special For You" noViewAll />
           <OffersSlider />
-        </View>
+        </View> */}
         <View>
           <SectionHeader
             sectionTitle="Recommended For You"

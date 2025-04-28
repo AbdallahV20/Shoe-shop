@@ -4,6 +4,7 @@ export default StyleSheet.create({
   container: {
     ...layout.row,
     ...gutters.gap_16,
+    ...gutters.px_24,
   },
   imageContainer: {
     ...gutters.radius_16,

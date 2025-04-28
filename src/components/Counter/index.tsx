@@ -17,16 +17,16 @@ const Counter = ({id, selectedSize}: CounterProps) => {
   }, [counter]);
 
   const removeButtonHandler = useCallback(() => {
-    if (counter === 1) dispatch(remove({id, selectedSize}));
+    if (counter === 1) {
+      dispatch(remove({id, selectedSize}));
+    }
     if (counter > 0) setCounter(prev => prev - 1);
   }, [counter, dispatch, id, selectedSize]);
 
-  const removeOrDecreaseIcon =
-    counter === 1 ? 'garbage-trash-svgrepo-com' : 'minus-svgrepo-com-1';
   return (
     <View style={styles.counterConainer}>
       <IconButton
-        iconName={removeOrDecreaseIcon}
+        iconName={'minus-svgrepo-com-1'}
         onPress={removeButtonHandler}
         isDisabled={counter === 0}
         backgroundColor={appColors.white}

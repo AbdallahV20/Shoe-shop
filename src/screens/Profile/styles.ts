@@ -4,7 +4,7 @@ import {appColors} from '../../theme/colors';
 
 const styles = () =>
   StyleSheet.create({
-    profileImageContainer: {...layout.allCenter, ...gutters.gapH_16},
+    profileImageContainer: {...layout.itemsCenter, ...gutters.gapH_16},
     cameraIcon: {
       backgroundColor: appColors.primary,
       ...layout.absolute,
@@ -13,7 +13,7 @@ const styles = () =>
       ...gutters.p_6,
       borderRadius: 100,
     },
-    editProfile: {...gutters.mt_16, ...layout.selfCenter},
+    editProfile: {...gutters.mt_8},
     menuContainer: {...gutters.px_24, ...gutters.mt_24},
   });
 

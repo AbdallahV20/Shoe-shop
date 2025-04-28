@@ -14,25 +14,8 @@ import {appColors} from '../../theme/colors';
 import {SheetManager} from 'react-native-actions-sheet';
 import {moderateScale} from '../../utils';
 import styles from './styles';
+import {settingsItems} from '../../constants/data';
 const Profile = () => {
-  const menuItem = [
-    {
-      id: 4,
-      title: 'Notifications',
-      icon: 'notification-6',
-      screenName: 'notifications',
-    },
-    {id: 1, title: 'Dark Mode', icon: 'moon-1'},
-    {id: 2, title: 'Language', icon: 'language', screenName: 'language'},
-    {id: 3, title: 'History', icon: 'history', screenName: 'history'},
-
-    {
-      id: 5,
-      title: 'Log Out',
-      icon: 'logout-circle-svgrepo-com',
-      screenName: 'login',
-    },
-  ];
   return (
     <MainLayout
       isHeaderFixed
@@ -55,20 +38,25 @@ const Profile = () => {
             style={styles().cameraIcon}
           />
         </TouchableOpacity>
-        <View style={{alignItems: 'center'}}>
-          <Text fontWeight="semiBold">Mohamed Ehab</Text>
-          <Text fontSize={14}>moehab@gmail.com</Text>
+        <View>
+          <Text textAlign="center" fontWeight="semiBold">
+            Mohamed Ehab
+          </Text>
+          <Text textAlign="center" fontSize={14}>
+            moehab@gmail.com
+          </Text>
+          <Button
+            iconName="pen-new-square-svgrepo-com-1"
+            title="Edit Profile"
+            onPress={() => console.log('No')}
+            alignSelf="center"
+            style={styles().editProfile}
+          />
         </View>
       </View>
-      <View style={styles().editProfile}>
-        <Button
-          iconName="pen-new-square-svgrepo-com-1"
-          title="Edit Profile"
-          onPress={() => console.log('No')}
-        />
-      </View>
+
       <View style={styles().menuContainer}>
-        {menuItem.map(item => (
+        {settingsItems.map(item => (
           <MenuItem
             key={item.id}
             title={item.title}
