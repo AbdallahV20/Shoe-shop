@@ -1,5 +1,5 @@
 import LottieView from 'lottie-react-native';
-import {View,FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import React from 'react';
 import {Button, Card, SectionHeader, Text} from '../../../../components';
 import {useNavigation} from '@react-navigation/native';
@@ -34,14 +34,7 @@ export const EmptyCart = () => {
         </View>
       </View>
       <View>
-        <SectionHeader
-          sectionTitle="Featured Products"
-          onViewAllPress={() =>
-            navigation.navigate('viewAllProducts', {
-              currentCategory: 'All',
-            })
-          }
-        />
+        <SectionHeader sectionTitle="Featured Products" noViewAll />
         <FlatList
           data={data.slice(6, 14)}
           renderItem={({item}) => <Card product={item} />}

@@ -55,6 +55,7 @@ const Home = () => {
               tabs={categoriesTabs}
               activeTab={activeTab}
               setActiveTab={setActiveTab}
+              variant="categories"
             />
           </View>
           <FlatList
@@ -77,6 +78,7 @@ const Home = () => {
             contentContainerStyle={styles.brands}>
             {brands.map(brand => (
               <Pressable
+                key={brand.name}
                 onPress={() =>
                   navigation.navigate('viewAllProducts', {
                     currentCategory: brand.name,
@@ -92,7 +94,7 @@ const Home = () => {
           <FlatList
             data={data.filter((item: ProductDto) => item?.discount)}
             renderItem={({item}) => <Card product={item} />}
-            contentContainerStyle={styles.discountsContainer}
+            contentContainerStyle={styles.productsContainer}
             keyExtractor={item => item.id.toString()}
             horizontal
             ListEmptyComponent={() => (

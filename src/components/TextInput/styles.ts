@@ -19,7 +19,7 @@ export const styles = (theme: Theme) =>
     textInput: {
       fontSize: moderateScale(16),
       color: theme.primaryText,
-      ...layout.flexShrink_1,
+      ...layout.flex_1,
     },
   });
 

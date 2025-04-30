@@ -9,5 +9,4 @@ export default StyleSheet.create({
   },
   tabsWrapper: {...gutters.px_24},
   brands: {...gutters.gap_16, ...gutters.px_24},
-  discountsContainer: {...gutters.gap_16, ...gutters.px_24},
 });

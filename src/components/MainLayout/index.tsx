@@ -8,7 +8,6 @@ interface MainLayoutProps {
   footer?: React.ReactNode;
   isHeaderFixed?: boolean;
   isScrollable?: boolean;
-  hideBottomTab?: boolean;
 }
 
 const MainLayout = ({
@@ -54,18 +53,14 @@ const MainLayout = ({
       {!isHeaderFixed && !isScrollable && (
         <>
           {header && header}
-          <View style={styles(theme, !!footer).contentContainer}>
-            {children}
-          </View>
+          <View style={styles(theme, !!footer).fixedContainer}>{children}</View>
           {footer && footer}
         </>
       )}
       {isHeaderFixed && !isScrollable && (
         <>
           {header && header}
-          <View style={styles(theme, !!footer).contentContainer}>
-            {children}
-          </View>
+          <View style={styles(theme, !!footer).fixedContainer}>{children}</View>
           {footer && footer}
         </>
       )}

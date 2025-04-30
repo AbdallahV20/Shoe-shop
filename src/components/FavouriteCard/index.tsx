@@ -38,7 +38,7 @@ const FavouriteCard = ({product}: FavouriteCardProps) => {
       <View style={styles(theme).rightContainer}>
         <View>
           <Text numberOfLines={1}>{name}</Text>
-          <Text color={appColors.gray100} fontSize={12} numberOfLines={2}>
+          <Text color={theme.secondaryText} fontSize={12} numberOfLines={2}>
             {category}
           </Text>
         </View>

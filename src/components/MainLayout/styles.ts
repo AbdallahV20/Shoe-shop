@@ -13,5 +13,10 @@ export const styles = (theme: Theme, hideBottomTab?: boolean) =>
       paddingBottom: hideBottomTab ? 0 : pxH(BOTTOM_TAB_HEIGHT) + pxH(24),
       ...layout.flexGrow_1,
     },
+    fixedContainer: {
+      ...gutters.pt_16,
+      paddingBottom: hideBottomTab ? 0 : pxH(BOTTOM_TAB_HEIGHT),
+      ...layout.flex_1,
+    },
   });
 export default styles;

@@ -2,12 +2,13 @@ import LottieView from 'lottie-react-native';
 import React from 'react';
 import {View} from 'react-native';
 import {Button, Text} from '../../../../components';
-import {appColors} from '../../../../theme/colors';
 import AppImages from '../../../../assets/app_images';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
+import {useAppTheme} from '../../../../theme';
 export const EmptyFavourite = () => {
   const navigation = useNavigation();
+  const {theme} = useAppTheme();
   return (
     <View style={styles().emptyListContainer}>
       <LottieView
@@ -24,7 +25,7 @@ export const EmptyFavourite = () => {
           fontSize={14}
           fontWeight="medium"
           textAlign="center"
-          color={appColors.gray100}>
+          color={theme.secondaryText}>
           You can add an item to your favourites by clicking "love icon"
         </Text>
         <Button

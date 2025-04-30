@@ -1,6 +1,5 @@
-import {Image, View} from 'react-native';
+import {View} from 'react-native';
 import React, {useCallback, useState} from 'react';
-import {AppImages} from '../../assets/app_images';
 import styles from './styles';
 import {appColors} from '../../theme/colors';
 import {useNavigation} from '@react-navigation/native';
@@ -13,11 +12,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../store/store';
 import {ProductDto} from '../../constants';
 import {addToFav} from '../../store/slices/favourite.slice';
-const Logo = () => {
-  return (
-    <Image style={styles.logo} resizeMode="contain" source={AppImages.logo} />
-  );
-};
 
 const BackButton = () => {
   const navigation = useNavigation();
@@ -103,7 +97,6 @@ const LoveButton = ({
 };
 
 const NavigationAction = {
-  Logo,
   BackButton,
   LoveButton,
   ProfilePiture,

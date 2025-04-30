@@ -9,13 +9,12 @@ import {
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store/store';
 import styles from './styles';
-import { EmptyFavourite } from './components';
+import {EmptyFavourite} from './components';
 const Favourite = () => {
   const favouriteProducts = useSelector((state: RootState) => state.favourite);
   return (
     <MainLayout
       isHeaderFixed
-      isScrollable
       header={
         <NavigationHeader
           startAction={<NavigationAction.BackButton />}
@@ -29,6 +28,7 @@ const Favourite = () => {
         renderItem={({item}) => <FavouriteCard product={item} />}
         contentContainerStyle={styles().contentContainer}
         ListEmptyComponent={<EmptyFavourite />}
+        showsVerticalScrollIndicator={false}
       />
     </MainLayout>
   );

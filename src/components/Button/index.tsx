@@ -35,12 +35,16 @@ const Button = ({
     () => (size === 'small' ? 12 : size === 'medium' ? 14 : 16),
     [size],
   );
+  const memoizedStyles = useMemo(
+    () => styles(theme, size, variant, alignSelf, isDisabled),
+    [theme, size, variant, alignSelf, isDisabled],
+  );
   const iconVariant = variant === 'main' ? appColors.white : theme?.primaryText;
   return (
     <Pressable
       onPress={onPress}
       style={[
-        styles(theme, size, variant, alignSelf, isDisabled).container,
+        memoizedStyles.container,
         style,
       ]}
       disabled={isDisabled}>
@@ -48,7 +52,7 @@ const Button = ({
         <Text
           fontWeight="semiBold"
           fontSize={dynamicSize}
-          style={styles(theme, size, variant).text}>
+          style={memoizedStyles.text}>
           {title}
         </Text>
       )}

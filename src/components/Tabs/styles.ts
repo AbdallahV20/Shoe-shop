@@ -1,15 +1,21 @@
 import {StyleSheet} from 'react-native';
-import {gutters, Theme} from '../../constants';
+import {gutters, layout, Theme} from '../../constants';
 import {appColors} from '../../theme/colors';
-import {px} from '../../utils';
+import {moderateScale, px} from '../../utils';
 
-export const styles = (theme: Theme) =>
+export const styles = (theme: Theme, variant?: 'categories' | 'sizes') =>
   StyleSheet.create({
-    tabsContainer: {...gutters.gap_12, ...gutters.mb_16},
+    tabsContainer: {
+      flexGrow: variant === 'sizes' ? 1 : 0,
+      ...gutters.gap_12,
+      ...gutters.mb_16,
+      ...layout.justifyBetween,
+    },
     tabContainer: {
-      ...gutters.px_12,
-      ...gutters.py_2,
-      ...gutters.radius_24,
+      ...gutters.px_10,
+      paddingVertical: variant === 'categories' ? px(2) : px(10),
+      borderRadius:
+        variant === 'categories' ? moderateScale(24) : moderateScale(100),
     },
     activeTabContainer: {
       backgroundColor: appColors.primary,

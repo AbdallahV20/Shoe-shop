@@ -21,7 +21,7 @@ const HomeBottomTabs = () => {
         tabBarShowLabel: false,
         tabBarStyle: styles(theme).tabBarStyle,
         tabBarItemStyle: styles(theme).tabBarItemStyle,
-        tabBarInactiveTintColor: appColors.gray100,
+        tabBarInactiveTintColor: theme.secondaryText,
         tabBarActiveTintColor: appColors.primary,
       }}>
       <Tab.Screen

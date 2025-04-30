@@ -5,16 +5,17 @@ import {appColors} from '../../theme/colors';
 import styles from './styles';
 import {useAppTheme} from '../../theme';
 interface TabsProps {
-  tabs: string[];
+  tabs: string[] | number[];
   activeTab: number;
   setActiveTab: React.Dispatch<React.SetStateAction<number>>;
+  variant: 'categories' | 'sizes';
 }
 
-interface tabProps {
-  item: string;
+interface TabProps {
+  item: string | number;
   index: number;
 }
-const Tabs = ({tabs, activeTab, setActiveTab}: TabsProps) => {
+const Tabs = ({tabs, activeTab, setActiveTab, variant}: TabsProps) => {
   const {theme} = useAppTheme();
   const tabsRef = useRef<FlatList>(null);
   const handleOnPress = useCallback(
@@ -29,13 +30,13 @@ const Tabs = ({tabs, activeTab, setActiveTab}: TabsProps) => {
     [setActiveTab],
   );
 
-  const tabItem = ({item, index}: tabProps) => (
+  const tabItem = ({item, index}: TabProps) => (
     <Pressable onPress={() => handleOnPress(item, index)}>
       <Text
         style={[
-          styles(theme).tabContainer,
+          styles(theme, variant).tabContainer,
           activeTab === index
-            ? styles(theme).activeTabContainer
+            ? styles(theme,variant).activeTabContainer
             : styles(theme).inactiveTabColor,
         ]}
         fontWeight="medium"
@@ -49,9 +50,9 @@ const Tabs = ({tabs, activeTab, setActiveTab}: TabsProps) => {
       ref={tabsRef}
       horizontal
       showsHorizontalScrollIndicator={false}
-      contentContainerStyle={styles(theme).tabsContainer}
+      contentContainerStyle={styles(theme,variant).tabsContainer}
       data={tabs}
-      keyExtractor={item => item}
+      keyExtractor={item => item.toString()}
       renderItem={tabItem}
     />
   );

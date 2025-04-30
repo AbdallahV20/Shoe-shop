@@ -1,9 +1,4 @@
-import React, {
-  View,
-  ImageBackground,
-  useWindowDimensions,
-  FlatList,
-} from 'react-native';
+import React, {View, ImageBackground, FlatList} from 'react-native';
 import {RootStackParamList} from '../../constants';
 import {
   Icon,
@@ -24,8 +19,10 @@ import ShoesData from '../../data/ShoesData.json';
 import styles from './styles';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useState} from 'react';
+import {useCallback, useMemo, useState} from 'react';
 import {useAppTheme} from '../../theme';
+import {useDispatch} from 'react-redux';
+import {add} from '../../store/slices/cart.slice';
 const ProductDetails = () => {
   const data = Object.values(ShoesData);
   const [activeTab, setActiveTab] = useState(0);
@@ -33,111 +30,110 @@ const ProductDetails = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const route = useRoute<RouteProp<RootStackParamList, 'productDetails'>>();
   const {product} = route.params;
-  const {theme} = useAppTheme();
-  const {brand, name, price, category, gender, description, available_sizes} =
-    product;
-  const {height} = useWindowDimensions();
-
+  const {
+    brand,
+    name,
+    price,
+    category,
+    gender,
+    description,
+    available_sizes,
+    average_rating,
+    imageURL,
+  } = product;
+  const {theme, isDarkMode} = useAppTheme();
+  const addToCardStyle = useMemo(() => styles(theme).addToCartButton, [theme]);
+  const dispatch = useDispatch();
+  const handleAddToCart = useCallback(() => {
+    dispatch(add({...product, selected_size: available_sizes[activeTab]}));
+  }, [dispatch, product, available_sizes, activeTab]);
+  const similiarProducts = data
+    .filter(item => item.brand === brand && item.name !== name)
+    .slice(0, 4);
   return (
     <MainLayout
       isScrollable
       footer={
-        <View
-          style={{
-            flexDirection: 'row',
-            gap: 16,
-            backgroundColor: theme.tabBarBackgroundColor,
-            paddingVertical: 16,
-            paddingHorizontal: 24,
-            alignItems: 'center',
-            borderTopLeftRadius: moderateScale(18),
-            borderTopRightRadius: moderateScale(18),
-          }}>
+        <View style={styles(theme, isDarkMode).footerContainer}>
           <Price price={price} priceSize={21} />
-          <View style={{flex: 1}}>
-            <Button
-              title="Add To Card"
-              size="large"
-              alignSelf="stretch"
-              onPress={() => console.log('Bo')}
-            />
-          </View>
+          <Button
+            title="Add To Card"
+            size="large"
+            onPress={handleAddToCart}
+            style={addToCardStyle}
+          />
         </View>
       }>
       <ImageBackground
-        source={{uri: product.imageURL}}
-        style={{width: '100%', height: height * 0.5, borderRadius: 50}}
+        source={{uri: imageURL}}
+        style={styles(theme).productImage}
         resizeMode="cover">
         <NavigationHeader
           isTransparent
           startAction={<NavigationAction.BackButton />}
-          endAction={<NavigationAction.LoveButton product={product}/>}
+          endAction={<NavigationAction.LoveButton product={product} />}
         />
       </ImageBackground>
-      <View style={{paddingHorizontal: 24, marginTop: 24, gap: 24}}>
-        <View style={{flexDirection: 'row', gap: 12, marginBottom: 12}}>
-          <Info title={gender} />
-          <Info title={category} />
-        </View>
-        <View style={{gap: 12}}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}>
-            <Text fontSize={18} fontWeight="semiBold">
-              {product.name}
+      <View style={styles(theme).detailsContainer}>
+        <View style={styles(theme).innerContainer}>
+          <View style={styles(theme).tags}>
+            <Info title={brand} />
+            <Info title={gender} />
+            <Info title={category} />
+          </View>
+          <View style={styles(theme).nameAndRating}>
+            <Text
+              style={{flex: 1}}
+              numberOfLines={1}
+              fontSize={18}
+              fontWeight="semiBold">
+              {name}
             </Text>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                gap: 4,
-              }}>
+            <View style={styles(theme).rateContainer}>
               <Icon
                 name="star-fill"
                 color={appColors.yellow}
                 size={moderateScale(18)}
               />
-              <Text fontSize={14}>{product.average_rating}</Text>
+              <Text style={{marginTop: 1}} fontSize={14} fontWeight="medium">
+                {average_rating.toFixed(1)}
+              </Text>
             </View>
           </View>
-          <Text numberOfLines={3} fontSize={14} color={appColors.gray400}>
+          <Text numberOfLines={3} fontSize={14} color={theme.secondaryText}>
             {description}
           </Text>
         </View>
-        <View style={{gap: 12}}>
+        <View style={styles(theme).innerContainer}>
           <Text fontWeight="semiBold">Sizes</Text>
           <Tabs
             tabs={available_sizes}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
+            variant="sizes"
           />
         </View>
-        <View style={{gap: 12}}>
-          <SectionHeader
-            sectionTitle="Similiar Products"
-            onViewAllPress={() =>
-              navigation.navigate('viewAllProducts', {
-                currentCategory: brand,
-              })
-            }
-          />
-          <FlatList
-            data={data
-              .filter(item => item.brand === brand && item.name !== name)
-              .slice(0, 4)}
-            renderItem={({item}) => <Card product={item} />}
-            contentContainerStyle={styles().productsContainer}
-            keyExtractor={item => item.id.toString()}
-            horizontal
-            ListEmptyComponent={() => (
-              <Text textAlign="center">No Data Found</Text>
-            )}
-            showsHorizontalScrollIndicator={false}
-          />
-        </View>
+      </View>
+      <View>
+        <SectionHeader
+          sectionTitle="Similiar Products"
+          onViewAllPress={() =>
+            navigation.navigate('viewAllProducts', {
+              currentCategory: brand,
+            })
+          }
+        />
+        <FlatList
+          data={similiarProducts}
+          renderItem={({item}) => <Card product={item} />}
+          contentContainerStyle={styles(theme).productsContainer}
+          keyExtractor={item => item.id.toString()}
+          horizontal
+          ListEmptyComponent={() => (
+            <Text textAlign="center">No Data Found</Text>
+          )}
+          showsHorizontalScrollIndicator={false}
+        />
       </View>
     </MainLayout>
   );

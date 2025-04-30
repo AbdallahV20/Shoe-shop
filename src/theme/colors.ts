@@ -3,7 +3,7 @@ export const appColors = {
   primary: '#5B9EE1',
   secondary: '#C7E0F8',
   gray100: '#AEAEAE',
-  gray200: '#52555A',
+  gray200: 'rgba(235, 235, 245, 0.6)',
   gray300: '#252A32',
   gray400: '#aaa',
   gray500: '#E0E0E0',
@@ -21,7 +21,7 @@ export const appColors = {
 export const colorsLight = {
   backgroundColor: '#f5f4f4',
   primaryText: '#2A2D35',
-  secondaryText: '#6E7480',
+  secondaryText: 'rgba(60, 60, 67, 0.6)',
   tabBarBackgroundColor: appColors.white,
   textInputBackground: appColors.white,
   cardBackground: appColors.white,
@@ -36,7 +36,7 @@ export const colorsLight = {
 export const colorsDark = {
   backgroundColor: '#2D3B48',
   primaryText: '#E3E6EC',
-  secondaryText: '#848A94',
+  secondaryText: 'rgba(235, 235, 245, 0.6)',
   tabBarBackgroundColor: '#1F2A33',
   textInputBackground: '#1F2A33',
   cardBackground: '#1F2A33',

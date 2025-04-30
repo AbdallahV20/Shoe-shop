@@ -49,7 +49,7 @@ const Card = ({product, isShowDetails}: CardProps) => {
                 size={moderateScale(14)}
                 color={appColors.yellow}
               />
-              <Text fontWeight="semiBold" fontSize={14} color="#fff">
+              <Text fontWeight="semiBold" fontSize={14} color={appColors.white}>
                 {average_rating.toFixed(1)}
               </Text>
             </View>
@@ -72,7 +72,7 @@ const Card = ({product, isShowDetails}: CardProps) => {
         </Text>
         {isShowDetails && (
           <Text
-            color={appColors.gray100}
+            color={theme.secondaryText}
             fontSize={isShowDetails ? 14 : 12}
             numberOfLines={2}>
             {description}

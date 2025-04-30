@@ -16,7 +16,6 @@ const Cart = () => {
   return (
     <MainLayout
       isHeaderFixed
-      isScrollable
       header={
         <NavigationHeader
           title="Cart"
@@ -27,9 +26,11 @@ const Cart = () => {
       footer={<CartFooter />}>
       <FlatList
         data={cartStore}
-        keyExtractor={item => item.name.toString()}
+        keyExtractor={item =>
+          item.id.toString() + item.selected_size?.toString()
+        }
         contentContainerStyle={styles.cartContainer}
-        renderItem={({item}) => <CardCart key={item.id} product={item} />}
+        renderItem={({item}) => <CardCart product={item} />}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={<EmptyCart />}
       />
