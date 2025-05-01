@@ -14,9 +14,11 @@ import Button from '../Button';
 import {add} from '../../store/slices/cart.slice';
 import {useDispatch} from 'react-redux';
 import styles from './styles';
+import {useTranslation} from 'react-i18next';
 
 const AddToCart = ({payload}: SheetProps<'add-to-cart-sheet'>) => {
   const product = payload?.product;
+  const {t} = useTranslation();
   const [selectedSize, setSelectedSize] = useState('');
   const dispatch = useDispatch();
   const availablSizes = useMemo(
@@ -35,7 +37,7 @@ const AddToCart = ({payload}: SheetProps<'add-to-cart-sheet'>) => {
   return (
     <AppBottomSheet
       sheetName="add-to-cart-sheet"
-      title="Select Your Size"
+      title={t('selectYourSize')}
       sheetContent={
         <View style={styles.container}>
           <View style={styles.row}>
@@ -53,7 +55,7 @@ const AddToCart = ({payload}: SheetProps<'add-to-cart-sheet'>) => {
           <Button
             size="large"
             alignSelf="stretch"
-            title="Add To Cart"
+            title={t('addToCart')}
             isDisabled={!selectedSize}
             onPress={handleAddToCart}
           />

@@ -1,14 +1,17 @@
 //the text may streched out
-import {View, Image} from 'react-native';
+import {View, Image, Pressable} from 'react-native';
 import React, {useCallback} from 'react';
 import styles from './styles';
 import Text from '../Text';
 import Price from '../Price';
 import Counter from '../Counter';
-import {ProductDto} from '../../constants';
+import {ProductDto, RootStackParamList} from '../../constants';
 import IconButton from '../IconButton';
 import {useDispatch} from 'react-redux';
 import {remove} from '../../store/slices/cart.slice';
+import {useTranslation} from 'react-i18next';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 type CartCardProps = {
   product: ProductDto;
@@ -17,11 +20,16 @@ type CartCardProps = {
 const CardCart = ({product}: CartCardProps) => {
   const {name, imageURL, price, id, selected_size} = product;
   const dispatch = useDispatch();
+  const {t} = useTranslation();
   const handleRemoveProduct = useCallback(() => {
     dispatch(remove({id, selected_size}));
   }, [dispatch, id, selected_size]);
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
-    <View style={styles.container}>
+    <Pressable
+      onPress={() => navigation.push('productDetails', {product})}
+      style={styles.container}>
       <Image
         source={{uri: imageURL}}
         resizeMode="cover"
@@ -40,7 +48,7 @@ const CardCart = ({product}: CartCardProps) => {
             <Price price={price} />
           </View>
           <Text fontWeight="medium" fontSize={14}>
-            {` Size: ${selected_size}`}
+            {` ${t('size')} : ${selected_size}`}
           </Text>
         </View>
         <View style={styles.rowContainer}>
@@ -51,7 +59,7 @@ const CardCart = ({product}: CartCardProps) => {
           />
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

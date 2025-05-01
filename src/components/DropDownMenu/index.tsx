@@ -6,6 +6,7 @@ import {appColors} from '../../theme/colors';
 import {useAppTheme} from '../../theme';
 import {gutters, Theme} from '../../constants';
 import {moderateScale, pxH} from '../../utils';
+import {useTranslation} from 'react-i18next';
 
 type DropdownProps = {
   data: any;
@@ -16,6 +17,7 @@ type DropdownProps = {
 const DropdownMenu = ({data, value, setValue}: DropdownProps) => {
   const [isFocus, setIsFocus] = useState(false);
   const {theme} = useAppTheme();
+  const {t} = useTranslation();
   return (
     <Dropdown
       style={[
@@ -28,12 +30,13 @@ const DropdownMenu = ({data, value, setValue}: DropdownProps) => {
       containerStyle={styles(theme).container}
       activeColor={theme.activeDropDown}
       itemTextStyle={styles(theme).itemText}
+      iconStyle={styles(theme).iconStyle}
       data={data}
       fontFamily={appFonts.regular}
       maxHeight={pxH(300)}
       labelField="label"
       valueField="value"
-      placeholder={!isFocus ? 'Select Size' : '...'}
+      placeholder={!isFocus ? t('selectSize') : '...'}
       value={value}
       showsVerticalScrollIndicator={false}
       onFocus={() => setIsFocus(true)}
@@ -65,11 +68,15 @@ const styles = (theme?: Theme) =>
     },
     placeholderStyle: {
       fontSize: moderateScale(16),
-      color: theme?.primaryText,
+      color: theme?.secondaryText,
     },
     selectedTextStyle: {
       fontSize: moderateScale(16),
       color: theme?.primaryText,
     },
     itemText: {color: theme?.primaryText},
+    iconStyle: {
+      position: 'absolute',
+      end: 0,
+    },
   });

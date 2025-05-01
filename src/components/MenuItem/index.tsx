@@ -8,6 +8,7 @@ import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
 import Toggle from '../Toggle';
 import {moderateScale} from '../../utils';
+import {isArabic} from '../../localization/i18next';
 interface MenuItemProps {
   title: string;
   iconName: string;
@@ -43,7 +44,7 @@ const MenuItem = ({title, iconName, screenName}: MenuItemProps) => {
         <Toggle isOn={darkMode} onToggle={onChangeModeHandler} />
       ) : (
         <Icon
-          name="arrow-right-2"
+          name={isArabic ? 'arrow-left-2' : 'arrow-right-2'}
           size={moderateScale(16)}
           color={theme.primaryText}
         />

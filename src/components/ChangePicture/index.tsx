@@ -14,10 +14,12 @@ import {MMKV_KEYS} from '../../constants';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../store/store';
 import {addImageProfile} from '../../store/slices/user.slice';
+import {useTranslation} from 'react-i18next';
 const ChangePicture = () => {
   const {theme} = useAppTheme();
   const userData = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
+  const {t} = useTranslation();
   const requestCameraPermission = async (): Promise<boolean> => {
     const permission =
       Platform.OS === 'android'
@@ -83,7 +85,7 @@ const ChangePicture = () => {
   };
   return (
     <AppBottomSheet
-      title="Change Profile Picture"
+      title={t('changePicture')}
       sheetName={'change-picture-sheet'}
       leftComponent={
         <IconButton
@@ -103,7 +105,7 @@ const ChangePicture = () => {
               style={styles(theme).icon}
               size={moderateScale(21)}
             />
-            <Text fontSize={12}>Camera</Text>
+            <Text fontSize={12}>{t('camera')}</Text>
           </Pressable>
           <Pressable
             style={styles(theme).optionContainer}
@@ -114,7 +116,7 @@ const ChangePicture = () => {
               style={styles(theme).icon}
               size={moderateScale(21)}
             />
-            <Text fontSize={12}>Gallery</Text>
+            <Text fontSize={12}>{t('gallery')}</Text>
           </Pressable>
         </View>
       }

@@ -7,14 +7,16 @@ import {
   NavigationHeader,
 } from '../../components';
 import ShoesData from '../../data/ShoesData.json';
+import ShoesDataAr from '../../data/ShoesDataAr.json';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {RootStackParamList} from '../../constants';
 import styles from './styles';
+import {isArabic} from '../../localization/i18next';
 
 const ViewAllProducts = () => {
   const route = useRoute<RouteProp<RootStackParamList, 'viewAllProducts'>>();
   const {currentCategory} = route.params;
-  const data = Object.values(ShoesData);
+  const data = isArabic ? Object.values(ShoesDataAr) : Object.values(ShoesData);
   return (
     <MainLayout
       isHeaderFixed

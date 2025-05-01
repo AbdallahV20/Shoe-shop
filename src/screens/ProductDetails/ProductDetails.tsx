@@ -16,6 +16,7 @@ import {
 import {moderateScale} from '../../utils';
 import {appColors} from '../../theme/colors';
 import ShoesData from '../../data/ShoesData.json';
+import ShoesDataAr from '../../data/ShoesDataAr.json';
 import styles from './styles';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -23,8 +24,10 @@ import {useCallback, useMemo, useState} from 'react';
 import {useAppTheme} from '../../theme';
 import {useDispatch} from 'react-redux';
 import {add} from '../../store/slices/cart.slice';
+import {isArabic} from '../../localization/i18next';
+import {useTranslation} from 'react-i18next';
 const ProductDetails = () => {
-  const data = Object.values(ShoesData);
+  const data = isArabic ? Object.values(ShoesDataAr) : Object.values(ShoesData);
   const [activeTab, setActiveTab] = useState(0);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -47,6 +50,7 @@ const ProductDetails = () => {
   const handleAddToCart = useCallback(() => {
     dispatch(add({...product, selected_size: available_sizes[activeTab]}));
   }, [dispatch, product, available_sizes, activeTab]);
+  const {t} = useTranslation();
   const similiarProducts = data
     .filter(item => item.brand === brand && item.name !== name)
     .slice(0, 4);
@@ -57,7 +61,7 @@ const ProductDetails = () => {
         <View style={styles(theme, isDarkMode).footerContainer}>
           <Price price={price} priceSize={21} />
           <Button
-            title="Add To Card"
+            title={t('addToCart')}
             size="large"
             onPress={handleAddToCart}
             style={addToCardStyle}
@@ -105,7 +109,7 @@ const ProductDetails = () => {
           </Text>
         </View>
         <View style={styles(theme).innerContainer}>
-          <Text fontWeight="semiBold">Sizes</Text>
+          <Text fontWeight="medium">{t('sizes')}</Text>
           <Tabs
             tabs={available_sizes}
             activeTab={activeTab}
@@ -116,7 +120,7 @@ const ProductDetails = () => {
       </View>
       <View>
         <SectionHeader
-          sectionTitle="Similiar Products"
+          sectionTitle={t('similiarProducts')}
           onViewAllPress={() =>
             navigation.navigate('viewAllProducts', {
               currentCategory: brand,

@@ -3,6 +3,7 @@ import React from 'react';
 import Text from '../Text';
 import {appColors} from '../../theme/colors';
 import styles from './styles';
+import {useTranslation} from 'react-i18next';
 interface SectionHeaderProps {
   sectionTitle: string;
   onViewAllPress?: () => void;
@@ -13,6 +14,7 @@ const SectionHeader = ({
   onViewAllPress,
   noViewAll,
 }: SectionHeaderProps) => {
+  const {t} = useTranslation();
   return (
     <View style={styles.container}>
       <Text fontSize={18} fontWeight="medium">
@@ -21,7 +23,7 @@ const SectionHeader = ({
       {!noViewAll && (
         <Pressable onPress={onViewAllPress}>
           <Text fontSize={12} color={appColors.primary}>
-            View All
+            {t('viewAll')}
           </Text>
         </Pressable>
       )}

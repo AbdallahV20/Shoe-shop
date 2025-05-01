@@ -15,7 +15,9 @@ import {SheetManager} from 'react-native-actions-sheet';
 import {moderateScale} from '../../utils';
 import styles from './styles';
 import {settingsItems} from '../../constants/data';
+import {useTranslation} from 'react-i18next';
 const Profile = () => {
+  const {t} = useTranslation();
   return (
     <MainLayout
       isHeaderFixed
@@ -23,7 +25,7 @@ const Profile = () => {
       header={
         <NavigationHeader
           startAction={<NavigationAction.BackButton />}
-          title="Profile"
+          title={t('profile')}
         />
       }>
       <View style={styles().profileImageContainer}>
@@ -40,14 +42,14 @@ const Profile = () => {
         </TouchableOpacity>
         <View>
           <Text textAlign="center" fontWeight="semiBold">
-            Mohamed Ehab
+            Abdallah Metwally
           </Text>
           <Text textAlign="center" fontSize={14}>
-            moehab@gmail.com
+            ametwally@gmail.com
           </Text>
           <Button
             iconName="pen-new-square-svgrepo-com-1"
-            title="Edit Profile"
+            title={t('editProfile')}
             onPress={() => console.log('No')}
             alignSelf="center"
             style={styles().editProfile}
@@ -56,7 +58,7 @@ const Profile = () => {
       </View>
 
       <View style={styles().menuContainer}>
-        {settingsItems.map(item => (
+        {settingsItems(t).map(item => (
           <MenuItem
             key={item.id}
             title={item.title}

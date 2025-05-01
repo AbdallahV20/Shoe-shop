@@ -11,19 +11,22 @@ import {
 } from '../../components';
 import {FlatList, Pressable, ScrollView, View} from 'react-native';
 import ShoesData from '../../data/ShoesData.json';
+import ShoesDataAr from '../../data/ShoesDataAr.json';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ProductDto, RootStackParamList} from '../../constants';
 import {brands, categoriesTabs} from '../../constants/data';
+import {useTranslation} from 'react-i18next';
+import {isArabic} from '../../localization/i18next';
 const Home = () => {
-  const data = Object.values(ShoesData);
+  const data = isArabic ? Object.values(ShoesDataAr) : Object.values(ShoesData);
   const [activeTab, setActiveTab] = useState(0);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-
+  const {t} = useTranslation();
   const filterDataByCategory = data.filter(
-    item => activeTab === 0 || categoriesTabs[activeTab] === item.gender,
+    item => activeTab === 0 || categoriesTabs(t)[activeTab] === item.gender,
   );
   return (
     <MainLayout
@@ -43,16 +46,16 @@ const Home = () => {
         </View> */}
         <View>
           <SectionHeader
-            sectionTitle="Recommended For You"
+            sectionTitle={t('recommendedForYou')}
             onViewAllPress={() =>
               navigation.navigate('viewAllProducts', {
-                currentCategory: categoriesTabs[activeTab],
+                currentCategory: categoriesTabs(t)[activeTab],
               })
             }
           />
           <View style={styles.tabsWrapper}>
             <Tabs
-              tabs={categoriesTabs}
+              tabs={categoriesTabs(t)}
               activeTab={activeTab}
               setActiveTab={setActiveTab}
               variant="categories"
@@ -71,7 +74,7 @@ const Home = () => {
           />
         </View>
         <View>
-          <SectionHeader sectionTitle="Featured Brands" noViewAll />
+          <SectionHeader sectionTitle={t('featuredBrands')} noViewAll />
           <ScrollView
             showsHorizontalScrollIndicator={false}
             horizontal
@@ -90,7 +93,7 @@ const Home = () => {
           </ScrollView>
         </View>
         <View>
-          <SectionHeader sectionTitle="Special Deals" noViewAll />
+          <SectionHeader sectionTitle={t('specialDeals')} noViewAll />
           <FlatList
             data={data.filter((item: ProductDto) => item?.discount)}
             renderItem={({item}) => <Card product={item} />}

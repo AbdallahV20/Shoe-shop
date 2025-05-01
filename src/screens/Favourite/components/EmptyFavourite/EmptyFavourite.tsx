@@ -6,9 +6,11 @@ import AppImages from '../../../../assets/app_images';
 import {useNavigation} from '@react-navigation/native';
 import styles from './styles';
 import {useAppTheme} from '../../../../theme';
+import {useTranslation} from 'react-i18next';
 export const EmptyFavourite = () => {
   const navigation = useNavigation();
   const {theme} = useAppTheme();
+  const {t} = useTranslation();
   return (
     <View style={styles().emptyListContainer}>
       <LottieView
@@ -19,18 +21,18 @@ export const EmptyFavourite = () => {
       />
       <View style={styles().emptyTextContainer}>
         <Text fontSize={21} fontWeight="semiBold" textAlign="center">
-          No Favourites Yet!
+          {t('noFavourite')}
         </Text>
         <Text
           fontSize={14}
           fontWeight="medium"
           textAlign="center"
           color={theme.secondaryText}>
-          You can add an item to your favourites by clicking "love icon"
+          {t('addToFavourite')}
         </Text>
         <Button
           size="large"
-          title="Go Back"
+          title={t('goBack')}
           alignSelf="center"
           onPress={() => navigation.goBack()}
         />

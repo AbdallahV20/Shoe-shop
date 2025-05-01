@@ -10,15 +10,16 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../store/store';
 import styles from './styles';
 import {CartFooter, EmptyCart} from './components';
+import {useTranslation} from 'react-i18next';
 const Cart = () => {
   const cartStore = useSelector((state: RootState) => state.cart);
-
+  const {t} = useTranslation();
   return (
     <MainLayout
       isHeaderFixed
       header={
         <NavigationHeader
-          title="Cart"
+          title={t('cart')}
           startAction={<NavigationAction.BackButton />}
           endAction={<NavigationAction.NofificationsButton />}
         />

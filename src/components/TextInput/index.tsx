@@ -7,6 +7,7 @@ import Text from '../Text';
 import {appColors} from '../../theme/colors';
 import Icon from '../Icon';
 import {px} from '../../utils';
+import {isArabic} from '../../localization/i18next';
 
 interface textInputProps extends TextInputProps {
   value: string;
@@ -42,13 +43,14 @@ const TextInput = ({
             </View>
           )}
           <TextInputBase
-            placeholderTextColor={appColors.gray400}
+            placeholderTextColor={theme.secondaryText}
             style={styles(theme).textInput}
             selectionColor={appColors.primary}
             value={value}
             cursorColor={appColors.primary}
             onChangeText={onChangeHandler}
             numberOfLines={1}
+            textAlign={isArabic ? 'right' : 'left'}
             {...otherProps}
           />
         </View>

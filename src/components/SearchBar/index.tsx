@@ -4,10 +4,12 @@ import IconButton from '../IconButton';
 import {useAppTheme} from '../../theme';
 import {StyleSheet, View} from 'react-native';
 import {gutters, layout} from '../../constants';
+import {useTranslation} from 'react-i18next';
 
 export const SearchBar = () => {
   const {theme} = useAppTheme();
   const [search, setSearch] = useState('');
+  const {t} = useTranslation();
   return (
     <View style={styles.container}>
       <View style={styles.textInput}>
@@ -15,7 +17,7 @@ export const SearchBar = () => {
           value={search}
           setValue={setSearch}
           isSearchBar
-          placeholder="Search"
+          placeholder={t('search')}
         />
       </View>
       <IconButton

@@ -7,11 +7,15 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../../constants';
 import AppImages from '../../../../assets/app_images';
 import ShoesData from '../../../../data/ShoesData.json';
+import ShoesDataAr from '../../../../data/ShoesDataAr.json';
 import styles from './styles';
+import {useTranslation} from 'react-i18next';
+import {isArabic} from '../../../../localization/i18next';
 export const EmptyCart = () => {
-  const data = Object.values(ShoesData);
+  const data = isArabic ? Object.values(ShoesDataAr) : Object.values(ShoesData);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const {t} = useTranslation();
   return (
     <View style={styles.emptyListContainer}>
       <View>
@@ -23,10 +27,10 @@ export const EmptyCart = () => {
         />
         <View style={styles.emptyTextContainer}>
           <Text fontSize={18} fontWeight="semiBold" textAlign="center">
-            Your cart is empty
+            {t('emptyCart')}
           </Text>
           <Button
-            title="Start Shopping"
+            title={t('startShopping')}
             alignSelf="center"
             size="small"
             onPress={() => navigation.navigate('home')}
@@ -34,7 +38,7 @@ export const EmptyCart = () => {
         </View>
       </View>
       <View>
-        <SectionHeader sectionTitle="Featured Products" noViewAll />
+        <SectionHeader sectionTitle={t('featuredProducts')} noViewAll />
         <FlatList
           data={data.slice(6, 14)}
           renderItem={({item}) => <Card product={item} />}

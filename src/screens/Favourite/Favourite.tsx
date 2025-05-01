@@ -10,15 +10,17 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../store/store';
 import styles from './styles';
 import {EmptyFavourite} from './components';
+import {useTranslation} from 'react-i18next';
 const Favourite = () => {
   const favouriteProducts = useSelector((state: RootState) => state.favourite);
+  const {t} = useTranslation();
   return (
     <MainLayout
       isHeaderFixed
       header={
         <NavigationHeader
           startAction={<NavigationAction.BackButton />}
-          title="Favourite"
+          title={t('favourites')}
           endAction={<NavigationAction.NofificationsButton />}
         />
       }>
