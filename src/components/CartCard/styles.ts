@@ -1,4 +1,4 @@
-import {ImageStyle, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {gutters, layout} from '../../constants';
 export default StyleSheet.create({
   container: {
@@ -10,7 +10,12 @@ export default StyleSheet.create({
     ...gutters.radius_16,
     flex: 0.5,
     aspectRatio: 1 / 1,
-  } as ImageStyle,
+    ...layout.overflowHidden,
+  },
+  image: {
+    ...layout.fullHeight,
+    ...layout.fullWidth,
+  },
   gapSpace: {...gutters.gapH_8},
   rightContainer: {
     ...layout.justifyBetween,

@@ -2,6 +2,26 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "src/assets/Logos/Adidas.tsx",
+      "sha1": "9d626c100c19e7ce7332a57b28aac3ae9cb2006f"
+    },
+    {
+      "path": "src/assets/Logos/NewBalance.tsx",
+      "sha1": "2619bb8b5ea1bc2371f2f65cf7ae8d843b558fff"
+    },
+    {
+      "path": "src/assets/Logos/Nike.tsx",
+      "sha1": "046bdb326d228470af065f7db4c20a62be4b2aaa"
+    },
+    {
+      "path": "src/assets/Logos/Puma.tsx",
+      "sha1": "1864d5055dd993539b2d5506ee279aade579e5ac"
+    },
+    {
+      "path": "src/assets/Logos/index.ts",
+      "sha1": "47698148e0dd0970d73b7a5b32d5beb75f8bdfed"
+    },
+    {
       "path": "src/assets/animations/coffeecup.json",
       "sha1": "c15a4a1174384a24928ba628b9f2a8f13ce5d798"
     },
@@ -10,20 +30,16 @@
       "sha1": "f2112ea52f271d13ba555bf6fb8b58cc6dc7e28b"
     },
     {
+      "path": "src/assets/animations/empty_cart_animation.json",
+      "sha1": "8c8a611cd03a949f38eb7372135feb55f9906f06"
+    },
+    {
+      "path": "src/assets/animations/empty_fav_animation.json",
+      "sha1": "f25140f105d6687602aeb9d1a9fbc896c4d9833c"
+    },
+    {
       "path": "src/assets/animations/successful.json",
       "sha1": "946b3f607c68ddaaac8b57212760c6e45dd3250c"
-    },
-    {
-      "path": "src/assets/app_images/amazonpay.png",
-      "sha1": "4ec7050dda251f228cb2b9a5220cc986099dd3c7"
-    },
-    {
-      "path": "src/assets/app_images/applepay.png",
-      "sha1": "0b06e72fa97134cda893f1688ab8852fef316f1f"
-    },
-    {
-      "path": "src/assets/app_images/avatar.png",
-      "sha1": "3455b9a804fed85c996001bfbcc73e6034bdf528"
     },
     {
       "path": "src/assets/app_images/boy.png",
@@ -34,44 +50,12 @@
       "sha1": "8e888a7ebc19b3f4ab63cb6a87715d7d6679a98e"
     },
     {
-      "path": "src/assets/app_images/empty.png",
-      "sha1": "52bcdb23fda3ee8c69984c2d7ebb415b6e479c4d"
+      "path": "src/assets/app_images/promo_background_1.jpg",
+      "sha1": "1bfb7117402b0cb0047402b84868538f96074bcd"
     },
     {
-      "path": "src/assets/app_images/empty_cart.png",
-      "sha1": "b41937e5f7acc5a5d5b247a931dba05dcae7c0b5"
-    },
-    {
-      "path": "src/assets/app_images/empty_fav.png",
-      "sha1": "d00af112d47b17a9aa94facd54080834f1b01246"
-    },
-    {
-      "path": "src/assets/app_images/girl.png",
-      "sha1": "f90d49e9d0e6967849b3155800d350c7e2176d0d"
-    },
-    {
-      "path": "src/assets/app_images/gpay.png",
-      "sha1": "039fbff59306d5e4300ef7614d796844345575af"
-    },
-    {
-      "path": "src/assets/app_images/index.ts",
-      "sha1": "b381c2be41a88089811ff365e40517e9126173eb"
-    },
-    {
-      "path": "src/assets/app_images/logo.png",
-      "sha1": "934a27ad091f5f71d87c23b239863bcca25dce84"
-    },
-    {
-      "path": "src/assets/app_images/profile_background.jpg",
-      "sha1": "8f80da8bddc34929afe1549b73b4016f5afc31ea"
-    },
-    {
-      "path": "src/assets/app_images/promo1.png",
-      "sha1": "2c6ec4222d954575bd8fa823396695fd7fc34670"
-    },
-    {
-      "path": "src/assets/app_images/promo2.png",
-      "sha1": "8ad784646cb29e3534b50dfc7beb32534245b355"
+      "path": "src/assets/app_images/promo_background_2.jpg",
+      "sha1": "350bba2415f5cbd7157b7bd7487ee115ef8d3f98"
     },
     {
       "path": "src/assets/app_images/usa.png",

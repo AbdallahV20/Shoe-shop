@@ -27,14 +27,13 @@ const CardCart = ({product}: CartCardProps) => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
-    <Pressable
-      onPress={() => navigation.push('productDetails', {product})}
-      style={styles.container}>
-      <Image
-        source={{uri: imageURL}}
-        resizeMode="cover"
+    <Pressable style={styles.container}>
+      <Pressable
         style={styles.imageContainer}
-      />
+        onPress={() => navigation.push('productDetails', {product})}>
+        <Image style={styles.image} source={{uri: imageURL}} resizeMode="cover" />
+      </Pressable>
+
       <View style={styles.rightContainer}>
         <View style={styles.gapSpace}>
           <View style={styles.rowContainer}>

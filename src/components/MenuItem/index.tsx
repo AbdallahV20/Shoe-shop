@@ -9,6 +9,7 @@ import styles from './styles';
 import Toggle from '../Toggle';
 import {moderateScale} from '../../utils';
 import {isArabic} from '../../localization/i18next';
+import {useTranslation} from 'react-i18next';
 interface MenuItemProps {
   title: string;
   iconName: string;
@@ -17,6 +18,7 @@ interface MenuItemProps {
 const MenuItem = ({title, iconName, screenName}: MenuItemProps) => {
   const {theme, toggleTheme, isDarkMode} = useAppTheme();
   const [darkMode, setDarkMode] = useState(isDarkMode);
+  const {t} = useTranslation();
   const onChangeModeHandler = useCallback(
     (isOn: boolean) => {
       toggleTheme();
@@ -40,7 +42,7 @@ const MenuItem = ({title, iconName, screenName}: MenuItemProps) => {
         </View>
         <Text fontWeight="medium">{title}</Text>
       </View>
-      {title === 'Dark Mode' ? (
+      {title === t('darkMode') ? (
         <Toggle isOn={darkMode} onToggle={onChangeModeHandler} />
       ) : (
         <Icon

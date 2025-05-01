@@ -47,7 +47,7 @@ const FavouriteCard = ({product}: FavouriteCardProps) => {
           <View style={styles(theme).rateContainer}>
             <StarRating rating={average_rating} />
             <Text fontSize={12} fontWeight="semiBold">
-              {average_rating}
+              {average_rating.toFixed(1)}
             </Text>
           </View>
         </View>
