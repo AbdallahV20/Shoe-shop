@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0202C73AB69E41739EB23FBD /* successful.json in Resources */ = {isa = PBXBuildFile; fileRef = E25FB8F58BD84DCB87DB670A /* successful.json */; };
-		0C80B921A6F3F58F76C31292 /* libPods-CoffeeApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-CoffeeApp.a */; };
+		0C80B921A6F3F58F76C31292 /* libPods-ShoesStore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-ShoesStore.a */; };
 		0E257BDFA83B4C23B7600050 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3AA31989DE94533BB36C305 /* Poppins-Bold.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		1D39453BFE1A42BFA9BEA616 /* Nike.tsx in Resources */ = {isa = PBXBuildFile; fileRef = F6784B7B94F5431E8C53FB29 /* Nike.tsx */; };
+		2C25ABE3AD3541BCB34A6B75 /* NewBalance.tsx in Resources */ = {isa = PBXBuildFile; fileRef = F60B149B6EE64A2898481D5E /* NewBalance.tsx */; };
 		2E87AD137D1141B8AE1C8FAF /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DF2FCB6DA044DEB934F0E5D /* Poppins-Italic.ttf */; };
 		35EEA279F49643C19C728293 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C22A239831D4EF093A04C4E /* Poppins-Thin.ttf */; };
+		3A0DB587BE37455B85960727 /* empty_fav_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0783AB7E70294118AB92E952 /* empty_fav_animation.json */; };
+		43381F2F178E4B859FD4FE4E /* empty_cart_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 48E84A3453CC4AA2A2547AE1 /* empty_cart_animation.json */; };
 		44447C73CCDC469FBFB4C04C /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 253BD358697D4A82A10030A0 /* Poppins-Regular.ttf */; };
 		4957902AC8DA46AD967277A8 /* app_icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40AF98494172431D8950733E /* app_icons.ttf */; };
+		53FD8CE35ADB4D1AAB6B598E /* promo_background_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AE5C8F930A6845328ACCFFE3 /* promo_background_1.jpg */; };
 		623BF641E527485EBD110289 /* coffeecup.json in Resources */ = {isa = PBXBuildFile; fileRef = 94637635B17541F980334026 /* coffeecup.json */; };
 		73A34D3B93BB48E4A654A602 /* boy.png in Resources */ = {isa = PBXBuildFile; fileRef = D22977DE9F4C482095926DE3 /* boy.png */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
@@ -23,58 +28,53 @@
 		AA3FD2EE57A14C32A7C177DE /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0628CA5FC3DE442C93ADEBBC /* Poppins-ExtraBold.ttf */; };
 		B03DC261B5154C5F966E67E0 /* usa.png in Resources */ = {isa = PBXBuildFile; fileRef = D1FA934A30834051969A3FD4 /* usa.png */; };
 		B2596F9F5CCC4FF8A675B192 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D68DCBC3DFEB49628524DC2A /* Poppins-Light.ttf */; };
+		B3C8F3FB930643C683327D6D /* Puma.tsx in Resources */ = {isa = PBXBuildFile; fileRef = EB0308DA45E1495FBC1D95A3 /* Puma.tsx */; };
 		BE3AAD2DA86D4A2583C90C28 /* egypt.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CEA34B0A8AE4D6C9D892008 /* egypt.png */; };
+		CB4498169E2F45F5B228E3D4 /* promo_background_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A38CBC31AD74F91A5B6F90D /* promo_background_2.jpg */; };
 		D1C19F2DC1D342F081035073 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5BA317270B148DA8FBFDC82 /* Poppins-ExtraLight.ttf */; };
 		DDAE26C9FEAB4422B4344B2C /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07330DBFCDF74C36B09AD892 /* Poppins-Medium.ttf */; };
 		EBA00721CB694E6D80D2DFBA /* download.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D2DBC7F0A334D9A90BC1B4D /* download.json */; };
 		F132A6B5A54641D8BC6BF9B7 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23F8DA171D4E44ED8EFE758A /* Poppins-SemiBold.ttf */; };
-		FD40F381C38247C1B5958F7A /* Adidas.tsx in Resources */ = {isa = PBXBuildFile; fileRef = D1E2C179598D4AE68B3E7E27 /* Adidas.tsx */; };
-		2C25ABE3AD3541BCB34A6B75 /* NewBalance.tsx in Resources */ = {isa = PBXBuildFile; fileRef = F60B149B6EE64A2898481D5E /* NewBalance.tsx */; };
-		1D39453BFE1A42BFA9BEA616 /* Nike.tsx in Resources */ = {isa = PBXBuildFile; fileRef = F6784B7B94F5431E8C53FB29 /* Nike.tsx */; };
-		B3C8F3FB930643C683327D6D /* Puma.tsx in Resources */ = {isa = PBXBuildFile; fileRef = EB0308DA45E1495FBC1D95A3 /* Puma.tsx */; };
 		F3587731CBC3497194207244 /* index.ts in Resources */ = {isa = PBXBuildFile; fileRef = 69F8FBBDAA1F48618286433D /* index.ts */; };
-		43381F2F178E4B859FD4FE4E /* empty_cart_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 48E84A3453CC4AA2A2547AE1 /* empty_cart_animation.json */; };
-		3A0DB587BE37455B85960727 /* empty_fav_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0783AB7E70294118AB92E952 /* empty_fav_animation.json */; };
-		53FD8CE35ADB4D1AAB6B598E /* promo_background_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AE5C8F930A6845328ACCFFE3 /* promo_background_1.jpg */; };
-		CB4498169E2F45F5B228E3D4 /* promo_background_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A38CBC31AD74F91A5B6F90D /* promo_background_2.jpg */; };
+		FD40F381C38247C1B5958F7A /* Adidas.tsx in Resources */ = {isa = PBXBuildFile; fileRef = D1E2C179598D4AE68B3E7E27 /* Adidas.tsx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0628CA5FC3DE442C93ADEBBC /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraBold.ttf"; path = "../src/assets/fonts/Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
 		07330DBFCDF74C36B09AD892 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* CoffeeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CoffeeApp/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CoffeeApp/Info.plist; sourceTree = "<group>"; };
-		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = CoffeeApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		0783AB7E70294118AB92E952 /* empty_fav_animation.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = empty_fav_animation.json; path = ../src/assets/animations/empty_fav_animation.json; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* ShoesStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoesStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ShoesStore/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ShoesStore/Info.plist; sourceTree = "<group>"; };
+		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = ShoesStore/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		23F8DA171D4E44ED8EFE758A /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBold.ttf"; path = "../src/assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		253BD358697D4A82A10030A0 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../src/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		2D2DBC7F0A334D9A90BC1B4D /* download.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = download.json; path = ../src/assets/animations/download.json; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-CoffeeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeApp.debug.xcconfig"; path = "Target Support Files/Pods-CoffeeApp/Pods-CoffeeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		3B4392A12AC88292D35C810B /* Pods-ShoesStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoesStore.debug.xcconfig"; path = "Target Support Files/Pods-ShoesStore/Pods-ShoesStore.debug.xcconfig"; sourceTree = "<group>"; };
 		3DF2FCB6DA044DEB934F0E5D /* Poppins-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Italic.ttf"; path = "../src/assets/fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		40AF98494172431D8950733E /* app_icons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = app_icons.ttf; path = ../src/assets/fonts/app_icons.ttf; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-CoffeeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeApp.release.xcconfig"; path = "Target Support Files/Pods-CoffeeApp/Pods-CoffeeApp.release.xcconfig"; sourceTree = "<group>"; };
+		48E84A3453CC4AA2A2547AE1 /* empty_cart_animation.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = empty_cart_animation.json; path = ../src/assets/animations/empty_cart_animation.json; sourceTree = "<group>"; };
+		5709B34CF0A7D63546082F79 /* Pods-ShoesStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoesStore.release.xcconfig"; path = "Target Support Files/Pods-ShoesStore/Pods-ShoesStore.release.xcconfig"; sourceTree = "<group>"; };
+		5A38CBC31AD74F91A5B6F90D /* promo_background_2.jpg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = promo_background_2.jpg; path = ../src/assets/app_images/promo_background_2.jpg; sourceTree = "<group>"; };
 		5C22A239831D4EF093A04C4E /* Poppins-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Thin.ttf"; path = "../src/assets/fonts/Poppins-Thin.ttf"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-CoffeeApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CoffeeApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DCACB8F33CDC322A6C60F78 /* libPods-ShoesStore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShoesStore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69F8FBBDAA1F48618286433D /* index.ts */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = index.ts; path = ../src/assets/Logos/index.ts; sourceTree = "<group>"; };
 		6CEA34B0A8AE4D6C9D892008 /* egypt.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = egypt.png; path = ../src/assets/app_images/egypt.png; sourceTree = "<group>"; };
-		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = CoffeeApp/AppDelegate.swift; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CoffeeApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ShoesStore/AppDelegate.swift; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ShoesStore/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		94637635B17541F980334026 /* coffeecup.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = coffeecup.json; path = ../src/assets/animations/coffeecup.json; sourceTree = "<group>"; };
+		AE5C8F930A6845328ACCFFE3 /* promo_background_1.jpg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = promo_background_1.jpg; path = ../src/assets/app_images/promo_background_1.jpg; sourceTree = "<group>"; };
 		C5BA317270B148DA8FBFDC82 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLight.ttf"; path = "../src/assets/fonts/Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		D1E2C179598D4AE68B3E7E27 /* Adidas.tsx */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Adidas.tsx; path = ../src/assets/Logos/Adidas.tsx; sourceTree = "<group>"; };
 		D1FA934A30834051969A3FD4 /* usa.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = usa.png; path = ../src/assets/app_images/usa.png; sourceTree = "<group>"; };
 		D22977DE9F4C482095926DE3 /* boy.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = boy.png; path = ../src/assets/app_images/boy.png; sourceTree = "<group>"; };
 		D3AA31989DE94533BB36C305 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		D68DCBC3DFEB49628524DC2A /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../src/assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
 		E25FB8F58BD84DCB87DB670A /* successful.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = successful.json; path = ../src/assets/animations/successful.json; sourceTree = "<group>"; };
+		EB0308DA45E1495FBC1D95A3 /* Puma.tsx */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Puma.tsx; path = ../src/assets/Logos/Puma.tsx; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		D1E2C179598D4AE68B3E7E27 /* Adidas.tsx */ = {isa = PBXFileReference; name = "Adidas.tsx"; path = "../src/assets/Logos/Adidas.tsx"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F60B149B6EE64A2898481D5E /* NewBalance.tsx */ = {isa = PBXFileReference; name = "NewBalance.tsx"; path = "../src/assets/Logos/NewBalance.tsx"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F6784B7B94F5431E8C53FB29 /* Nike.tsx */ = {isa = PBXFileReference; name = "Nike.tsx"; path = "../src/assets/Logos/Nike.tsx"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		EB0308DA45E1495FBC1D95A3 /* Puma.tsx */ = {isa = PBXFileReference; name = "Puma.tsx"; path = "../src/assets/Logos/Puma.tsx"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		69F8FBBDAA1F48618286433D /* index.ts */ = {isa = PBXFileReference; name = "index.ts"; path = "../src/assets/Logos/index.ts"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		48E84A3453CC4AA2A2547AE1 /* empty_cart_animation.json */ = {isa = PBXFileReference; name = "empty_cart_animation.json"; path = "../src/assets/animations/empty_cart_animation.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		0783AB7E70294118AB92E952 /* empty_fav_animation.json */ = {isa = PBXFileReference; name = "empty_fav_animation.json"; path = "../src/assets/animations/empty_fav_animation.json"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		AE5C8F930A6845328ACCFFE3 /* promo_background_1.jpg */ = {isa = PBXFileReference; name = "promo_background_1.jpg"; path = "../src/assets/app_images/promo_background_1.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		5A38CBC31AD74F91A5B6F90D /* promo_background_2.jpg */ = {isa = PBXFileReference; name = "promo_background_2.jpg"; path = "../src/assets/app_images/promo_background_2.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F60B149B6EE64A2898481D5E /* NewBalance.tsx */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = NewBalance.tsx; path = ../src/assets/Logos/NewBalance.tsx; sourceTree = "<group>"; };
+		F6784B7B94F5431E8C53FB29 /* Nike.tsx */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Nike.tsx; path = ../src/assets/Logos/Nike.tsx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,14 +82,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-CoffeeApp.a in Frameworks */,
+				0C80B921A6F3F58F76C31292 /* libPods-ShoesStore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13B07FAE1A68108700A75B9A /* CoffeeApp */ = {
+		13B07FAE1A68108700A75B9A /* ShoesStore */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -98,14 +98,14 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 			);
-			name = CoffeeApp;
+			name = ShoesStore;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-CoffeeApp.a */,
+				5DCACB8F33CDC322A6C60F78 /* libPods-ShoesStore.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -153,7 +153,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* CoffeeApp */,
+				13B07FAE1A68108700A75B9A /* ShoesStore */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
@@ -168,7 +168,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* CoffeeApp.app */,
+				13B07F961A680F5B00A75B9A /* ShoesStore.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,8 +176,8 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-CoffeeApp.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-CoffeeApp.release.xcconfig */,
+				3B4392A12AC88292D35C810B /* Pods-ShoesStore.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-ShoesStore.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -185,9 +185,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* CoffeeApp */ = {
+		13B07F861A680F5B00A75B9A /* ShoesStore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "CoffeeApp" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ShoesStore" */;
 			buildPhases = (
 				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -201,9 +201,9 @@
 			);
 			dependencies = (
 			);
-			name = CoffeeApp;
-			productName = CoffeeApp;
-			productReference = 13B07F961A680F5B00A75B9A /* CoffeeApp.app */;
+			name = ShoesStore;
+			productName = ShoesStore;
+			productReference = 13B07F961A680F5B00A75B9A /* ShoesStore.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -219,7 +219,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "CoffeeApp" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ShoesStore" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -232,7 +232,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* CoffeeApp */,
+				13B07F861A680F5B00A75B9A /* ShoesStore */,
 			);
 		};
 /* End PBXProject section */
@@ -298,15 +298,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CoffeeApp/Pods-CoffeeApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ShoesStore/Pods-ShoesStore-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CoffeeApp/Pods-CoffeeApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ShoesStore/Pods-ShoesStore-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoffeeApp/Pods-CoffeeApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShoesStore/Pods-ShoesStore-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
@@ -324,7 +324,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CoffeeApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ShoesStore-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -337,15 +337,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CoffeeApp/Pods-CoffeeApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ShoesStore/Pods-ShoesStore-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CoffeeApp/Pods-CoffeeApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-ShoesStore/Pods-ShoesStore-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoffeeApp/Pods-CoffeeApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShoesStore/Pods-ShoesStore-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -364,13 +364,14 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-CoffeeApp.debug.xcconfig */;
+			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-ShoesStore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = CoffeeApp/Info.plist;
+				INFOPLIST_FILE = ShoesStore/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShoesStore;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -383,7 +384,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = CoffeeApp;
+				PRODUCT_NAME = ShoesStore;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -392,12 +393,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-CoffeeApp.release.xcconfig */;
+			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-ShoesStore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = CoffeeApp/Info.plist;
+				INFOPLIST_FILE = ShoesStore/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShoesStore;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -410,7 +412,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = CoffeeApp;
+				PRODUCT_NAME = ShoesStore;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -571,7 +573,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "CoffeeApp" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ShoesStore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -580,7 +582,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "CoffeeApp" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ShoesStore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
