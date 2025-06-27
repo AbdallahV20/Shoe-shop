@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {gutters, layout, Theme} from '../../constants';
-import {moderateScale} from '../../utils';
+import {moderateScale, pxH} from '../../utils';
 
 export const styles = (theme: Theme) =>
   StyleSheet.create({
@@ -11,7 +11,6 @@ export const styles = (theme: Theme) =>
     searchIconContainer: {...layout.selfCenter, ...gutters.me_12},
     textInputContainer: {
       backgroundColor: theme.textInputBackground,
-      ...gutters.py_2,
       ...gutters.px_12,
       ...gutters.radius_12,
       ...layout.row,
@@ -20,6 +19,7 @@ export const styles = (theme: Theme) =>
       fontSize: moderateScale(16),
       color: theme.primaryText,
       ...layout.flex_1,
+      paddingVertical: pxH(12),
     },
   });
 

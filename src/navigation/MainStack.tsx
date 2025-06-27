@@ -2,7 +2,12 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import HomeBottomTabs from './HomeBottomTabs';
-import {Payment, ProductDetails, ViewAllProducts} from '../screens';
+import {
+  Payment,
+  ProductDetails,
+  SearchForProduct,
+  ViewAllProducts,
+} from '../screens';
 import {Language} from '../screens/Profile/screens';
 const MainStack = () => {
   const Stack = createNativeStackNavigator();
@@ -16,6 +21,7 @@ const MainStack = () => {
         <Stack.Screen name="payment" component={Payment} />
         <Stack.Screen name="language" component={Language} />
         <Stack.Screen name="viewAllProducts" component={ViewAllProducts} />
+        <Stack.Screen name="search" component={SearchForProduct} />
       </Stack.Navigator>
     </NavigationContainer>
   );

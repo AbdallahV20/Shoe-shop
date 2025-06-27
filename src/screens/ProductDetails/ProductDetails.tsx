@@ -57,6 +57,14 @@ const ProductDetails = () => {
   return (
     <MainLayout
       isScrollable
+      hideBottomTabs
+      header={
+        <NavigationHeader
+          startAction={<NavigationAction.BackButton />}
+          endAction={<NavigationAction.LoveButton product={product} />}
+          backgroundColor="transparent"
+        />
+      }
       footer={
         <View style={styles(theme, isDarkMode).footerContainer}>
           <Price price={price} priceSize={21} />
@@ -71,13 +79,8 @@ const ProductDetails = () => {
       <ImageBackground
         source={{uri: imageURL}}
         style={styles(theme).productImage}
-        resizeMode="cover">
-        <NavigationHeader
-          isTransparent
-          startAction={<NavigationAction.BackButton />}
-          endAction={<NavigationAction.LoveButton product={product} />}
-        />
-      </ImageBackground>
+        resizeMode="contain"
+      />
       <View style={styles(theme).detailsContainer}>
         <View style={styles(theme).innerContainer}>
           <View style={styles(theme).tags}>

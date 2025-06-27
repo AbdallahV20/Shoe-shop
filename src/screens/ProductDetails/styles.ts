@@ -9,8 +9,14 @@ const styles = (theme: Theme, isDarkMode?: boolean) =>
       ...gutters.mb_24,
       ...gutters.px_24,
     },
-    productImage: {height: height * 0.5},
-    detailsContainer: {...gutters.px_24, ...gutters.mt_24, ...gutters.gap_24},
+    productImage: {
+      height: height * 0.3,
+    },
+    detailsContainer: {
+      ...gutters.px_24,
+      ...gutters.pt_24,
+      ...gutters.gap_24,
+    },
     footerContainer: {
       ...layout.row,
       ...gutters.gap_16,

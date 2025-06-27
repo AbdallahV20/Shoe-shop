@@ -1,60 +1,72 @@
-import * as React from 'react';
-import {Dimensions, Image, View} from 'react-native';
-import {useSharedValue} from 'react-native-reanimated';
-import Carousel, {
-  ICarouselInstance,
-  Pagination,
-} from 'react-native-reanimated-carousel';
-import AppImages from '../../assets/app_images';
-import styles from './styles';
-import {px} from '../../utils';
-
-const promoBackgorunds = [
-  AppImages.promo_background_1,
-  AppImages.promo_background_2,
-];
-
-const width = Dimensions.get('window').width - px(48);
-
-function OffersSlider() {
-  const ref = React.useRef<ICarouselInstance>(null);
-  const progress = useSharedValue<number>(0);
-
-  const onPressPagination = (index: number) => {
-    ref.current?.scrollTo({
-      count: index - progress.value,
-      animated: true,
-    });
-  };
-
+import React from 'react';
+import {
+  Image,
+  ScrollView,
+  View,
+  Animated,
+  useWindowDimensions,
+  useAnimatedValue,
+} from 'react-native';
+import styles from './styles.ts';
+import AppImages from '../../assets/app_images/index.ts';
+import {appColors} from '../../theme/colors.ts';
+const OffersSlider = () => {
+  const scrollX = useAnimatedValue(0);
+  const widthMobile = useWindowDimensions().width;
+  const promoBackgorunds = [
+    AppImages.promo_background_1,
+    AppImages.promo_background_2,
+  ];
   return (
-    <View style={styles.container}>
-      <Carousel
-        ref={ref}
-        autoPlay
-        autoPlayInterval={2000}
-        scrollAnimationDuration={1000}
-        width={width}
-        height={width / 2}
-        data={promoBackgorunds}
-        onProgressChange={progress}
-        renderItem={({index}) => (
-          <View style={styles.imageWrapper}>
-            <Image source={promoBackgorunds[index]} style={styles.image} />
-          </View>
+    <View style={styles.mainContainer}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        scrollEventThrottle={1}
+        onScroll={Animated.event(
+          [
+            {
+              nativeEvent: {
+                contentOffset: {x: scrollX},
+              },
+            },
+          ],
+          {
+            useNativeDriver: false, // or true if you're only animating transforms
+          },
         )}
-      />
-
-      <Pagination.Basic
-        progress={progress}
-        activeDotStyle={styles.activeDot}
-        data={promoBackgorunds}
-        dotStyle={styles.dotStyle}
-        containerStyle={styles.dotContainer}
-        onPress={onPressPagination}
-      />
+        pagingEnabled>
+        {promoBackgorunds.map((image, index) => (
+          <View key={index} style={styles.imageContainer}>
+            <Image source={image} style={styles.image} />
+          </View>
+        ))}
+      </ScrollView>
+      <View style={styles.dotsContainer}>
+        {promoBackgorunds.map((_, index) => {
+          const backgroundColor = scrollX.interpolate({
+            inputRange: [
+              widthMobile * (index - 1),
+              widthMobile * index,
+              widthMobile * (index + 1),
+            ],
+            outputRange: [
+              appColors.gray400,
+              appColors.primary,
+              appColors.gray400,
+            ],
+            extrapolate: 'clamp',
+          });
+          return (
+            <Animated.View
+              key={index}
+              style={[styles.dot, {backgroundColor}]}
+            />
+          );
+        })}
+      </View>
     </View>
   );
-}
+};
 
 export default OffersSlider;

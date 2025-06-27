@@ -16,7 +16,7 @@ const Favourite = () => {
   const {t} = useTranslation();
   return (
     <MainLayout
-      isHeaderFixed
+      isFixedHeader
       header={
         <NavigationHeader
           startAction={<NavigationAction.BackButton />}

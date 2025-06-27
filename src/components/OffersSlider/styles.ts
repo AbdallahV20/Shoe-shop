@@ -1,15 +1,27 @@
-import {ImageStyle, StyleSheet} from 'react-native';
+import {Dimensions, ImageStyle, StyleSheet} from 'react-native';
 import {gutters, layout} from '../../constants';
-import {appColors} from '../../theme/colors';
+import {pxH} from '../../utils';
 export default StyleSheet.create({
-  container: {...gutters.px_24},
-  imageWrapper: {
-    borderWidth: 3,
-    borderColor: appColors.white,
-    ...layout.justifyCenter,
+  mainContainer: {...gutters.gapH_16},
+  image: {
+    ...layout.fullHeight,
+    ...layout.fullWidth,
+    ...gutters.radius_12,
+  } as ImageStyle,
+  imageContainer: {
+    paddingHorizontal: 24,
+    width: Dimensions.get('window').width,
+    height: pxH(200),
   },
-  image: {width: '100%', height: '100%', ...gutters.radius_10} as ImageStyle,
-  dotContainer: {...gutters.gap_6, ...gutters.mt_10},
-  dotStyle: {backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: 100},
-  activeDot: {backgroundColor: appColors.primary},
+  dotsContainer: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    gap: 6,
+  },
+  dot: {
+    width: 8,
+    height: 8,
+    backgroundColor: '#aaa',
+    borderRadius: 50,
+  },
 });

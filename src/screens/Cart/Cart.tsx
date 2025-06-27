@@ -16,7 +16,8 @@ const Cart = () => {
   const {t} = useTranslation();
   return (
     <MainLayout
-      isHeaderFixed
+      isFixedHeader
+      isFixedFooter
       header={
         <NavigationHeader
           title={t('cart')}

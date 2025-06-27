@@ -28,13 +28,13 @@ export default function Language() {
 
   return (
     <MainLayout
+      isFixedHeader
       header={
         <NavigationHeader
           startAction={<NavigationAction.BackButton />}
           title={t('language')}
         />
-      }
-      isHeaderFixed>
+      }>
       <RadioButton.Group
         onValueChange={changeRadioIdHandler}
         value={selectedLanguage}>

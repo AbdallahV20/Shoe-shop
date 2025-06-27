@@ -7,3 +7,4 @@ export {default as ProductDetails} from './ProductDetails/ProductDetails';
 export {default as Payment} from './Payment/Payment';
 export {default as Profile} from './Profile/Profile';
 export {default as ViewAllProducts} from './ViewAllProducts/ViewAllProducts';
+export {default as SearchForProduct} from './SearchForProduct/SearchForProduct';

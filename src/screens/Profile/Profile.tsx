@@ -20,8 +20,7 @@ const Profile = () => {
   const {t} = useTranslation();
   return (
     <MainLayout
-      isHeaderFixed
-      isScrollable
+      isFixedHeader
       header={
         <NavigationHeader
           startAction={<NavigationAction.BackButton />}

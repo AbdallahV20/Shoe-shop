@@ -6,7 +6,7 @@ import {BOTTOM_TAB_HEIGHT, gutters, layout, Theme} from '../constants';
 import {useAppTheme} from '../theme';
 import {Icon} from '../components';
 import {appColors} from '../theme/colors';
-import {moderateScale, pxH} from '../utils';
+import {moderateScale} from '../utils';
 const HomeBottomTabs = () => {
   const Tab = createBottomTabNavigator();
   const {theme} = useAppTheme();
@@ -38,7 +38,11 @@ const HomeBottomTabs = () => {
         component={Cart}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Icon name="cart-basket-ui-5-svgrepo-com" size={size} color={color} />
+            <Icon
+              name="cart-basket-ui-5-svgrepo-com"
+              size={size}
+              color={color}
+            />
           ),
         }}
       />
@@ -76,7 +80,7 @@ const HomeBottomTabs = () => {
 const styles = (theme: Theme) =>
   StyleSheet.create({
     tabBarStyle: {
-      height: pxH(BOTTOM_TAB_HEIGHT),
+      height: BOTTOM_TAB_HEIGHT,
       elevation: 0,
       borderColor: 'transparent',
       shadowOpacity: 0,

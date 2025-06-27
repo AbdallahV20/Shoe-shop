@@ -4,6 +4,7 @@ import {
   MainLayout,
   NavigationAction,
   NavigationHeader,
+  OffersSlider,
   SearchBar,
   SectionHeader,
   Tabs,
@@ -19,6 +20,7 @@ import {ProductDto, RootStackParamList} from '../../constants';
 import {brands, categoriesTabs} from '../../constants/data';
 import {useTranslation} from 'react-i18next';
 import {isArabic} from '../../localization/i18next';
+import {appColors} from '../../theme/colors';
 const Home = () => {
   const data = isArabic ? Object.values(ShoesDataAr) : Object.values(ShoesData);
   const [activeTab, setActiveTab] = useState(0);
@@ -30,20 +32,32 @@ const Home = () => {
   );
   return (
     <MainLayout
-      isHeaderFixed
       isScrollable
+      statusBarBackgroundColor={appColors.primary}
       header={
         <NavigationHeader
           startAction={<NavigationAction.WelcomeComponent name="Abdallah" />}
           endAction={<NavigationAction.NofificationsButton />}
+          backgroundColor={appColors.primary}
         />
       }>
       <View style={styles.screenContainer}>
-        <SearchBar />
-        {/* <View>
+        <View
+          style={{
+            backgroundColor: appColors.primary,
+            paddingBottom: 24,
+            borderBottomLeftRadius: 18,
+            borderBottomRightRadius: 18,
+          }}>
+          <SearchBar
+            onSearchPress={() => navigation.navigate('search')}
+            onFilter={() => console.log('Filter')}
+          />
+        </View>
+        <View>
           <SectionHeader sectionTitle="Special For You" noViewAll />
           <OffersSlider />
-        </View> */}
+        </View>
         <View>
           <SectionHeader
             sectionTitle={t('recommendedForYou')}

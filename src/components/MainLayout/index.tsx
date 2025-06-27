@@ -1,70 +1,86 @@
-import {SafeAreaView, ScrollView, StatusBar, View} from 'react-native';
+import {
+  Animated,
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  StatusBarStyle,
+  View,
+} from 'react-native';
 import React from 'react';
 import {useAppTheme} from '../../theme';
 import styles from './styles';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {BOTTOM_TAB_HEIGHT} from '../../constants';
+import {appColors} from '../../theme/colors';
 interface MainLayoutProps {
   children: React.ReactNode;
   header?: React.ReactNode;
   footer?: React.ReactNode;
-  isHeaderFixed?: boolean;
+  isFixedHeader?: boolean;
   isScrollable?: boolean;
+  statusBarStyle?: StatusBarStyle;
+  statusBarBackgroundColor?: string;
+  isFixedFooter?: boolean;
+  hideBottomTabs?: boolean;
+  bottomIndicatorColor?: string;
+  onScroll?: () => void;
 }
 
 const MainLayout = ({
   children,
   header,
+  isFixedHeader = false,
   footer,
-  isHeaderFixed = false,
+  isFixedFooter,
   isScrollable = false,
+  statusBarBackgroundColor = appColors.primary,
+  statusBarStyle = 'light-content',
+  hideBottomTabs = false,
+  bottomIndicatorColor = appColors.white,
+  onScroll,
 }: MainLayoutProps) => {
-  const {theme, isDarkMode} = useAppTheme();
+  const {theme} = useAppTheme();
+  const insets = useSafeAreaInsets();
+  const bottomIndicatorHeight = insets.bottom;
+  const bottomTabHeight = hideBottomTabs
+    ? 0
+    : Platform.OS === 'ios'
+    ? BOTTOM_TAB_HEIGHT - bottomIndicatorHeight
+    : BOTTOM_TAB_HEIGHT;
   return (
-    <SafeAreaView style={styles(theme).container}>
+    <>
+      {/* Handle StatusBar in IOS and Android */}
+      <SafeAreaView style={{backgroundColor: statusBarBackgroundColor}} />
       <StatusBar
-        translucent
-        backgroundColor={isHeaderFixed ? 'transparent' : theme.backgroundColor}
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={statusBarBackgroundColor}
+        barStyle={statusBarStyle} //works for both IOS and Android
       />
-      {!isHeaderFixed && isScrollable && (
-        <>
-          {header && header}
-          <ScrollView
-            bounces={false}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={styles(theme, !!footer).contentContainer}>
-            {children}
-          </ScrollView>
-          {footer && footer}
-        </>
-      )}
-      {isHeaderFixed && isScrollable && (
-        <>
-          {header && header}
-          <ScrollView
-            bounces={false}
-            contentContainerStyle={styles(theme, !!footer).contentContainer}
-            showsVerticalScrollIndicator={false}>
-            {children}
-          </ScrollView>
-          {footer && footer}
-        </>
-      )}
 
-      {!isHeaderFixed && !isScrollable && (
-        <>
-          {header && header}
-          <View style={styles(theme, !!footer).fixedContainer}>{children}</View>
-          {footer && footer}
-        </>
-      )}
-      {isHeaderFixed && !isScrollable && (
-        <>
-          {header && header}
-          <View style={styles(theme, !!footer).fixedContainer}>{children}</View>
-          {footer && footer}
-        </>
-      )}
-    </SafeAreaView>
+      <View
+        style={[styles(theme).mainContainer, {paddingBottom: bottomTabHeight}]}>
+        {isFixedHeader && header}
+        {isScrollable ? (
+          <>
+            <Animated.ScrollView
+              showsVerticalScrollIndicator={false}
+              bounces={false}
+              contentContainerStyle={styles(theme).scrollableContainer}
+              keyboardShouldPersistTaps="handled"
+              onScroll={onScroll}>
+              {!isFixedHeader && header}
+              {children}
+              {!isFixedFooter && footer}
+            </Animated.ScrollView>
+          </>
+        ) : (
+          <View style={styles(theme).fixedContainer}>{children}</View>
+        )}
+        {isFixedFooter && footer}
+      </View>
+      <SafeAreaView
+        style={{backgroundColor: bottomIndicatorColor ?? theme.backgroundColor}}
+      />
+    </>
   );
 };
 

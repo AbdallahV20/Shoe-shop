@@ -1,17 +1,6 @@
-export interface Theme {
-  backgroundColor: string;
-  tabBarBackgroundColor: string;
-  textInputBackground: string;
-  cardBackground: string;
-  primaryText: string;
-  secondaryText: string;
-  infoBackground: string;
-  infoBorder: string;
-  iconBackground: string;
-  bottomSheetBackground: string;
-  dropdownBackgroundColor: string;
-  activeDropDown: string;
-}
+import {colorsLight} from '../theme/colors';
+
+export type Theme = typeof colorsLight;
 
 export interface ProductDto {
   id: number;
