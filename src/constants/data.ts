@@ -29,7 +29,7 @@ export const settingsItems = (t: (key: string) => string) => {
       id: 5,
       title: t('logout'),
       icon: 'logout-circle-svgrepo-com',
-      screenName: 'login',
+      screenName: 'authStack',
     },
   ];
 };

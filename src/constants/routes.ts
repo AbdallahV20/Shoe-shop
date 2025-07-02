@@ -1,0 +1,16 @@
+export enum Routes {
+  HOME = 'home',
+  CART = 'cart',
+  FAVOURITE = 'favourite',
+  PROFILE = 'profile',
+  PAYMENT = 'payment',
+  LOGIN = 'login',
+  SIGNUP = 'signup',
+  LOGOUT = 'logout',
+  LANGUAGE = 'language',
+  BOTTOM_TABS = 'homeBottomTabs',
+  SEARCH = 'search',
+  PRODUCT_DETAILS = 'productDetails',
+  VEIW_ALL_PRODUCTS = 'viewAllProducts',
+  AUTH_STACK = 'authStack',
+}

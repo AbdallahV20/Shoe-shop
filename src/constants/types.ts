@@ -21,12 +21,14 @@ export interface ProductDto {
 
 export type RootStackParamList = {
   home: undefined;
+  homeBottomTabs: undefined;
   productDetails: {product: ProductDto};
   cart: undefined;
   favourite: undefined;
   search: undefined;
   profile: undefined;
   login: undefined;
+  signup: undefined;
   register: undefined;
   viewAllProducts: {currentCategory: string};
 };

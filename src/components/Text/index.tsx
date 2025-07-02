@@ -41,9 +41,9 @@ const Text = ({
         {
           fontFamily: appFonts[fontWeight],
           fontSize: moderateScale(fontSize),
-          textAlign: textAlign ,
+          textAlign: textAlign,
           color: color ?? theme.primaryText,
-          lineHeight,
+          lineHeight: moderateScale(lineHeight),
         },
         style,
       ]}

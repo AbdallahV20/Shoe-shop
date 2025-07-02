@@ -28,7 +28,7 @@ const Counter = ({id, selectedSize}: CounterProps) => {
       <IconButton
         iconName={'minus-svgrepo-com-1'}
         onPress={removeButtonHandler}
-        isDisabled={counter === 0}
+        isDisabled={counter === 1}
         backgroundColor={appColors.white}
         iconColor={appColors.black}
         isRounded

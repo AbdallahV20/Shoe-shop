@@ -9,20 +9,38 @@ import {
   ViewAllProducts,
 } from '../screens';
 import {Language} from '../screens/Profile/screens';
+import {Routes} from '../constants/routes';
+import AuthStack from './AuthStack';
+import {useSelector} from 'react-redux';
+import {RootState} from '../store/store';
 const MainStack = () => {
   const Stack = createNativeStackNavigator();
+  const {isLoggedIn} = useSelector((state: RootState) => state.user);
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{headerShown: false, animation: 'fade_from_bottom'}}>
-        {/* <Stack.Screen name="splash" component={Splash} /> */}
-        <Stack.Screen name="homeBottomTab" component={HomeBottomTabs} />
-        <Stack.Screen name="productDetails" component={ProductDetails} />
-        <Stack.Screen name="payment" component={Payment} />
-        <Stack.Screen name="language" component={Language} />
-        <Stack.Screen name="viewAllProducts" component={ViewAllProducts} />
-        <Stack.Screen name="search" component={SearchForProduct} />
-      </Stack.Navigator>
+      {isLoggedIn ? (
+        <Stack.Navigator
+          screenOptions={{headerShown: false, animation: 'fade_from_bottom'}}>
+          {/* <Stack.Screen name="splash" component={Splash} /> */}
+
+          <Stack.Screen name={Routes.BOTTOM_TABS} component={HomeBottomTabs} />
+          <Stack.Screen
+            name={Routes.PRODUCT_DETAILS}
+            component={ProductDetails}
+          />
+          <Stack.Screen name={Routes.PAYMENT} component={Payment} />
+          <Stack.Screen name={Routes.LANGUAGE} component={Language} />
+          <Stack.Screen
+            name={Routes.VEIW_ALL_PRODUCTS}
+            component={ViewAllProducts}
+          />
+          <Stack.Screen name={Routes.SEARCH} component={SearchForProduct} />
+        </Stack.Navigator>
+      ) : (
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name={Routes.AUTH_STACK} component={AuthStack} />
+        </Stack.Navigator>
+      )}
     </NavigationContainer>
   );
 };

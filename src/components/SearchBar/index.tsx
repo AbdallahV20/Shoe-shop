@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import TextInput from '../TextInput';
 import IconButton from '../IconButton';
 import {useAppTheme} from '../../theme';
@@ -21,25 +21,18 @@ export const SearchBar = ({
 }) => {
   const {theme} = useAppTheme();
   const {t} = useTranslation();
-  const [search, setSearch] = useState('');
-  const handleOnSearch = useCallback(
-    (value: string) => {
-      setSearch(value);
-      onSearch?.(value);
-    },
-    [onSearch],
-  );
   return (
     <View style={styles.container}>
       <View style={styles.textInput}>
         <TextInput
-          value={search || ''}
-          setValue={value => handleOnSearch(value)}
+          onValueChange={val => onSearch?.(val)}
           isSearchBar
           placeholder={t('search')}
           autoFocus={isAutoFocus}
           onPress={onSearchPress}
           onSubmitEditing={onSearchSubmit}
+          backgroundColor={theme.bottomSheetBackground}
+          noBorder
         />
       </View>
       {onFilter && (

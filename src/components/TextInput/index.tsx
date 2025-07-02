@@ -1,6 +1,6 @@
 //extend any props for a general component
 import {TextInput as TextInputBase, TextInputProps, View} from 'react-native';
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import styles from './styles';
 import {useAppTheme} from '../../theme';
 import Text from '../Text';
@@ -10,33 +10,41 @@ import {px} from '../../utils';
 import {isArabic} from '../../localization/i18next';
 
 interface textInputProps extends TextInputProps {
-  value: string;
-  setValue: (val: string) => void;
   isSearchBar?: boolean;
   label?: string;
   errorMessage?: string;
+  onValueChange: (val: string) => void;
+  backgroundColor?: string;
+  noBorder?: boolean;
 }
 
 const TextInput = ({
-  value,
-  setValue,
+  onValueChange,
   isSearchBar,
   label,
   errorMessage,
+  backgroundColor,
+  noBorder,
   ...otherProps
 }: textInputProps) => {
   const {theme} = useAppTheme();
+  const [value, setValue] = useState('');
   const onChangeHandler = useCallback(
     (val: string) => {
       setValue(val);
+      onValueChange(val);
     },
-    [setValue],
+    [onValueChange],
   );
   return (
     <View style={styles(theme).container}>
-      {label && <Text fontWeight="semiBold">{label}</Text>}
+      {label && (
+        <Text fontSize={14} fontWeight="medium">
+          {label}
+        </Text>
+      )}
       <View style={styles(theme).textInputAndErr}>
-        <View style={styles(theme).textInputContainer}>
+        <View style={styles(theme, backgroundColor,noBorder).textInputContainer}>
           {isSearchBar && (
             <View style={styles(theme).searchIconContainer}>
               <Icon name="search-1" size={px(18)} color={theme.primaryText} />

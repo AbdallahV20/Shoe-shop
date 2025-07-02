@@ -22,8 +22,8 @@ const Avatar = ({
   onPress,
   pointerEvents = 'auto',
 }: AvatarProps) => {
-  const {imageProfile} = useSelector((state: RootState) => state.user);
-
+  const {data} = useSelector((state: RootState) => state.user);
+  const {imageProfile} = data;
   const imageSource = useMemo(() => {
     if (imageUrl) return {uri: imageUrl};
     if (localImage) return localImage;

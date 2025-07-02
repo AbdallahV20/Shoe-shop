@@ -16,8 +16,11 @@ import {moderateScale} from '../../utils';
 import styles from './styles';
 import {settingsItems} from '../../constants/data';
 import {useTranslation} from 'react-i18next';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/store';
 const Profile = () => {
   const {t} = useTranslation();
+  const user = useSelector((state: RootState) => state.user);
   return (
     <MainLayout
       isFixedHeader
@@ -41,10 +44,10 @@ const Profile = () => {
         </TouchableOpacity>
         <View>
           <Text textAlign="center" fontWeight="semiBold">
-            Abdallah Metwally
+            {user.data.displayName}
           </Text>
           <Text textAlign="center" fontSize={14}>
-            ametwally@gmail.com
+            {user.data.email}
           </Text>
           <Button
             iconName="pen-new-square-svgrepo-com-1"

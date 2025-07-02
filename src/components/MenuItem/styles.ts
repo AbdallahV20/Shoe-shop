@@ -9,7 +9,7 @@ export const styles = (theme: Theme, screenName?: string) =>
       ...layout.itemsCenter,
       ...layout.row,
       ...gutters.py_16,
-      borderBottomWidth: screenName === 'login' ? 0 : 1,
+      borderBottomWidth: screenName === 'authStack' ? 0 : 1,
       borderColor: appColors.gray100,
     },
     rowContainer: {

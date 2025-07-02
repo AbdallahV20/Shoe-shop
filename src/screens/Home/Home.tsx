@@ -21,6 +21,8 @@ import {brands, categoriesTabs} from '../../constants/data';
 import {useTranslation} from 'react-i18next';
 import {isArabic} from '../../localization/i18next';
 import {appColors} from '../../theme/colors';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/store';
 const Home = () => {
   const data = isArabic ? Object.values(ShoesDataAr) : Object.values(ShoesData);
   const [activeTab, setActiveTab] = useState(0);
@@ -30,13 +32,17 @@ const Home = () => {
   const filterDataByCategory = data.filter(
     item => activeTab === 0 || categoriesTabs(t)[activeTab] === item.gender,
   );
+  const user = useSelector((state: RootState) => state.user);
+  console.log({user});
   return (
     <MainLayout
       isScrollable
       statusBarBackgroundColor={appColors.primary}
       header={
         <NavigationHeader
-          startAction={<NavigationAction.WelcomeComponent name="Abdallah" />}
+          startAction={
+            <NavigationAction.WelcomeComponent name={user.data.displayName} />
+          }
           endAction={<NavigationAction.NofificationsButton />}
           backgroundColor={appColors.primary}
         />

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "941003598706",
+    "project_id": "shoes-application-566c2",
+    "storage_bucket": "shoes-application-566c2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941003598706:android:916a94f497d9f4cdb30beb",
+        "android_client_info": {
+          "package_name": "com.coffeeapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu5A0lnv7XxE6MZwRAxebHGY-nkHxjnh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

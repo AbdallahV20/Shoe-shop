@@ -7,6 +7,7 @@ import {useAppTheme} from '../theme';
 import {Icon} from '../components';
 import {appColors} from '../theme/colors';
 import {moderateScale} from '../utils';
+import {Routes} from '../constants/routes';
 const HomeBottomTabs = () => {
   const Tab = createBottomTabNavigator();
   const {theme} = useAppTheme();
@@ -25,7 +26,7 @@ const HomeBottomTabs = () => {
         tabBarActiveTintColor: appColors.primary,
       }}>
       <Tab.Screen
-        name="home"
+        name={Routes.HOME}
         component={Home}
         options={{
           tabBarIcon: ({color, size}) => (
@@ -34,7 +35,7 @@ const HomeBottomTabs = () => {
         }}
       />
       <Tab.Screen
-        name="cart"
+        name={Routes.CART}
         component={Cart}
         options={{
           tabBarIcon: ({color, size}) => (
@@ -47,7 +48,7 @@ const HomeBottomTabs = () => {
         }}
       />
       <Tab.Screen
-        name="favourite"
+        name={Routes.FAVOURITE}
         component={Favourite}
         options={{
           tabBarIcon: ({color, size}) => (
@@ -65,7 +66,7 @@ const HomeBottomTabs = () => {
         }}
       /> */}
       <Tab.Screen
-        name="profile"
+        name={Routes.PROFILE}
         component={Profile}
         options={{
           tabBarIcon: ({color, size}) => (
@@ -85,8 +86,8 @@ const styles = (theme: Theme) =>
       borderColor: 'transparent',
       shadowOpacity: 0,
       backgroundColor: theme.tabBarBackgroundColor,
-      borderTopLeftRadius: moderateScale(28),
-      borderTopRightRadius: moderateScale(28),
+      borderTopLeftRadius: moderateScale(24),
+      borderTopRightRadius: moderateScale(24),
       ...layout.absolute,
       ...layout.overflowHidden,
     },

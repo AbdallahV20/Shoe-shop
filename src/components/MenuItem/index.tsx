@@ -10,10 +10,12 @@ import Toggle from '../Toggle';
 import {moderateScale} from '../../utils';
 import {isArabic} from '../../localization/i18next';
 import {useTranslation} from 'react-i18next';
+import {logOut} from '../../firebase';
 interface MenuItemProps {
   title: string;
   iconName: string;
   screenName?: string;
+  onPressHandler?: () => void;
 }
 const MenuItem = ({title, iconName, screenName}: MenuItemProps) => {
   const {theme, toggleTheme, isDarkMode} = useAppTheme();
@@ -30,7 +32,9 @@ const MenuItem = ({title, iconName, screenName}: MenuItemProps) => {
 
   return (
     <Pressable
-      onPress={() => screenName && navigation.navigate(screenName as never)}
+      onPress={async () => {
+        await logOut().then(() => navigation.navigate(screenName as never));
+      }}
       style={styles(theme, screenName).container}>
       <View style={styles(theme).rowContainer}>
         <View style={styles(theme).iconContainer}>

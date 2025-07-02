@@ -6,7 +6,7 @@ import {appColors} from '../../../../theme/colors';
 export const styles = (theme: Theme, isDarkMode?: boolean) =>
   StyleSheet.create({
     footerContainer: {
-      backgroundColor: 'blue',
+      backgroundColor: theme.bottomSheetBackground,
       borderTopLeftRadius: moderateScale(18),
       borderTopRightRadius: moderateScale(18),
       ...gutters.py_24,
@@ -16,6 +16,7 @@ export const styles = (theme: Theme, isDarkMode?: boolean) =>
       shadowOpacity: 0.2,
       shadowRadius: moderateScale(6),
       elevation: 10,
+      marginBottom: pxH(-18),
     },
     textStyle: {
       ...layout.row,
